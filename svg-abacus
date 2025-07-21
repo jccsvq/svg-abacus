@@ -1,0 +1,372 @@
+#!/usr/bin/env -S python3 
+"""
+svgabacus: Simple script to draw SVG diagrams of several abacus types.
+
+This is a command line utility. 
+Supported abacus types: 
+    4+1, Modern soroban/swanpan (option: -41)
+    4+3, Nepohualtzintzin and Inupiaq abacuses (option: -43)
+    5+1, Traditional soroban (option: -51, support suspended lower beads)
+    5+2, Traditional swanpan and soroban (option: -52)
+    5+3, Rare traditional swanpan (option: -53), the "complete abacus"
+Bead types:
+    Japanese style (default)
+    Chinese style (option: -c)
+Unit rod marks:
+    Every 3 rods from center (option: -d 3)
+    Every 4 rods from center (Pre-WWII soroban option: -d 4))
+    No marks (default or option: -d 0)
+Tranparent and non-transparent backgrounds.
+...
+
+Example:
+
+$ echo 0 0 0 0 0 0 5 1 2 3 4 9 1|./svg-abacus -t 53 -s 25 -c  -d 0  -d 3 -b  > output.svg
+
+Creates a diagram in output.svg for a 13 rods 5+3 abacus at a scale of 25 pixels/rod,
+with chinese style beads, no unit rod marks and non-transparent background. Rod values are read from stdin.
+
+use:
+
+$ svgabacus [-h | --help]
+
+for options
+"""
+import argparse
+
+DESC = '''Draws diagrams for several abacus types by reading column values from stdin.'''
+EPIL = "jccsvq fecit, 2025. Public domain."
+
+abacus_type = "41 43 51 52 53".split()
+abacus_height = [1130,1370,1250,1370,1490]
+beady = [[120,249,410,530,650,770,890],
+    [120,240,360,480,650,770,890,1010,1130],
+    [120,240,410,470,530,590,650,710,770,830,890,950,1010],
+    [120,180,240,360,530,650,770,890,1010,1130],
+    [120,240,360,480,650,770,890,1010,1130,1250]]
+barsy = [360,600,360,480,600]
+
+
+beadict41 = {
+    "0": "1001111",
+    "1": "1010111",
+    "2": "1011011",
+    "3": "1011101",
+    "4": "1011110",
+    "5": "0101111",
+    "6": "0110111",
+    "7": "0111011",
+    "8": "0111101",
+    "9": "0111110"}
+
+beadict43 = {
+    "0":  "111001111",
+    "1":  "111010111",
+    "2":  "111011011",
+    "3":  "111011101",
+    "4":  "111011110",
+    "5":  "110101111",
+    "6":  "110110111",
+    "7":  "110111011",
+    "8":  "110111101",
+    "9":  "110111110",
+    "10": "101101111",
+    "11": "101110111",
+    "12": "101111011",
+    "13": "101111101",
+    "14": "101111110",
+    "15": "011101111",
+    "16": "011110111",
+    "17": "011111011",
+    "18": "011111101",
+    "19": "011111110"}
+
+beadict51 = {
+    "0": "1000101010101",
+    "1": "1010001010101",
+    "2": "1010100010101",
+    "3": "1010101000101",
+    "4": "1010101010001",
+    "5": "0100101010101",
+    "6": "0110001010101",
+    "7": "0110100010101",
+    "8": "0110101000101",
+    "9": "0110101010001",
+    "0s": "1001001010101",
+    "1s": "1010010010101",
+    "2s": "1010100100101",
+    "3s": "1010101001001",
+    "4s": "1010101010010",
+    "5s": "0101001010101",
+    "6s": "0110010010101",
+    "7s": "0110100100101",
+    "8s": "0110101001001",
+    "9s": "0110101010010",
+    "F": "1010101010100",
+    "T": "0110101010100"}
+
+beadict53 = {
+    "0": "1110011111",
+    "1": "1110101111",
+    "2": "1110110111",
+    "3": "1110111011",
+    "4": "1110111101",
+    "F": "1110111110",
+    "5": "1101011111",
+    "6": "1101101111",
+    "7": "1101110111",
+    "8": "1101111011",
+    "9": "1101111101",
+    "T": "1101111110",
+    "t": "1011011111",
+    "11": "1011101111",
+    "12": "1011110111",
+    "13": "1011111011",
+    "14": "1011111101",
+    "q": "0111011111",
+    "Q": "1011111110",
+    "16": "0111101111",
+    "17": "0111110111",
+    "18": "0111111011",
+    "19": "0111111101",
+    "20": "0111111110"}
+
+beadict52 = {
+    "0": "1010011111",
+    "1": "1010101111",
+    "2": "1010110111",
+    "3": "1010111011",
+    "4": "1010111101",
+    "F": "1010111110",
+    "5": "1001011111",
+    "6": "1001101111",
+    "7": "1001110111",
+    "8": "1001111011",
+    "9": "1001111101",
+    "T": "1001111110",
+    "t": "0011011111",
+    "11": "0011101111",
+    "12": "0011110111",
+    "13": "0011111011",
+    "14": "0011111101",
+    "q": "0101011111",
+    "Q": "0011111110",
+    "16": "0101101111",
+    "17": "0101110111",
+    "18": "0101111011",
+    "19": "0101111101",
+    "20": "0101111110"}
+
+beadicts = [beadict41, beadict43, beadict51, beadict52, beadict53]
+
+def prtsvgheader(x, y, width, height, vBoxx,vBoxy):
+    """Creates the SVG header, viewport, viewbox and <defs>"""
+    print('<svg  xmlns="http://www.w3.org/2000/svg"')
+    line = f'x="{x}px" y="{y}px"'
+    print(line)
+    if args.frame :
+        line = f'width="{width-80*scale}px" height="{height}px"'
+    else:
+        line = f'width="{width}px" height="{height}px"'
+    print(line)   
+    if args.frame :
+        line = f'viewBox="80 0 {vBoxx-160} {vBoxy}">'
+    else:
+        line = f'viewBox="0 0 {vBoxx} {vBoxy}">'
+    print(line)
+    print(f'''<defs>
+<radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="30%" fy="40%">
+    <stop offset="0%" stop-color="antiquewhite" />
+    <stop offset="80%" stop-color="{args.ccolor}" />
+</radialGradient>
+<linearGradient id="rodgrad" >
+    <stop offset="5%" stop-color="BurlyWood" />
+    <stop offset="95%" stop-color="#3f3121" />
+</linearGradient>
+
+<g id="bead">
+	<polygon fill="#bb7748" stroke="#F2F2F2" points="80,0 5,60 195,60 119,0"/>
+	<polygon fill="#854c24" stroke="#F2F2F2" points="119,120 195,60 5,60 80,120"/>
+</g>
+
+<g id="bead2">
+	<ellipse cx="100" cy="60" rx="90" ry="59.5" fill="url(#grad1)" stroke="#F2F2F2"/>
+</g>
+
+
+<g id="frame">
+    <rect y="0" fill="#3f3121" stroke="#3f3121" width="202" height="120"/> 
+</g>
+
+<g id="bar">
+	<rect x="0" y="0" width="200" height="50" fill="Maroon"/>
+	<rect y="10" fill="AntiqueWhite" width="200" height="30"/>
+</g>
+
+<g id="bardot">
+    <use href="#bar"/>
+	<circle cx="100" cy="25" r="12" stroke="black" stroke-width="3" fill="green" />
+</g>
+
+</defs>''')
+
+def prtrod(rodn):
+    """Draws the rod for each abacus column"""
+    x = 200*rodn+288
+    linea = f'''<rect x="{x}" y="0.5" fill="url(#rodgrad)" 
+    stroke="#F2F2F2" width="24" height="{vBoxy}"/>'''
+    print(linea)
+
+def prtframe(rodn):
+    """Draws the frame portion for each abacus column"""
+    x = 200*rodn + 200
+    linea = f'<use href="#frame" x="{x}" y="0"/>'
+    print(linea)
+    linea = f'<use href="#frame" x="{x}" y="{vBoxy - 120}"/>'
+    print(linea)
+    
+def prtbar(rodn, dot=False):
+    """Draws the central bar portion for each abacus column"""
+    x = 200*rodn + 200
+    if dot :
+        linea = f'<use href="#bardot" x="{x}" y="{bary}"/>'
+    else:
+        linea = f'<use href="#bar" x="{x}" y="{bary}"/>'
+    print(linea)
+
+def prtsides(nrods):
+    """Draws the left and right frame bars"""
+    linea = f'''<rect x="80" y="0" fill="#3f3121" stroke="#3f3121" 
+    width="120" height="{vBoxy}"/>'''
+    print(linea)
+    linea = f'''<line x1="80" y1="0" x2="200" y2="120" 
+    stroke="black" stroke-width="4"/>'''
+    print(linea)
+    linea = f'''<line x1="80" y1="{vBoxy}" x2="200" y2="{vBoxy-120}" 
+    stroke="black" stroke-width="4"/>'''
+    print(linea)
+    x = vBoxx - 200
+    linea = f'''<rect x="{x}" y="0" fill="#3f3121" stroke="#3f3121" 
+    width="120" height="{vBoxy}"/>'''
+    print(linea)
+    linea = f'''<line x1="{vBoxx-200}" y1="120" x2="{vBoxx-80}" y2="0" 
+    stroke="black" stroke-width="4"/>'''
+    print(linea)
+    linea = f'''<line x1="{vBoxx-200}" y1="{vBoxy-120}" 
+    x2="{vBoxx-80}" y2="{vBoxy}" stroke="black" stroke-width="4"/>'''
+    print(linea)
+
+def prtbead(rodn, pos, chinese=False):
+    """Draws the beads"""
+    x = 200*rodn + 200
+    y = beady[abacus][pos]
+    if chinese:
+        linea = f'<use href="#bead2" x="{x}" y="{y}"/>'    
+    else:
+         linea = f'<use href="#bead" x="{x}" y="{y}"/>'
+    print(linea)
+
+def prtabacus():
+    """Manages the drawing of the different elements of the abacus diagram"""
+    prtsvgheader(0,0, widtht*scale, height*scale, vBoxx, vBoxy)
+
+    if args.background :
+        linea = f'''<rect width="{vBoxx-240}" height="{vBoxy}" 
+        x="80" y="0" fill="{args.bgcolor}"/>'''
+        print(linea)
+
+
+    cbar = nrods//2 
+    dotf = int(args.dots)
+    for i in range(nrods):
+        print(f'<!-- Rod #{i+1} -->')
+        prtrod(i)
+        prtframe(i)
+        if dotf == 0:
+            prtbar(i,0)
+        else:
+            if (i - cbar)%dotf == 0:
+                prtbar(i,1)
+            else:
+                prtbar(i,0)
+        cosa = beadict[datos[i]]
+        for j in range(len(cosa)):
+            if cosa[j] == "1":
+                prtbead(i,j,chinbead)
+
+    prtsides(nrods)
+
+    print('</svg>')
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(description=DESC,
+        epilog=EPIL,
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument('-t', '--type',
+        help='Abacus type',
+        choices=['41','43','51','52','53'],
+        default='53')
+    parser.add_argument('-c', '--chinese',
+        help='Use Chinese style beads',
+        action='store_true',
+        default=False)
+    parser.add_argument('--ccolor',
+        help='Chinese style beads color',
+        default='Darkgreen')
+    parser.add_argument('-d', '--dots',
+        help='Unit rod dots every 3 or 4 rods (0 to no dots at all)',
+        choices=['0','3','4'],
+        default='0')
+    parser.add_argument('-s', '--scale',
+        help='Nominal rod width in pixels',
+        default=100)
+    parser.add_argument('-v', '--values',
+        help='String of column values separated by spaces',
+        default='')
+    parser.add_argument('-b', '--background',
+        help='Non-transparent background',
+        action='store_true',
+        default=False)
+    parser.add_argument('--bgcolor',
+        help='Non-transparent background color',
+        default='Ivory')
+    parser.add_argument('-f', '--frame',
+        help='Adjust to abacus frame (cut transparent borders)',
+        action='store_true',
+        default=False)
+
+    args = parser.parse_args()
+#    print(args)
+
+    if args.type == '41':
+        abacus = 0
+    if args.type == '43':
+        abacus = 1
+    if args.type == '51':
+        abacus = 2
+    if args.type == '52':
+        abacus = 3
+    if args.type == '53':
+        abacus = 4
+
+    if len(args.values) == 0:
+        datos = input().split()
+    else:
+        datos = args.values.split()
+
+    chinbead = args.chinese
+    bary = barsy[abacus]
+    nrods = len(datos)
+    scale = int(args.scale)/100
+    vBoxy =abacus_height[abacus]
+    height = vBoxy/2.
+    widtht = 100*(nrods + 2)
+    vBoxx = 2*widtht
+    
+    
+    beadict = beadicts[abacus]
+    
+    prtabacus()
+
+
