@@ -1,6 +1,6 @@
 echo 0 1 2 3 4 9 6 8 9 1 2 3|./svg-abacus -t 41 -s 50  -d 3 > test-results/41jd.svg
 echo 0 1 2 3 4 9 6 8 9 1 2 3|./svg-abacus -t 41 -s 50  -d 0 > test-results/41j.svg
-echo 0 1 2 3 4 9 6 8 9 1 2 3|./svg-abacus -t 41 -s 50  -d 3 -c > test-results/41cd.svg
+echo 0s 1s 2s 3s 4s 5s 6s 7s 8s 9s 1 2 3|./svg-abacus -t 41 -s 50  -d 3 -c > test-results/41cd.svg
 echo 0 1 2 3 4 9 6 8 9 1 2 3|./svg-abacus -t 41 -s 50  -d 0 -c > test-results/41c.svg
 echo 7 8 9 10 11 12 13 14 15 19 17 18 19|./svg-abacus -t 43 -s 50  -d 3 > test-results/43jd.svg
 echo 7 8 9 10 11 12 13 14 15 19 17 18 19|./svg-abacus -t 43 -s 50  -d 0 > test-results/43j.svg

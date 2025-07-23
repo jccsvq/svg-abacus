@@ -1,6 +1,6 @@
 #!/usr/bin/env -S python3 
 """
-svgabacus: Simple script to draw SVG diagrams of several abacus types.
+svgabacus: Simple script to draw SVG diagrams of several (oriental) abacus types.
 
 This is a command line utility. 
 Supported abacus types: 
@@ -39,7 +39,7 @@ EPIL = "jccsvq fecit, 2025. Public domain."
 
 abacus_type = "41 43 51 52 53".split()
 abacus_height = [1130,1370,1250,1370,1490]
-beady = [[120,249,410,530,650,770,890],
+beady = [[120,240,410,470,530,590,650,710,770,830,890],
     [120,240,360,480,650,770,890,1010,1130],
     [120,240,410,470,530,590,650,710,770,830,890,950,1010],
     [120,180,240,360,530,650,770,890,1010,1130],
@@ -48,17 +48,27 @@ barsy = [360,600,360,480,600]
 
 
 beadict41 = {
-    "0": "1001111",
-    "1": "1010111",
-    "2": "1011011",
-    "3": "1011101",
-    "4": "1011110",
-    "5": "0101111",
-    "6": "0110111",
-    "7": "0111011",
-    "8": "0111101",
-    "9": "0111110"}
-
+    "0": "10001010101",
+    "1": "10100010101",
+    "2": "10101000101",
+    "3": "10101010001",
+    "4": "10101010100",
+    "5": "01001010101",
+    "6": "01100010101",
+    "7": "01101000101",
+    "8": "01101010001",
+    "9": "01010101010",
+    "0s": "10010010101",
+    "1s": "10100100101",
+    "2s": "10101001001",
+    "3s": "10101010010",
+    "4s": "10010101010",
+    "5s": "01010010101",
+    "6s": "01100100101",
+    "7s": "01101001001",
+    "8s": "01101010010",
+    "9s": "01010101010"}
+    
 beadict43 = {
     "0":  "111001111",
     "1":  "111010111",
@@ -181,12 +191,25 @@ def prtsvgheader(x, y, width, height, vBoxx,vBoxy):
 </radialGradient>
 <linearGradient id="rodgrad" >
     <stop offset="5%" stop-color="BurlyWood" />
-    <stop offset="95%" stop-color="#3f3121" />
+    <stop offset="95%" stop-color="#3f1010" />
+</linearGradient>
+<linearGradient id="rodgrad2" gradientTransform="rotate(90)">
+    <stop offset="5%" stop-color="BurlyWood" />
+    <stop offset="95%" stop-color="#3f1010" />
+</linearGradient>
+
+<linearGradient id="jap1" >
+    <stop offset="5%" stop-color="BurlyWood" />
+    <stop offset="95%" stop-color="#3f0010" />
+</linearGradient>
+<linearGradient id="jap2">
+    <stop offset="5%" stop-color="#250000" />
+    <stop offset="95%" stop-color="Peru" />
 </linearGradient>
 
 <g id="bead">
-	<polygon fill="#bb7748" stroke="#F2F2F2" points="80,0 5,60 195,60 119,0"/>
-	<polygon fill="#854c24" stroke="#F2F2F2" points="119,120 195,60 5,60 80,120"/>
+	<polygon fill="url(#jap1)" stroke="#F2F2F2" points="80,0 5,60 195,60 119,0"/>
+	<polygon fill="url(#jap2)" stroke="#F2F2F2" points="119,120 195,60 5,60 80,120"/>
 </g>
 
 <g id="bead2">
@@ -195,12 +218,12 @@ def prtsvgheader(x, y, width, height, vBoxx,vBoxy):
 
 
 <g id="frame">
-    <rect y="0" fill="#3f3121" stroke="#3f3121" width="202" height="120"/> 
+    <rect y="0" fill="url(#rodgrad2)" width="202" height="120"/> 
 </g>
 
 <g id="bar">
-	<rect x="0" y="0" width="200" height="50" fill="Maroon"/>
-	<rect y="10" fill="AntiqueWhite" width="200" height="30"/>
+	<rect x="0" y="0" width="202" height="50" fill="Maroon" />
+	<rect x="-1" y="10" fill="AntiqueWhite" width="202" height="30"/>
 </g>
 
 <g id="bardot">
@@ -236,21 +259,32 @@ def prtbar(rodn, dot=False):
 
 def prtsides(nrods):
     """Draws the left and right frame bars"""
-    linea = f'''<rect x="80" y="0" fill="#3f3121" stroke="#3f3121" 
+    linea = f'''<rect x="80" y="0" fill="url(#rodgrad)" 
     width="120" height="{vBoxy}"/>'''
+    print(linea)
+    linea = f'<polygon fill="url(#rodgrad2)" points="80,0 200,120 200,0"/>'
     print(linea)
     linea = f'''<line x1="80" y1="0" x2="200" y2="120" 
     stroke="black" stroke-width="4"/>'''
+    print(linea)
+    linea = f'''<polygon fill="url(#rodgrad2)" points="80,{vBoxy} 
+    200,{vBoxy-120} 200,{vBoxy}"/>'''
     print(linea)
     linea = f'''<line x1="80" y1="{vBoxy}" x2="200" y2="{vBoxy-120}" 
     stroke="black" stroke-width="4"/>'''
     print(linea)
     x = vBoxx - 200
-    linea = f'''<rect x="{x}" y="0" fill="#3f3121" stroke="#3f3121" 
+    linea = f'''<rect x="{x}" y="0" fill="url(#rodgrad)" 
     width="120" height="{vBoxy}"/>'''
+    print(linea)
+    linea = f'''<polygon fill="url(#rodgrad2)" points="{vBoxx-200},120 
+    {vBoxx-80},0 {vBoxx-200},0"/>'''
     print(linea)
     linea = f'''<line x1="{vBoxx-200}" y1="120" x2="{vBoxx-80}" y2="0" 
     stroke="black" stroke-width="4"/>'''
+    print(linea)
+    linea = f'''<polygon fill="url(#rodgrad2)" points="{vBoxx-200},
+    {vBoxy-120} {vBoxx-80},{vBoxy} {vBoxx-200},{vBoxy}"/>'''
     print(linea)
     linea = f'''<line x1="{vBoxx-200}" y1="{vBoxy-120}" 
     x2="{vBoxx-80}" y2="{vBoxy}" stroke="black" stroke-width="4"/>'''

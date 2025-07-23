@@ -1,5 +1,5 @@
 # svg-abacus
-Simple `python3` script to draw SVG diagrams of several (oriental) abacus types.
+Simple `python3` script to draw SVG diagrams or illustrations of several (oriental) abacus types.
 
 ## Supported abacus types: 
 * 4+1, Modern soroban/swanpan (option: -41)
@@ -14,6 +14,9 @@ Simple `python3` script to draw SVG diagrams of several (oriental) abacus types.
 * Every 3 rods from center (option: -d 3)
 * Every 4 rods from center (Pre-WWII soroban option: -d 4))
 * No marks (default or option: -d 0)
+## Support for suspended beads:
+* The 5+2 abacus uses the suspended top bead to represent numbers up to 20 in a column. This is required for some traditional techniques such as Kijoho division.
+* Suspended lower beads can be used for the same purpose on the 4+1 and 5+1 abacuses (see [The Eastern Abacus](https://jccsvq.github.io/libro-abaco/index-tea.html#XIV%3A%20Second%20way%3A%20Suspended%20lower%20beads)).
 
 
 ...
@@ -22,7 +25,7 @@ Simple `python3` script to draw SVG diagrams of several (oriental) abacus types.
 
     $ echo 0 0 0 0 0 0 5 1 2 3 4 9 1|./svg-abacus -t 53 -s 25 -c  -d 0  -d 3 -b  > example.svg
 
-Creates a diagram in output.svg for a 13 rods 5+3 abacus at a scale of 25 pixels/rod,
+Creates a diagram in `output.svg` for a 13 rods 5+3 abacus at a scale of 25 pixels/rod,
 with chinese style beads, no unit rod marks and non-transparent background. Rod values are read from stdin.
 
 ![output](example.svg)

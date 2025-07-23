@@ -9,12 +9,25 @@ viewBox="0 0 2800 1490">
 </radialGradient>
 <linearGradient id="rodgrad" >
     <stop offset="5%" stop-color="BurlyWood" />
-    <stop offset="95%" stop-color="#3f3121" />
+    <stop offset="95%" stop-color="#3f1010" />
+</linearGradient>
+<linearGradient id="rodgrad2" gradientTransform="rotate(90)">
+    <stop offset="5%" stop-color="BurlyWood" />
+    <stop offset="95%" stop-color="#3f1010" />
+</linearGradient>
+
+<linearGradient id="jap1" >
+    <stop offset="5%" stop-color="BurlyWood" />
+    <stop offset="95%" stop-color="#3f0010" />
+</linearGradient>
+<linearGradient id="jap2">
+    <stop offset="5%" stop-color="#250000" />
+    <stop offset="95%" stop-color="Peru" />
 </linearGradient>
 
 <g id="bead">
-	<polygon fill="#bb7748" stroke="#F2F2F2" points="80,0 5,60 195,60 119,0"/>
-	<polygon fill="#854c24" stroke="#F2F2F2" points="119,120 195,60 5,60 80,120"/>
+	<polygon fill="url(#jap1)" stroke="#F2F2F2" points="80,0 5,60 195,60 119,0"/>
+	<polygon fill="url(#jap2)" stroke="#F2F2F2" points="119,120 195,60 5,60 80,120"/>
 </g>
 
 <g id="bead2">
@@ -23,12 +36,12 @@ viewBox="0 0 2800 1490">
 
 
 <g id="frame">
-    <rect y="0" fill="#3f3121" stroke="#3f3121" width="202" height="120"/> 
+    <rect y="0" fill="url(#rodgrad2)" width="202" height="120"/> 
 </g>
 
 <g id="bar">
-	<rect x="0" y="0" width="200" height="50" fill="Maroon"/>
-	<rect y="10" fill="AntiqueWhite" width="200" height="30"/>
+	<rect x="0" y="0" width="202" height="50" fill="Maroon" />
+	<rect x="-1" y="10" fill="AntiqueWhite" width="202" height="30"/>
 </g>
 
 <g id="bardot">
@@ -205,16 +218,23 @@ viewBox="0 0 2800 1490">
 <use href="#bead" x="2400" y="890"/>
 <use href="#bead" x="2400" y="1010"/>
 <use href="#bead" x="2400" y="1130"/>
-<rect x="80" y="0" fill="#3f3121" stroke="#3f3121" 
+<rect x="80" y="0" fill="url(#rodgrad)" 
     width="120" height="1490"/>
+<polygon fill="url(#rodgrad2)" points="80,0 200,120 200,0"/>
 <line x1="80" y1="0" x2="200" y2="120" 
     stroke="black" stroke-width="4"/>
+<polygon fill="url(#rodgrad2)" points="80,1490 
+    200,1370 200,1490"/>
 <line x1="80" y1="1490" x2="200" y2="1370" 
     stroke="black" stroke-width="4"/>
-<rect x="2600" y="0" fill="#3f3121" stroke="#3f3121" 
+<rect x="2600" y="0" fill="url(#rodgrad)" 
     width="120" height="1490"/>
+<polygon fill="url(#rodgrad2)" points="2600,120 
+    2720,0 2600,0"/>
 <line x1="2600" y1="120" x2="2720" y2="0" 
     stroke="black" stroke-width="4"/>
+<polygon fill="url(#rodgrad2)" points="2600,
+    1370 2720,1490 2600,1490"/>
 <line x1="2600" y1="1370" 
     x2="2720" y2="1490" stroke="black" stroke-width="4"/>
 </svg>
