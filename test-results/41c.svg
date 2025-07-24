@@ -2,6 +2,12 @@
 x="0px" y="0px"
 width="700.0px" height="282.5px"
 viewBox="0 0 2800 1130">
+<style>
+.names {;
+font: bold 80px mono;
+fill: Gold;
+}
+</style>
 <defs>
 <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="30%" fy="40%">
     <stop offset="0%" stop-color="antiquewhite" />
@@ -10,8 +16,12 @@ viewBox="0 0 2800 1130">
 <linearGradient id="rodgrad" >
     <stop offset="5%" stop-color="BurlyWood" />
     <stop offset="95%" stop-color="#3f1010" />
+</linearGradient>    
+<linearGradient id="framegrad" >
+    <stop offset="5%" stop-color="BurlyWood" />
+    <stop offset="95%" stop-color="#3f1010" />
 </linearGradient>
-<linearGradient id="rodgrad2" gradientTransform="rotate(90)">
+<linearGradient id="framegrad2" gradientTransform="rotate(90)">
     <stop offset="5%" stop-color="BurlyWood" />
     <stop offset="95%" stop-color="#3f1010" />
 </linearGradient>
@@ -36,7 +46,7 @@ viewBox="0 0 2800 1130">
 
 
 <g id="frame">
-    <rect y="0" fill="url(#rodgrad2)" width="202" height="120"/> 
+    <rect y="0" fill="url(#framegrad2)" width="202" height="120"/> 
 </g>
 
 <g id="bar">
@@ -51,8 +61,8 @@ viewBox="0 0 2800 1130">
 
 </defs>
 <!-- Rod #1 -->
-<rect x="288" y="0.5" fill="url(#rodgrad)" 
-    stroke="#F2F2F2" width="24" height="1130"/>
+<rect x="283" y="0.5" fill="url(#rodgrad)" 
+    stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="200" y="0"/>
 <use href="#frame" x="200" y="1010"/>
 <use href="#bar" x="200" y="360"/>
@@ -62,8 +72,8 @@ viewBox="0 0 2800 1130">
 <use href="#bead2" x="200" y="770"/>
 <use href="#bead2" x="200" y="890"/>
 <!-- Rod #2 -->
-<rect x="488" y="0.5" fill="url(#rodgrad)" 
-    stroke="#F2F2F2" width="24" height="1130"/>
+<rect x="483" y="0.5" fill="url(#rodgrad)" 
+    stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="400" y="0"/>
 <use href="#frame" x="400" y="1010"/>
 <use href="#bar" x="400" y="360"/>
@@ -73,8 +83,8 @@ viewBox="0 0 2800 1130">
 <use href="#bead2" x="400" y="770"/>
 <use href="#bead2" x="400" y="890"/>
 <!-- Rod #3 -->
-<rect x="688" y="0.5" fill="url(#rodgrad)" 
-    stroke="#F2F2F2" width="24" height="1130"/>
+<rect x="683" y="0.5" fill="url(#rodgrad)" 
+    stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="600" y="0"/>
 <use href="#frame" x="600" y="1010"/>
 <use href="#bar" x="600" y="360"/>
@@ -84,8 +94,8 @@ viewBox="0 0 2800 1130">
 <use href="#bead2" x="600" y="770"/>
 <use href="#bead2" x="600" y="890"/>
 <!-- Rod #4 -->
-<rect x="888" y="0.5" fill="url(#rodgrad)" 
-    stroke="#F2F2F2" width="24" height="1130"/>
+<rect x="883" y="0.5" fill="url(#rodgrad)" 
+    stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="800" y="0"/>
 <use href="#frame" x="800" y="1010"/>
 <use href="#bar" x="800" y="360"/>
@@ -95,8 +105,8 @@ viewBox="0 0 2800 1130">
 <use href="#bead2" x="800" y="650"/>
 <use href="#bead2" x="800" y="890"/>
 <!-- Rod #5 -->
-<rect x="1088" y="0.5" fill="url(#rodgrad)" 
-    stroke="#F2F2F2" width="24" height="1130"/>
+<rect x="1083" y="0.5" fill="url(#rodgrad)" 
+    stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="1000" y="0"/>
 <use href="#frame" x="1000" y="1010"/>
 <use href="#bar" x="1000" y="360"/>
@@ -106,8 +116,8 @@ viewBox="0 0 2800 1130">
 <use href="#bead2" x="1000" y="650"/>
 <use href="#bead2" x="1000" y="770"/>
 <!-- Rod #6 -->
-<rect x="1288" y="0.5" fill="url(#rodgrad)" 
-    stroke="#F2F2F2" width="24" height="1130"/>
+<rect x="1283" y="0.5" fill="url(#rodgrad)" 
+    stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="1200" y="0"/>
 <use href="#frame" x="1200" y="1010"/>
 <use href="#bar" x="1200" y="360"/>
@@ -117,8 +127,8 @@ viewBox="0 0 2800 1130">
 <use href="#bead2" x="1200" y="710"/>
 <use href="#bead2" x="1200" y="830"/>
 <!-- Rod #7 -->
-<rect x="1488" y="0.5" fill="url(#rodgrad)" 
-    stroke="#F2F2F2" width="24" height="1130"/>
+<rect x="1483" y="0.5" fill="url(#rodgrad)" 
+    stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="1400" y="0"/>
 <use href="#frame" x="1400" y="1010"/>
 <use href="#bar" x="1400" y="360"/>
@@ -128,8 +138,8 @@ viewBox="0 0 2800 1130">
 <use href="#bead2" x="1400" y="770"/>
 <use href="#bead2" x="1400" y="890"/>
 <!-- Rod #8 -->
-<rect x="1688" y="0.5" fill="url(#rodgrad)" 
-    stroke="#F2F2F2" width="24" height="1130"/>
+<rect x="1683" y="0.5" fill="url(#rodgrad)" 
+    stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="1600" y="0"/>
 <use href="#frame" x="1600" y="1010"/>
 <use href="#bar" x="1600" y="360"/>
@@ -139,8 +149,8 @@ viewBox="0 0 2800 1130">
 <use href="#bead2" x="1600" y="650"/>
 <use href="#bead2" x="1600" y="890"/>
 <!-- Rod #9 -->
-<rect x="1888" y="0.5" fill="url(#rodgrad)" 
-    stroke="#F2F2F2" width="24" height="1130"/>
+<rect x="1883" y="0.5" fill="url(#rodgrad)" 
+    stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="1800" y="0"/>
 <use href="#frame" x="1800" y="1010"/>
 <use href="#bar" x="1800" y="360"/>
@@ -150,8 +160,8 @@ viewBox="0 0 2800 1130">
 <use href="#bead2" x="1800" y="710"/>
 <use href="#bead2" x="1800" y="830"/>
 <!-- Rod #10 -->
-<rect x="2088" y="0.5" fill="url(#rodgrad)" 
-    stroke="#F2F2F2" width="24" height="1130"/>
+<rect x="2083" y="0.5" fill="url(#rodgrad)" 
+    stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="2000" y="0"/>
 <use href="#frame" x="2000" y="1010"/>
 <use href="#bar" x="2000" y="360"/>
@@ -161,8 +171,8 @@ viewBox="0 0 2800 1130">
 <use href="#bead2" x="2000" y="770"/>
 <use href="#bead2" x="2000" y="890"/>
 <!-- Rod #11 -->
-<rect x="2288" y="0.5" fill="url(#rodgrad)" 
-    stroke="#F2F2F2" width="24" height="1130"/>
+<rect x="2283" y="0.5" fill="url(#rodgrad)" 
+    stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="2200" y="0"/>
 <use href="#frame" x="2200" y="1010"/>
 <use href="#bar" x="2200" y="360"/>
@@ -172,8 +182,8 @@ viewBox="0 0 2800 1130">
 <use href="#bead2" x="2200" y="770"/>
 <use href="#bead2" x="2200" y="890"/>
 <!-- Rod #12 -->
-<rect x="2488" y="0.5" fill="url(#rodgrad)" 
-    stroke="#F2F2F2" width="24" height="1130"/>
+<rect x="2483" y="0.5" fill="url(#rodgrad)" 
+    stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="2400" y="0"/>
 <use href="#frame" x="2400" y="1010"/>
 <use href="#bar" x="2400" y="360"/>
@@ -182,22 +192,22 @@ viewBox="0 0 2800 1130">
 <use href="#bead2" x="2400" y="530"/>
 <use href="#bead2" x="2400" y="650"/>
 <use href="#bead2" x="2400" y="890"/>
-<rect x="80" y="0" fill="url(#rodgrad)" 
+<rect x="80" y="0" fill="url(#framegrad)" 
     width="120" height="1130"/>
-<polygon fill="url(#rodgrad2)" points="80,0 200,120 200,0"/>
+<polygon fill="url(#framegrad2)" points="80,0 200,120 200,0"/>
 <line x1="80" y1="0" x2="200" y2="120" 
     stroke="black" stroke-width="4"/>
-<polygon fill="url(#rodgrad2)" points="80,1130 
+<polygon fill="url(#framegrad2)" points="80,1130 
     200,1010 200,1130"/>
 <line x1="80" y1="1130" x2="200" y2="1010" 
     stroke="black" stroke-width="4"/>
-<rect x="2600" y="0" fill="url(#rodgrad)" 
+<rect x="2600" y="0" fill="url(#framegrad)" 
     width="120" height="1130"/>
-<polygon fill="url(#rodgrad2)" points="2600,120 
+<polygon fill="url(#framegrad2)" points="2600,120 
     2720,0 2600,0"/>
 <line x1="2600" y1="120" x2="2720" y2="0" 
     stroke="black" stroke-width="4"/>
-<polygon fill="url(#rodgrad2)" points="2600,
+<polygon fill="url(#framegrad2)" points="2600,
     1010 2720,1130 2600,1130"/>
 <line x1="2600" y1="1010" 
     x2="2720" y2="1130" stroke="black" stroke-width="4"/>

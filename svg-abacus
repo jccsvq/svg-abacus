@@ -184,7 +184,13 @@ def prtsvgheader(x, y, width, height, vBoxx,vBoxy):
     else:
         line = f'viewBox="0 0 {vBoxx} {vBoxy}">'
     print(line)
-    print(f'''<defs>
+    print(f'''<style>
+.names {{;
+font: bold 80px mono;
+fill: Gold;
+}}
+</style>
+<defs>
 <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="30%" fy="40%">
     <stop offset="0%" stop-color="antiquewhite" />
     <stop offset="80%" stop-color="{args.ccolor}" />
@@ -192,10 +198,14 @@ def prtsvgheader(x, y, width, height, vBoxx,vBoxy):
 <linearGradient id="rodgrad" >
     <stop offset="5%" stop-color="BurlyWood" />
     <stop offset="95%" stop-color="#3f1010" />
+</linearGradient>    
+<linearGradient id="framegrad" >
+    <stop offset="5%" stop-color="{fcolor1}" />
+    <stop offset="{ffrac2}%" stop-color="{fcolor2}" />
 </linearGradient>
-<linearGradient id="rodgrad2" gradientTransform="rotate(90)">
-    <stop offset="5%" stop-color="BurlyWood" />
-    <stop offset="95%" stop-color="#3f1010" />
+<linearGradient id="framegrad2" gradientTransform="rotate(90)">
+    <stop offset="5%" stop-color="{fcolor1}" />
+    <stop offset="{ffrac2}%" stop-color="{fcolor2}" />
 </linearGradient>
 
 <linearGradient id="jap1" >
@@ -218,7 +228,7 @@ def prtsvgheader(x, y, width, height, vBoxx,vBoxy):
 
 
 <g id="frame">
-    <rect y="0" fill="url(#rodgrad2)" width="202" height="120"/> 
+    <rect y="0" fill="url(#framegrad2)" width="202" height="120"/> 
 </g>
 
 <g id="bar">
@@ -235,9 +245,9 @@ def prtsvgheader(x, y, width, height, vBoxx,vBoxy):
 
 def prtrod(rodn):
     """Draws the rod for each abacus column"""
-    x = 200*rodn+288
+    x = 200*rodn+283
     linea = f'''<rect x="{x}" y="0.5" fill="url(#rodgrad)" 
-    stroke="#F2F2F2" width="24" height="{vBoxy}"/>'''
+    stroke="#F2F2F2" width="32" height="{vBoxy}"/>'''
     print(linea)
 
 def prtframe(rodn):
@@ -245,6 +255,9 @@ def prtframe(rodn):
     x = 200*rodn + 200
     linea = f'<use href="#frame" x="{x}" y="0"/>'
     print(linea)
+    if args.names :
+        linea = f'<text x="{x+75}" y="90" class="names">{labels[rodn]}</text>'
+        print(linea)
     linea = f'<use href="#frame" x="{x}" y="{vBoxy - 120}"/>'
     print(linea)
     
@@ -259,31 +272,31 @@ def prtbar(rodn, dot=False):
 
 def prtsides(nrods):
     """Draws the left and right frame bars"""
-    linea = f'''<rect x="80" y="0" fill="url(#rodgrad)" 
+    linea = f'''<rect x="80" y="0" fill="url(#framegrad)" 
     width="120" height="{vBoxy}"/>'''
     print(linea)
-    linea = f'<polygon fill="url(#rodgrad2)" points="80,0 200,120 200,0"/>'
+    linea = f'<polygon fill="url(#framegrad2)" points="80,0 200,120 200,0"/>'
     print(linea)
     linea = f'''<line x1="80" y1="0" x2="200" y2="120" 
     stroke="black" stroke-width="4"/>'''
     print(linea)
-    linea = f'''<polygon fill="url(#rodgrad2)" points="80,{vBoxy} 
+    linea = f'''<polygon fill="url(#framegrad2)" points="80,{vBoxy} 
     200,{vBoxy-120} 200,{vBoxy}"/>'''
     print(linea)
     linea = f'''<line x1="80" y1="{vBoxy}" x2="200" y2="{vBoxy-120}" 
     stroke="black" stroke-width="4"/>'''
     print(linea)
     x = vBoxx - 200
-    linea = f'''<rect x="{x}" y="0" fill="url(#rodgrad)" 
+    linea = f'''<rect x="{x}" y="0" fill="url(#framegrad)" 
     width="120" height="{vBoxy}"/>'''
     print(linea)
-    linea = f'''<polygon fill="url(#rodgrad2)" points="{vBoxx-200},120 
+    linea = f'''<polygon fill="url(#framegrad2)" points="{vBoxx-200},120 
     {vBoxx-80},0 {vBoxx-200},0"/>'''
     print(linea)
     linea = f'''<line x1="{vBoxx-200}" y1="120" x2="{vBoxx-80}" y2="0" 
     stroke="black" stroke-width="4"/>'''
     print(linea)
-    linea = f'''<polygon fill="url(#rodgrad2)" points="{vBoxx-200},
+    linea = f'''<polygon fill="url(#framegrad2)" points="{vBoxx-200},
     {vBoxy-120} {vBoxx-80},{vBoxy} {vBoxx-200},{vBoxy}"/>'''
     print(linea)
     linea = f'''<line x1="{vBoxx-200}" y1="{vBoxy-120}" 
@@ -356,7 +369,7 @@ if __name__ == '__main__':
         help='Nominal rod width in pixels',
         default=100)
     parser.add_argument('-v', '--values',
-        help='String of column values separated by spaces',
+        help='String of column values separated by spaces. If not used, data is read from stdin',
         default='')
     parser.add_argument('-b', '--background',
         help='Non-transparent background',
@@ -367,6 +380,14 @@ if __name__ == '__main__':
         default='Ivory')
     parser.add_argument('-f', '--frame',
         help='Adjust to abacus frame (cut transparent borders)',
+        action='store_true',
+        default=False)
+    parser.add_argument('-l', '--lacquered',
+        help='Use lacquered frame',
+        action='store_true',
+        default=False)
+    parser.add_argument('-n', '--names',
+        help='Add column names/labels A, B, C, ...',
         action='store_true',
         default=False)
 
@@ -383,6 +404,18 @@ if __name__ == '__main__':
         abacus = 3
     if args.type == '53':
         abacus = 4
+
+    if args.lacquered :
+        fcolor1 = 'AntiqueWhite'
+        fcolor2 = 'Black'
+        ffrac2 = '35'
+    else:
+        fcolor1 = 'BurlyWood'
+        fcolor2 = '#3f1010'
+        ffrac2 = '95'
+
+    if args.names :
+        labels = "A B C D E F G H I J K L M N O P Q R S T U V X Y Z".split()
 
     if len(args.values) == 0:
         datos = input().split()

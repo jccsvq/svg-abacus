@@ -1,5 +1,5 @@
 # svg-abacus
-Simple `python3` script to draw SVG diagrams or illustrations of several (oriental) abacus types.
+Simple `python3` script to draw SVG diagrams or illustrations of several (oriental) abacus types. This is a command line utility.
 
 ## Supported abacus types: 
 * 4+1, Modern soroban/swanpan (option: -41)
@@ -25,33 +25,40 @@ Simple `python3` script to draw SVG diagrams or illustrations of several (orient
 
     $ echo 0 0 0 0 0 0 5 1 2 3 4 9 1|./svg-abacus -t 53 -s 25 -c  -d 0  -d 3 -b  > example.svg
 
-Creates a diagram in `output.svg` for a 13 rods 5+3 abacus at a scale of 25 pixels/rod,
+Creates a diagram in `example.svg` for a 13 rods 5+3 abacus at a scale of 25 pixels/rod,
 with chinese style beads, no unit rod marks and non-transparent background. Rod values are read from stdin.
 
 ![output](example.svg)
+
+Folder `test-results` contains many other examples created by the `bash` script `test.bash`.
+
+##Options:
 
 Use:    `$ svgabacus [-h | --help]` for options.
 
     usage: svg-abacus [-h] [-t {41,43,51,52,53}] [-c] [--ccolor CCOLOR]
                   [-d {0,3,4}] [-s SCALE] [-v VALUES] [-b] [--bgcolor BGCOLOR]
-                  [-f]
+                  [-f] [-l] [-n] 
 
+    Draws diagrams for several abacus types by reading column values from stdin.
 
     options:
-    -h, --help            show this help message and exit
-    -t {41,43,51,52,53}, --type {41,43,51,52,53}
-                        Abacus type (default: 53)
-    -c, --chinese         Use Chinese style beads (default: False)
-    --ccolor CCOLOR       Chinese style beads color (default: Darkgreen)
-    -d {0,3,4}, --dots {0,3,4}
-                        Unit rod dots every 3 or 4 rods (0 to no dots at all)
-                        (default: 0)
-    -s SCALE, --scale SCALE
-                        Nominal rod width in pixels (default: 100)
-    -v VALUES, --values VALUES
-                        String of column values separated by spaces (default:
-                        )
-    -b, --background      Non-transparent background (default: False)
-    --bgcolor BGCOLOR     Non-transparent background color (default: Ivory)
-    -f, --frame           Adjust to abacus frame (cut transparent borders)
-                        (default: False)
+      -h, --help            show this help message and exit
+      -t {41,43,51,52,53}, --type {41,43,51,52,53}
+                            Abacus type (default: 53)
+      -c, --chinese         Use Chinese style beads (default: False)
+      --ccolor CCOLOR       Chinese style beads color (default: Darkgreen)
+      -d {0,3,4}, --dots {0,3,4}
+                            Unit rod dots every 3 or 4 rods (0 to no dots at all)
+                            (default: 0)
+      -s SCALE, --scale SCALE
+                            Nominal rod width in pixels (default: 100)
+      -v VALUES, --values VALUES
+                            String of column values separated by spaces. If not
+                            used, data is read from stdin (default: )
+      -b, --background      Non-transparent background (default: False)
+      --bgcolor BGCOLOR     Non-transparent background color (default: Ivory)
+      -f, --frame           Adjust to abacus frame (cut transparent borders)
+                            (default: False)
+      -l, --lacquered       Use lacquered frame (default: False)
+      -n, --names           Add column names/labels A, B, C, ... (default: False)
