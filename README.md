@@ -1,23 +1,42 @@
 # svg-abacus
-Simple `python3` script to draw SVG diagrams or illustrations of several (oriental) abacus types. This is a command line utility.
+Simple `python3` script to draw SVG diagrams or illustrations of several (oriental) abacus types. This is a command line utility. Tested with `Python 3.11.2` under Debian GNU/Linux 12 (bookworm).
 
 ## Supported abacus types: 
-* 4+1, Modern soroban/swanpan (option: -41)
-* 4+3, Nepohualtzintzin and Inupiaq abacuses (option: -43)
-* 5+1, Traditional soroban (option: -51, support suspended lower beads)
-* 5+2, Traditional swanpan and soroban (option: -52)
-* 5+3, Rare traditional swanpan (option: -53), the "complete abacus"
+* 4+1, Modern soroban/swanpan (option: `-41`, support suspended lower beads)
+* 4+3, Nepohualtzintzin and Inupiaq abacuses (option: `-43`)
+* 5+1, Traditional soroban (option: `-51`, support suspended lower beads)
+* 5+2, Traditional swanpan and soroban (option: `-52`)
+* 5+3, Rare traditional swanpan (option: `-53`), the "complete abacus"
 ## Bead types:
 * Japanese style (default)
-* Chinese style (option: -c)
+* Chinese style (option: `-c`)
 ## Unit rod marks (dots):
-* Every 3 rods from center (option: -d 3)
-* Every 4 rods from center (Pre-WWII soroban option: -d 4))
-* No marks (default or option: -d 0)
+* Every 3 rods from center (option: `-d 3`)
+* Every 4 rods from center (Pre-WWII soroban option: `-d 4`))
+* No marks (default or option: `-d 0`)
 ## Support for suspended beads:
 * The 5+2 abacus uses the suspended top bead to represent numbers up to 20 in a column. This is required for some traditional techniques such as Kijoho division.
 * Suspended lower beads can be used for the same purpose on the 4+1 and 5+1 abacuses (see [The Eastern Abacus](https://jccsvq.github.io/libro-abaco/index-tea.html#XIV%3A%20Second%20way%3A%20Suspended%20lower%20beads)).
+## Labels:
+* Columns can be labeled with capital letters from A to Z (option `-n`).
+* Columns can be labeled with the values/codes used to create them (option `-k`). These annotations are grouped at the end of the SVG file to allow for easy manipulation/editing (e.g., remove the "`0`" label for unused columns).
+##Codes:
 
+|Abacus|Codes|
+|------|-----|
+|4+1|0 1 2 3 4 5 6 7 8 9<br>0s 1s 2s 3s 4s 5s 6s 7s 8s 9s|
+|4+3|0 1 2 3 4 5 6 7 8 9<br>10 11 12 13 14 15 16 17 18 19|
+|5+1|0 1 2 3 4 5 6 7 8 9<br>0s 1s 2s 3s 4s 5s 6s 7s 8s 9s<br> F T|
+|5+2|0 1 2 3 4 5 6 7 8 9<br>11 12 13 14 16 17 18 19 20<br>F t T q Q|
+|5+3|0 1 2 3 4 5 6 7 8 9<br>11 12 13 14 16 17 18 19 20<br>F t T q Q|
+
+|Symbol|Meaning|
+|--|--|
+|F|Lower 5|
+|T|Lower 10|
+|t|Upper 10|
+|Q|Lower 15|
+|q|Upper 15|
 
 ...
 
@@ -62,3 +81,4 @@ Use:    `$ svgabacus [-h | --help]` for options.
                             (default: False)
       -l, --lacquered       Use lacquered frame (default: False)
       -n, --names           Add column names/labels A, B, C, ... (default: False)
+      -k, --keys            Labels columns with codes (default: False)

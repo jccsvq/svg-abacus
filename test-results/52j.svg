@@ -247,4 +247,17 @@ fill: Gold;
     1250 2720,1370 2600,1370"/>
 <line x1="2600" y1="1250" 
     x2="2720" y2="1370" stroke="black" stroke-width="4"/>
+<!-- Column values -->
+<text x="275" y="1335" class="names">T</text>
+<text x="475" y="1335" class="names">1</text>
+<text x="675" y="1335" class="names">2</text>
+<text x="855" y="1335" class="names">13</text>
+<text x="1075" y="1335" class="names">4</text>
+<text x="1275" y="1335" class="names">9</text>
+<text x="1455" y="1335" class="names">16</text>
+<text x="1675" y="1335" class="names">8</text>
+<text x="1875" y="1335" class="names">9</text>
+<text x="2075" y="1335" class="names">F</text>
+<text x="2275" y="1335" class="names">Q</text>
+<text x="2455" y="1335" class="names">20</text>
 </svg>

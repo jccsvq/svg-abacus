@@ -66,6 +66,7 @@ fill: Gold;
 <rect x="283" y="0.5" fill="url(#rodgrad)" 
     stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="200" y="0"/>
+<text x="275" y="90" class="names">A</text>
 <use href="#frame" x="200" y="1010"/>
 <use href="#bardot" x="200" y="360"/>
 <use href="#bead" x="200" y="120"/>
@@ -77,6 +78,7 @@ fill: Gold;
 <rect x="483" y="0.5" fill="url(#rodgrad)" 
     stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="400" y="0"/>
+<text x="475" y="90" class="names">B</text>
 <use href="#frame" x="400" y="1010"/>
 <use href="#bar" x="400" y="360"/>
 <use href="#bead" x="400" y="120"/>
@@ -88,6 +90,7 @@ fill: Gold;
 <rect x="683" y="0.5" fill="url(#rodgrad)" 
     stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="600" y="0"/>
+<text x="675" y="90" class="names">C</text>
 <use href="#frame" x="600" y="1010"/>
 <use href="#bar" x="600" y="360"/>
 <use href="#bead" x="600" y="120"/>
@@ -99,6 +102,7 @@ fill: Gold;
 <rect x="883" y="0.5" fill="url(#rodgrad)" 
     stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="800" y="0"/>
+<text x="875" y="90" class="names">D</text>
 <use href="#frame" x="800" y="1010"/>
 <use href="#bardot" x="800" y="360"/>
 <use href="#bead" x="800" y="120"/>
@@ -110,6 +114,7 @@ fill: Gold;
 <rect x="1083" y="0.5" fill="url(#rodgrad)" 
     stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="1000" y="0"/>
+<text x="1075" y="90" class="names">E</text>
 <use href="#frame" x="1000" y="1010"/>
 <use href="#bar" x="1000" y="360"/>
 <use href="#bead" x="1000" y="120"/>
@@ -121,6 +126,7 @@ fill: Gold;
 <rect x="1283" y="0.5" fill="url(#rodgrad)" 
     stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="1200" y="0"/>
+<text x="1275" y="90" class="names">F</text>
 <use href="#frame" x="1200" y="1010"/>
 <use href="#bar" x="1200" y="360"/>
 <use href="#bead" x="1200" y="240"/>
@@ -132,6 +138,7 @@ fill: Gold;
 <rect x="1483" y="0.5" fill="url(#rodgrad)" 
     stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="1400" y="0"/>
+<text x="1475" y="90" class="names">G</text>
 <use href="#frame" x="1400" y="1010"/>
 <use href="#bardot" x="1400" y="360"/>
 <use href="#bead" x="1400" y="240"/>
@@ -143,6 +150,7 @@ fill: Gold;
 <rect x="1683" y="0.5" fill="url(#rodgrad)" 
     stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="1600" y="0"/>
+<text x="1675" y="90" class="names">H</text>
 <use href="#frame" x="1600" y="1010"/>
 <use href="#bar" x="1600" y="360"/>
 <use href="#bead" x="1600" y="240"/>
@@ -154,6 +162,7 @@ fill: Gold;
 <rect x="1883" y="0.5" fill="url(#rodgrad)" 
     stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="1800" y="0"/>
+<text x="1875" y="90" class="names">I</text>
 <use href="#frame" x="1800" y="1010"/>
 <use href="#bar" x="1800" y="360"/>
 <use href="#bead" x="1800" y="240"/>
@@ -165,6 +174,7 @@ fill: Gold;
 <rect x="2083" y="0.5" fill="url(#rodgrad)" 
     stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="2000" y="0"/>
+<text x="2075" y="90" class="names">J</text>
 <use href="#frame" x="2000" y="1010"/>
 <use href="#bardot" x="2000" y="360"/>
 <use href="#bead" x="2000" y="120"/>
@@ -176,6 +186,7 @@ fill: Gold;
 <rect x="2283" y="0.5" fill="url(#rodgrad)" 
     stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="2200" y="0"/>
+<text x="2275" y="90" class="names">K</text>
 <use href="#frame" x="2200" y="1010"/>
 <use href="#bar" x="2200" y="360"/>
 <use href="#bead" x="2200" y="120"/>
@@ -187,6 +198,7 @@ fill: Gold;
 <rect x="2483" y="0.5" fill="url(#rodgrad)" 
     stroke="#F2F2F2" width="32" height="1130"/>
 <use href="#frame" x="2400" y="0"/>
+<text x="2475" y="90" class="names">L</text>
 <use href="#frame" x="2400" y="1010"/>
 <use href="#bar" x="2400" y="360"/>
 <use href="#bead" x="2400" y="120"/>
@@ -213,4 +225,17 @@ fill: Gold;
     1010 2720,1130 2600,1130"/>
 <line x1="2600" y1="1010" 
     x2="2720" y2="1130" stroke="black" stroke-width="4"/>
+<!-- Column values -->
+<text x="275" y="1095" class="names">0</text>
+<text x="475" y="1095" class="names">1</text>
+<text x="675" y="1095" class="names">2</text>
+<text x="875" y="1095" class="names">3</text>
+<text x="1075" y="1095" class="names">4</text>
+<text x="1275" y="1095" class="names">9</text>
+<text x="1475" y="1095" class="names">6</text>
+<text x="1675" y="1095" class="names">8</text>
+<text x="1875" y="1095" class="names">9</text>
+<text x="2075" y="1095" class="names">1</text>
+<text x="2275" y="1095" class="names">2</text>
+<text x="2475" y="1095" class="names">3</text>
 </svg>
