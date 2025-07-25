@@ -20,7 +20,7 @@ Simple `python3` script to draw SVG diagrams or illustrations of several (orient
 ## Labels:
 * Columns can be labeled with capital letters from A to Z (option `-n`).
 * Columns can be labeled with the values/codes used to create them (option `-k`). These annotations are grouped at the end of the SVG file to allow for easy manipulation/editing (e.g., remove the "`0`" label for unused columns).
-##Codes:
+## Codes:
 
 |Abacus|Codes|
 |------|-----|
@@ -51,7 +51,7 @@ with chinese style beads, no unit rod marks and non-transparent background. Rod 
 
 Folder `test-results` contains many other examples created by the `bash` script `test.bash`.
 
-##Options:
+## Options:
 
 Use:    `$ svgabacus [-h | --help]` for options.
 
