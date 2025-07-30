@@ -152,12 +152,10 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 
  Simple `python3` script to draw SVG diagrams or illustrations of Japanese style counting rods (sangi 算木) and medieval European counting boards
 
-##Note:
-At the moment, this script requires a data file to be piped; example:
-
-    $ cat datos.txt |./svg-sangi -s 66 --ncolor black > test-results/sangi.svg
-
-with `datos.txt` containing:
+> Note:
+> At the moment, this script requires a data file to be piped; example:<br>
+> `$ cat datos.txt |./svg-sangi -s 66 --ncolor black > test-results/sangi.svg`<br>
+> with `datos.txt` containing:
 
     0 9 3 7
     0 0 -7 -F
