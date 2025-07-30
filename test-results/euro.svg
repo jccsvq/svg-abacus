@@ -1,0 +1,79 @@
+<svg  xmlns="http://www.w3.org/2000/svg"
+x="0px" y="0px"
+width="375.0px" height="200px"
+viewBox="0 0 750 400">
+<style>
+.names {;
+font: bold 80px mono;
+fill: Gold;
+}
+</style>
+<defs>
+<g id="hr">
+    <line x1="28" y1="35" x2="72" y2="35" stroke="Darkblue" stroke-width="5" />
+</g>
+<g id="vr">
+    <line x1="50" y1="40" x2="50" y2="84" stroke="Darkblue" stroke-width="5" />
+</g>
+<g id="cross">
+    <line x1="-300" y1="0" x2="300" y2="0" stroke="Navy" />
+    <line x1="0" y1="-300" x2="0" y2="300" stroke="Navy" />
+</g>
+<g id="frame">
+<use href="#cross" x="3" y="3"/>
+<use href="#cross" x="247" y="97"/>
+</g>
+
+<g id="jetonp">
+    <circle cx="25" cy="75" r="18" fill="Red" stroke="Black" />
+</g>
+<g id="jetonp5">
+    <circle cx="25" cy="25" r="18" fill="Red" stroke="Black" />
+</g>
+<g id="jetonn">
+    <circle cx="25" cy="75" r="18" fill="Black" stroke="Black" />
+</g>
+<g id="jetonn5">
+    <circle cx="25" cy="25" r="18" fill="Black" stroke="Black" />
+</g>
+</defs>
+<rect width="750" height="400" 
+    x="0" y="0" fill="LightGrey"/>
+<use href="#frame" x="0" y="0" />
+<use href="#frame" x="0" y="100" />
+<use href="#frame" x="0" y="200" />
+<use href="#frame" x="0" y="300" />
+<use href="#frame" x="250" y="0" />
+<use href="#frame" x="250" y="100" />
+<use href="#frame" x="250" y="200" />
+<use href="#frame" x="250" y="300" />
+<use href="#frame" x="500" y="0" />
+<use href="#frame" x="500" y="100" />
+<use href="#frame" x="500" y="200" />
+<use href="#frame" x="500" y="300" />
+<use href="#jetonp5" x="0" y="100"/>
+<use href="#jetonp" x="0" y="100"/>
+<use href="#jetonp" x="50" y="100"/>
+<use href="#jetonp" x="100" y="100"/>
+<use href="#jetonp" x="150" y="100"/>
+<use href="#jetonp" x="0" y="200"/>
+<use href="#jetonp" x="50" y="200"/>
+<use href="#jetonp" x="100" y="200"/>
+<use href="#jetonp5" x="0" y="300"/>
+<use href="#jetonp" x="0" y="300"/>
+<use href="#jetonp" x="50" y="300"/>
+<use href="#jetonn5" x="250" y="200"/>
+<use href="#jetonn" x="250" y="200"/>
+<use href="#jetonn" x="300" y="200"/>
+<use href="#jetonn" x="250" y="300"/>
+<use href="#jetonn" x="300" y="300"/>
+<use href="#jetonn" x="350" y="300"/>
+<use href="#jetonn" x="400" y="300"/>
+<use href="#jetonn" x="450" y="300"/>
+<use href="#jetonp" x="500" y="0"/>
+<use href="#jetonp5" x="500" y="200"/>
+<use href="#jetonp" x="500" y="200"/>
+<use href="#jetonp" x="550" y="200"/>
+<use href="#jetonp5" x="500" y="300"/>
+<use href="#jetonp" x="500" y="300"/>
+</svg>

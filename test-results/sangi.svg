@@ -1,0 +1,73 @@
+<svg  xmlns="http://www.w3.org/2000/svg"
+x="0px" y="0px"
+width="264px" height="198px"
+viewBox="0 0 400 300">
+<style>
+.names {;
+font: bold 80px mono;
+fill: Gold;
+}
+</style>
+<defs>
+<g id="hr">
+    <line x1="28" y1="35" x2="72" y2="35" stroke="Red" stroke-width="5" />
+</g>
+<g id="vr">
+    <line x1="50" y1="40" x2="50" y2="84" stroke="Red" stroke-width="5" />
+</g>
+<g id="hn">
+    <line x1="28" y1="35" x2="72" y2="35" stroke="black" stroke-width="5" />
+</g>
+<g id="vn">
+    <line x1="50" y1="40" x2="50" y2="84" stroke="black" stroke-width="5" />
+</g>
+
+<g id="cross">
+    <line x1="-100" y1="0" x2="100" y2="0" stroke="Navy" />
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="Navy" />
+</g>
+<g id="frame">
+<use href="#cross" x="2" y="2"/>
+<use href="#cross" x="98" y="98"/>
+</g>
+</defs>
+<rect width="400" height="300" 
+        x="0" y="0" fill="LightGrey"/>
+<use href="#frame" x="0" y="0" />
+<use href="#frame" x="0" y="100" />
+<use href="#frame" x="0" y="200" />
+<use href="#frame" x="100" y="0" />
+<use href="#frame" x="100" y="100" />
+<use href="#frame" x="100" y="200" />
+<use href="#frame" x="200" y="0" />
+<use href="#frame" x="200" y="100" />
+<use href="#frame" x="200" y="200" />
+<use href="#frame" x="300" y="0" />
+<use href="#frame" x="300" y="100" />
+<use href="#frame" x="300" y="200" />
+<use href="#vr" x="0" y="200"/>
+<use href="#hr" x="100" y="0"/>
+<use href="#vr" x="85" y="0"/>
+<use href="#vr" x="95" y="0"/>
+<use href="#vr" x="105" y="0"/>
+<use href="#vr" x="115" y="0"/>
+<use href="#vr" x="190" y="0"/>
+<use href="#vr" x="200" y="0"/>
+<use href="#vr" x="210" y="0"/>
+<use href="#hn" x="200" y="100"/>
+<use href="#vn" x="195" y="100"/>
+<use href="#vn" x="205" y="100"/>
+<use href="#hr" x="200" y="200"/>
+<use href="#vr" x="195" y="200"/>
+<use href="#vr" x="205" y="200"/>
+<use href="#hr" x="300" y="0"/>
+<use href="#vr" x="295" y="0"/>
+<use href="#vr" x="305" y="0"/>
+<use href="#vn" x="280" y="100"/>
+<use href="#vn" x="290" y="100"/>
+<use href="#vn" x="300" y="100"/>
+<use href="#vn" x="310" y="100"/>
+<use href="#vn" x="320" y="100"/>
+<use href="#hr" x="300" y="200"/>
+<use href="#vr" x="300" y="200"/>
+</svg>

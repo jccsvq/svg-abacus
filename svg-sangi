@@ -1,0 +1,299 @@
+#!/usr/bin/env -S python3 
+
+import argparse, sys
+
+DESC = '''Draws Japanese style counting rods (sangi) and medieval European counting boards diagrams 
+by reading from stdin.'''
+EPIL = "jccsvq fecit, 2025. Public domain."
+
+hy = [0, -10, -20]
+vx = [-20, -15, -10, -5, 0, 5, 10, 15, 20]
+
+hydict = {
+    "0": "000",
+    "1": "000",
+    "2": "000",
+    "3": "000",
+    "4": "000",
+    "F": "000",
+    "5": "100",
+    "6": "100",
+    "7": "100",
+    "8": "100",
+    "9": "100",
+    "T": "100",
+    "t": "110",
+    "11": "110",
+    "12": "110",
+    "13": "110",
+    "14": "110",
+    "Q": "110",
+    "q": "111",
+    "16": "111",
+    "17": "111",
+    "18": "111",
+    "19": "111",
+    "20": "111"}
+
+vxdict = {
+    "0": "000000000",
+    "1": "000010000",
+    "2": "000101000",
+    "3": "001010100",
+    "4": "010101010",
+    "F": "101010101",
+    "5": "000000000",
+    "6": "000010000",
+    "7": "000101000",
+    "8": "001010100",
+    "9": "010101010",
+    "T": "101010101",
+    "t": "000000000",
+    "11": "000010000",
+    "12": "000101000",
+    "13": "001010100",
+    "14": "010101010",
+    "Q": "101010101",
+    "q": "000000000",
+    "16": "000010000",
+    "17": "000101000",
+    "18": "001010100",
+    "19": "010101010",
+    "20": "101010101"}
+exdict = {
+    "0": "00000",
+    "1": "10000",
+    "2": "11000",
+    "3": "11100",
+    "4": "11110",
+    "F": "11111",
+    "5": "00000",
+    "6": "10000",
+    "7": "11000",
+    "8": "11100",
+    "9": "11110",
+    "T": "11111",
+    "t": "00000",
+    "11": "10000",
+    "12": "11000",
+    "13": "11100",
+    "14": "11110",
+    "Q": "11111",
+    "q": "00000",
+    "16": "10000",
+    "17": "11000",
+    "18": "11100",
+    "19": "11110",
+    "20": "11111"}
+
+def prtsangiheader(x, y, width, height, vBoxx,vBoxy):
+    """Creates the SVG header, viewport, viewbox and <defs>"""
+    print('<svg  xmlns="http://www.w3.org/2000/svg"')
+    line = f'x="{x}px" y="{y}px"'
+    print(line)
+    line = f'width="{width}px" height="{height}px"'
+    print(line)   
+    line = f'viewBox="0 0 {vBoxx} {vBoxy}">'
+    print(line)
+    print(f'''<style>
+.names {{;
+font: bold 80px mono;
+fill: Gold;
+}}
+</style>
+<defs>
+<g id="hr">
+    <line x1="28" y1="35" x2="72" y2="35" stroke="{args.pcolor}" stroke-width="5" />
+</g>
+<g id="vr">
+    <line x1="50" y1="40" x2="50" y2="84" stroke="{args.pcolor}" stroke-width="5" />
+</g>
+<g id="hn">
+    <line x1="28" y1="35" x2="72" y2="35" stroke="{args.ncolor}" stroke-width="5" />
+</g>
+<g id="vn">
+    <line x1="50" y1="40" x2="50" y2="84" stroke="{args.ncolor}" stroke-width="5" />
+</g>
+
+<g id="cross">
+    <line x1="-100" y1="0" x2="100" y2="0" stroke="{args.lcolor}" />
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="{args.lcolor}" />
+</g>
+<g id="frame">
+<use href="#cross" x="2" y="2"/>
+<use href="#cross" x="98" y="98"/>
+</g>
+</defs>''')
+def prteuroheader(x, y, width, height, vBoxx,vBoxy):
+    """Creates the SVG header, viewport, viewbox and <defs>"""
+    print('<svg  xmlns="http://www.w3.org/2000/svg"')
+    line = f'x="{x}px" y="{y}px"'
+    print(line)
+    line = f'width="{width}px" height="{height}px"'
+    print(line)   
+    line = f'viewBox="0 0 {vBoxx} {vBoxy}">'
+    print(line)
+    print(f'''<style>
+.names {{;
+font: bold 80px mono;
+fill: Gold;
+}}
+</style>
+<defs>
+<g id="hr">
+    <line x1="28" y1="35" x2="72" y2="35" stroke="Darkblue" stroke-width="5" />
+</g>
+<g id="vr">
+    <line x1="50" y1="40" x2="50" y2="84" stroke="Darkblue" stroke-width="5" />
+</g>
+<g id="cross">
+    <line x1="-300" y1="0" x2="300" y2="0" stroke="Navy" />
+    <line x1="0" y1="-300" x2="0" y2="300" stroke="Navy" />
+</g>
+<g id="frame">
+<use href="#cross" x="3" y="3"/>
+<use href="#cross" x="247" y="97"/>
+</g>
+
+<g id="jetonp">
+    <circle cx="25" cy="75" r="18" fill="{args.pcolor}" stroke="Black" />
+</g>
+<g id="jetonp5">
+    <circle cx="25" cy="25" r="18" fill="{args.pcolor}" stroke="Black" />
+</g>
+<g id="jetonn">
+    <circle cx="25" cy="75" r="18" fill="{args.ncolor}" stroke="Black" />
+</g>
+<g id="jetonn5">
+    <circle cx="25" cy="25" r="18" fill="{args.ncolor}" stroke="Black" />
+</g>
+</defs>''')
+
+def prtsangi():
+    # SVG Header
+    prtsangiheader(0, 0, width, height, vBoxx,vBoxy)
+    
+    # Frame
+    linea = f'''<rect width="{vBoxx}" height="{vBoxy}" 
+        x="0" y="0" fill="{args.bgcolor}"/>'''
+    print(linea)
+    for i in range(nc):
+        for j in range(nr):
+            linea = f'<use href="#frame" x="{100*i}" y="{100*j}" />'
+            print(linea)
+
+    # Cell content
+    for i in range(nc):
+        for j in range(nr):
+            value = datos[j].split()[i]
+            if value[0] == '-':
+                value=value[1:]
+                for k in range(3):
+                    if hydict[value][k] == '1':
+                        linea = f'<use href="#hn" x="{100*i}" y="{100*j+hy[int(k)]}"/>'
+                        print(linea)
+                for k in range(9):
+                    if vxdict[value][k] == '1':
+                        linea = f'<use href="#vn" x="{100*i+vx[int(k)]}" y="{100*j}"/>'
+                        print(linea)
+            else:
+                for k in range(3):
+                    if hydict[value][k] == '1':
+                        linea = f'<use href="#hr" x="{100*i}" y="{100*j+hy[int(k)]}"/>'
+                        print(linea)
+                for k in range(9):
+                    if vxdict[value][k] == '1':
+                        linea = f'<use href="#vr" x="{100*i+vx[int(k)]}" y="{100*j}"/>'
+                        print(linea)
+    
+    # Closing SVG
+    print('</svg>')
+
+def prteuropean():
+    prteuroheader(0, 0, width, height, vBoxx,vBoxy)
+    # Frame
+    linea = f'''<rect width="{vBoxx}" height="{vBoxy}" 
+    x="0" y="0" fill="{args.bgcolor}"/>'''
+    print(linea)
+    for j in range(nc):
+        for i in range(nr):
+            linea = f'<use href="#frame" x="{250*j}" y="{100*i}" />'
+            print(linea)
+    # Cell content
+    for i in range(nc):
+        for j in range(nr):
+            value = datos[i].split()[j]
+            if value[0] == '-':
+                value=value[1:]
+                for k in range(3):
+                    if hydict[value][k] == '1':
+                        linea = f'<use href="#jetonn5" x="{250*i+50*k}" y="{100*j}"/>'
+                        print(linea)
+                for k in range(5):
+                    if exdict[value][k] == '1':
+                        linea = f'<use href="#jetonn" x="{250*i+50*k}" y="{100*j}"/>'
+                        print(linea)
+            else:
+                for k in range(3):
+                    if hydict[value][k] == '1':
+                        linea = f'<use href="#jetonp5" x="{250*i+50*k}" y="{100*j}"/>'
+                        print(linea)
+                for k in range(5):
+                    if exdict[value][k] == '1':
+                        linea = f'<use href="#jetonp" x="{250*i+50*k}" y="{100*j}"/>'
+                        print(linea)
+    # Closing SVG
+    print('</svg>')
+
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(description=DESC,
+        epilog=EPIL,
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument('-E', '--european',
+        help='Use medieval counting board',
+        action='store_true',
+        default=False)
+    parser.add_argument('-s', '--scale',
+        help='Nominal cell height in pixels',
+        default=100)
+    parser.add_argument('--pcolor',
+        help='Color for positive rods/jetons',
+        default='Red')
+    parser.add_argument('--ncolor',
+        help='Color for negative rods/jetons',
+        default='Black')
+    parser.add_argument('--bgcolor',
+        help='Background color',
+        default='LightGrey')
+    parser.add_argument('--lcolor',
+        help='Color for separation lines',
+        default='Navy')
+
+    args = parser.parse_args()
+#    print(args)
+
+
+    datos = sys.stdin.readlines()
+    
+    if not args.european :
+        nr = len(datos)
+        nc = len(datos[0].split())
+        width = int(args.scale) * nc
+        height = int(args.scale) * nr
+        vBoxx = 100 * nc
+        vBoxy = 100 * nr
+        prtsangi()
+    else:
+        nc = len(datos)
+        nr = len(datos[0].split())
+        width = 2.5 * int(args.scale) * nc
+        height = int(args.scale) * nr
+        vBoxx = 250 * nc
+        vBoxy = 100 * nr
+        prteuropean()
+
+        
+    
+    

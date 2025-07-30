@@ -1,5 +1,24 @@
+# Intro:
+
+This package contains three `Python` 3 scripts for drawing diagrams or illustrations of various types of abacuses in `SVG` (Scalable Vector Graphics).
+
+* `svg-abacus`: Abacuses of the soroban and swanpan family.
+* `svg-schoty`: Russian (schoty) and school or Danish abacuses.
+* `svg-sangi`: Japanese-style calculating rods (sangi) and a medieval European calculation table.
+
+These are command-line utilities. Tested with `Python 3.11.2` under Debian GNU/Linux 12 (bookworm).
+
+## Installation:
+No special installation is required since only the standard `argparse` and `sys` modules are used.
+
+* On Unix-like systems, make sure to make the files executable and move them anywhere in the `PATH`.
+* Alternatively, rename the files to contain the `.py` extension and invoke them from your Python interpreter:
+
+
+    `$ python3 svg-abacus.py ...`
+    
 # svg-abacus
-Simple `python3` script to draw SVG diagrams or illustrations of several (oriental) abacus types. This is a command line utility. Tested with `Python 3.11.2` under Debian GNU/Linux 12 (bookworm).
+Simple `python3` script to draw SVG diagrams or illustrations of several (oriental) abacus types. 
 
 ## Supported abacus types: 
 * 4+1, Modern soroban/swanpan (option: `-41`, support suspended lower beads)
@@ -32,6 +51,7 @@ Simple `python3` script to draw SVG diagrams or illustrations of several (orient
 
 |Symbol|Meaning|
 |--|--|
+|s|Suspended lower bead|
 |F|Lower 5|
 |T|Lower 10|
 |t|Upper 10|
@@ -82,3 +102,98 @@ Use:    `$ svgabacus [-h | --help]` for options.
       -l, --lacquered       Use lacquered frame (default: False)
       -n, --names           Add column names/labels A, B, C, ... (default: False)
       -k, --keys            Labels columns with codes (default: False)
+
+
+# svg-schoty
+Simple `python3` script to draw SVG diagrams or illustrations of the Russian abacus family
+
+## Supported abacus types: 
+
+* Russian schoty (Счёты) and Iranian  chortkeh (چرتکه)
+*  Danish or school  abacus
+
+## Examples
+
+* Russian
+* ![output](test-results/ruso.svg)
+
+* Danish
+* ![output](test-results/school.svg)
+
+## Codes
+
+|Abacus|Codes|
+|------|-----|
+|Russian|0 1 2 3 4 5 6 7 8 9 10<br>q0 q1 q2 q3 q4|
+|Danish|0 1 2 3 4 5 6 7 8 9 10|
+
+## Options
+
+    usage: svg-schoty [-h] [-d] [-s SCALE] [-v VALUES] [-b] [--bgcolor BGCOLOR]
+                  [-n] [-k]
+
+    Draws diagrams for Russian and Danish abacuses by reading row values from
+    stdin.
+
+    options:
+      -h, --help            show this help message and exit
+      -d, --danish          Use Danish abacus (default: False)
+      -s SCALE, --scale SCALE
+                        Nominal rod width in pixels (default: 100)
+      -v VALUES, --values VALUES
+                        String of column values separated by spaces. If not
+                        used, data is read from stdin (default: )
+      -b, --background      Non-transparent background (default: False)
+      --bgcolor BGCOLOR     Non-transparent background color (default: Ivory)
+      -n, --names           Add column names/labels A, B, C, ... (default: False)
+      -k, --keys            Labels columns with codes (default: False)
+
+# svg-sangi
+
+ Simple `python3` script to draw SVG diagrams or illustrations of Japanese style counting rods (sangi 算木) and medieval European counting boards
+
+##Note:
+At the moment, this script requires a data file to be piped; example:
+
+    $ cat datos.txt |./svg-sangi -s 66 --ncolor black > test-results/sangi.svg
+
+with `datos.txt` containing:
+
+    0 9 3 7
+    0 0 -7 -F
+    1 0 7 6
+
+## Supported abacus types: 
+
+* Japanese style counting rods (sangi 算木)
+* Medieval European counting boards
+
+## Examples:
+* Sangi
+* ![output](test-results/sangi.svg)
+* ![output](test-results/sangi2.svg)
+*  European
+* ![output](test-results/euro.svg)
+* ![output](test-results/euro2.svg)
+
+## Codes:
+Use the same codes as with the oriental abacus type 5+2 or 5+3.
+
+## Options:
+
+    usage: svg-sangi [-h] [-E] [-s SCALE] [--pcolor PCOLOR] [--ncolor NCOLOR]
+                 [--bgcolor BGCOLOR] [--lcolor LCOLOR]
+
+    Draws Japanese style counting rods (sangi) and medieval European counting
+    boards diagrams by reading from stdin.
+
+    options:
+      -h, --help            show this help message and exit
+      -E, --european        Use medieval counting board (default: False)
+      -s SCALE, --scale SCALE
+                        Nominal cell height in pixels (default: 100)
+      --pcolor PCOLOR       Color for positive rods/jetons (default: Red)
+      --ncolor NCOLOR       Color for negative rods/jetons (default: Black)
+      --bgcolor BGCOLOR     Background color (default: LightGrey)
+      --lcolor LCOLOR       Color for separation lines (default: Navy)
+

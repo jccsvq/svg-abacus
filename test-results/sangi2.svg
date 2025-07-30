@@ -1,0 +1,151 @@
+<svg  xmlns="http://www.w3.org/2000/svg"
+x="0px" y="0px"
+width="297px" height="231px"
+viewBox="0 0 900 700">
+<style>
+.names {;
+font: bold 80px mono;
+fill: Gold;
+}
+</style>
+<defs>
+<g id="hr">
+    <line x1="28" y1="35" x2="72" y2="35" stroke="Red" stroke-width="5" />
+</g>
+<g id="vr">
+    <line x1="50" y1="40" x2="50" y2="84" stroke="Red" stroke-width="5" />
+</g>
+<g id="hn">
+    <line x1="28" y1="35" x2="72" y2="35" stroke="Black" stroke-width="5" />
+</g>
+<g id="vn">
+    <line x1="50" y1="40" x2="50" y2="84" stroke="Black" stroke-width="5" />
+</g>
+
+<g id="cross">
+    <line x1="-100" y1="0" x2="100" y2="0" stroke="Navy" />
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="Navy" />
+</g>
+<g id="frame">
+<use href="#cross" x="2" y="2"/>
+<use href="#cross" x="98" y="98"/>
+</g>
+</defs>
+<rect width="900" height="700" 
+        x="0" y="0" fill="LightGrey"/>
+<use href="#frame" x="0" y="0" />
+<use href="#frame" x="0" y="100" />
+<use href="#frame" x="0" y="200" />
+<use href="#frame" x="0" y="300" />
+<use href="#frame" x="0" y="400" />
+<use href="#frame" x="0" y="500" />
+<use href="#frame" x="0" y="600" />
+<use href="#frame" x="100" y="0" />
+<use href="#frame" x="100" y="100" />
+<use href="#frame" x="100" y="200" />
+<use href="#frame" x="100" y="300" />
+<use href="#frame" x="100" y="400" />
+<use href="#frame" x="100" y="500" />
+<use href="#frame" x="100" y="600" />
+<use href="#frame" x="200" y="0" />
+<use href="#frame" x="200" y="100" />
+<use href="#frame" x="200" y="200" />
+<use href="#frame" x="200" y="300" />
+<use href="#frame" x="200" y="400" />
+<use href="#frame" x="200" y="500" />
+<use href="#frame" x="200" y="600" />
+<use href="#frame" x="300" y="0" />
+<use href="#frame" x="300" y="100" />
+<use href="#frame" x="300" y="200" />
+<use href="#frame" x="300" y="300" />
+<use href="#frame" x="300" y="400" />
+<use href="#frame" x="300" y="500" />
+<use href="#frame" x="300" y="600" />
+<use href="#frame" x="400" y="0" />
+<use href="#frame" x="400" y="100" />
+<use href="#frame" x="400" y="200" />
+<use href="#frame" x="400" y="300" />
+<use href="#frame" x="400" y="400" />
+<use href="#frame" x="400" y="500" />
+<use href="#frame" x="400" y="600" />
+<use href="#frame" x="500" y="0" />
+<use href="#frame" x="500" y="100" />
+<use href="#frame" x="500" y="200" />
+<use href="#frame" x="500" y="300" />
+<use href="#frame" x="500" y="400" />
+<use href="#frame" x="500" y="500" />
+<use href="#frame" x="500" y="600" />
+<use href="#frame" x="600" y="0" />
+<use href="#frame" x="600" y="100" />
+<use href="#frame" x="600" y="200" />
+<use href="#frame" x="600" y="300" />
+<use href="#frame" x="600" y="400" />
+<use href="#frame" x="600" y="500" />
+<use href="#frame" x="600" y="600" />
+<use href="#frame" x="700" y="0" />
+<use href="#frame" x="700" y="100" />
+<use href="#frame" x="700" y="200" />
+<use href="#frame" x="700" y="300" />
+<use href="#frame" x="700" y="400" />
+<use href="#frame" x="700" y="500" />
+<use href="#frame" x="700" y="600" />
+<use href="#frame" x="800" y="0" />
+<use href="#frame" x="800" y="100" />
+<use href="#frame" x="800" y="200" />
+<use href="#frame" x="800" y="300" />
+<use href="#frame" x="800" y="400" />
+<use href="#frame" x="800" y="500" />
+<use href="#frame" x="800" y="600" />
+<use href="#vn" x="-15" y="100"/>
+<use href="#vn" x="-5" y="100"/>
+<use href="#vn" x="5" y="100"/>
+<use href="#vn" x="15" y="100"/>
+<use href="#vr" x="0" y="200"/>
+<use href="#vr" x="0" y="300"/>
+<use href="#vn" x="90" y="100"/>
+<use href="#vn" x="100" y="100"/>
+<use href="#vn" x="110" y="100"/>
+<use href="#hr" x="100" y="200"/>
+<use href="#vr" x="100" y="200"/>
+<use href="#vr" x="95" y="300"/>
+<use href="#vr" x="105" y="300"/>
+<use href="#vn" x="180" y="100"/>
+<use href="#vn" x="190" y="100"/>
+<use href="#vn" x="200" y="100"/>
+<use href="#vn" x="210" y="100"/>
+<use href="#vn" x="220" y="100"/>
+<use href="#hr" x="200" y="200"/>
+<use href="#hr" x="200" y="300"/>
+<use href="#vr" x="200" y="300"/>
+<use href="#vr" x="195" y="400"/>
+<use href="#vr" x="205" y="400"/>
+<use href="#vr" x="300" y="0"/>
+<use href="#vn" x="300" y="100"/>
+<use href="#hr" x="300" y="300"/>
+<use href="#vr" x="295" y="300"/>
+<use href="#vr" x="305" y="300"/>
+<use href="#vr" x="300" y="400"/>
+<use href="#vr" x="285" y="500"/>
+<use href="#vr" x="295" y="500"/>
+<use href="#vr" x="305" y="500"/>
+<use href="#vr" x="315" y="500"/>
+<use href="#vr" x="285" y="600"/>
+<use href="#vr" x="295" y="600"/>
+<use href="#vr" x="305" y="600"/>
+<use href="#vr" x="315" y="600"/>
+<use href="#hn" x="400" y="100"/>
+<use href="#vn" x="400" y="100"/>
+<use href="#vr" x="395" y="400"/>
+<use href="#vr" x="405" y="400"/>
+<use href="#vn" x="480" y="100"/>
+<use href="#vn" x="490" y="100"/>
+<use href="#vn" x="500" y="100"/>
+<use href="#vn" x="510" y="100"/>
+<use href="#vn" x="520" y="100"/>
+<use href="#hn" x="600" y="100"/>
+<use href="#vn" x="600" y="100"/>
+<use href="#hn" x="700" y="100"/>
+<use href="#vn" x="700" y="100"/>
+<use href="#hn" x="800" y="100"/>
+<use href="#vn" x="800" y="100"/>
+</svg>

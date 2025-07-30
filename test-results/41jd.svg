@@ -36,27 +36,35 @@ fill: Gold;
 </linearGradient>
 
 <g id="bead">
-	<polygon fill="url(#jap1)" stroke="#F2F2F2" points="80,0 5,60 195,60 119,0"/>
-	<polygon fill="url(#jap2)" stroke="#F2F2F2" points="119,120 195,60 5,60 80,120"/>
+	<polygon fill="url(#jap1)" stroke="#F2F2F2"     points="80,0 5,60 195,60 119,0"/>
+	<polygon fill="url(#jap2)" stroke="#F2F2F2"     points="119,120 195,60 5,60 80,120"/>
 </g>
 
 <g id="bead2">
-	<ellipse cx="100" cy="60" rx="90" ry="59.5" fill="url(#grad1)" stroke="#F2F2F2"/>
+	<ellipse cx="100" cy="60" rx="90" ry="59.5" fill="url(#grad1)"     stroke="#F2F2F2"/>
 </g>
 
 
 <g id="frame">
-    <rect y="0" fill="url(#framegrad2)" width="202" height="120"/> 
+    <rect y="0" fill="url(#framegrad2)" width="202" height="120" /> 
 </g>
 
 <g id="bar">
-	<rect x="0" y="0" width="202" height="50" fill="Maroon" />
+	<rect x="0" y="0" width="202" height="50" fill="Black" />
 	<rect x="-1" y="10" fill="AntiqueWhite" width="202" height="30"/>
 </g>
 
 <g id="bardot">
     <use href="#bar"/>
-	<circle cx="100" cy="25" r="12" stroke="black" stroke-width="3" fill="green" />
+	<circle cx="100" cy="25" r="12" stroke="black"     stroke-width="3" fill="green" />
+</g>
+<g id="barc">
+	<rect x="0" y="0" width="202" height="50" fill="url(#framegrad2)" />
+</g>
+
+<g id="barcdot">
+    <use href="#barc"/>
+	<circle cx="100" cy="25" r="12" stroke="black"     stroke-width="3" fill="green" />
 </g>
 
 </defs>
@@ -226,16 +234,16 @@ fill: Gold;
 <line x1="2600" y1="1010" 
     x2="2720" y2="1130" stroke="black" stroke-width="4"/>
 <!-- Column values -->
-<text x="275" y="1095" class="names">0</text>
-<text x="475" y="1095" class="names">1</text>
-<text x="675" y="1095" class="names">2</text>
-<text x="875" y="1095" class="names">3</text>
-<text x="1075" y="1095" class="names">4</text>
-<text x="1275" y="1095" class="names">9</text>
-<text x="1475" y="1095" class="names">6</text>
-<text x="1675" y="1095" class="names">8</text>
-<text x="1875" y="1095" class="names">9</text>
-<text x="2075" y="1095" class="names">1</text>
-<text x="2275" y="1095" class="names">2</text>
-<text x="2475" y="1095" class="names">3</text>
+<text x="275" y="1095"             class="names">0</text>
+<text x="475" y="1095"             class="names">1</text>
+<text x="675" y="1095"             class="names">2</text>
+<text x="875" y="1095"             class="names">3</text>
+<text x="1075" y="1095"             class="names">4</text>
+<text x="1275" y="1095"             class="names">9</text>
+<text x="1475" y="1095"             class="names">6</text>
+<text x="1675" y="1095"             class="names">8</text>
+<text x="1875" y="1095"             class="names">9</text>
+<text x="2075" y="1095"             class="names">1</text>
+<text x="2275" y="1095"             class="names">2</text>
+<text x="2475" y="1095"             class="names">3</text>
 </svg>

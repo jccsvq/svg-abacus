@@ -1,6 +1,7 @@
 #!/usr/bin/env -S python3 
 """
-svgabacus: Simple script to draw SVG diagrams of several (oriental) abacus types.
+svgabacus: Simple script to draw SVG diagrams of several (oriental) \
+abacus types.
 
 This is a command line utility. 
 Supported abacus types: 
@@ -21,10 +22,13 @@ Tranparent and non-transparent backgrounds.
 
 Example:
 
-$ echo 0 0 0 0 0 0 5 1 2 3 4 9 1|./svg-abacus -t 53 -s 25 -c  -d 0  -d 3 -b  > output.svg
+$ echo 0 0 0 0 0 0 5 1 2 3 4 9 1|./svg-abacus -t 53 -s 25 -c  -d 0  -d 3 -b  > \
+output.svg
 
-Creates a diagram in output.svg for a 13 rods 5+3 abacus at a scale of 25 pixels/rod,
-with chinese style beads, no unit rod marks and non-transparent background. Rod values are read from stdin.
+Creates a diagram in output.svg for a 13 rods 5+3 abacus at a scale of 25 \
+pixels/rod,
+with chinese style beads, no unit rod marks and non-transparent background. \
+Rod values are read from stdin.
 
 use:
 
@@ -34,7 +38,8 @@ for options
 """
 import argparse
 
-DESC = '''Draws diagrams for several abacus types by reading column values from stdin.'''
+DESC = '''Draws diagrams for several abacus types by reading column values \
+from stdin.'''
 EPIL = "jccsvq fecit, 2025. Public domain."
 
 abacus_type = "41 43 51 52 53".split()
@@ -218,27 +223,39 @@ fill: Gold;
 </linearGradient>
 
 <g id="bead">
-	<polygon fill="url(#jap1)" stroke="#F2F2F2" points="80,0 5,60 195,60 119,0"/>
-	<polygon fill="url(#jap2)" stroke="#F2F2F2" points="119,120 195,60 5,60 80,120"/>
+	<polygon fill="url(#jap1)" stroke="#F2F2F2" \
+    points="80,0 5,60 195,60 119,0"/>
+	<polygon fill="url(#jap2)" stroke="#F2F2F2" \
+    points="119,120 195,60 5,60 80,120"/>
 </g>
 
 <g id="bead2">
-	<ellipse cx="100" cy="60" rx="90" ry="59.5" fill="url(#grad1)" stroke="#F2F2F2"/>
+	<ellipse cx="100" cy="60" rx="90" ry="59.5" fill="url(#grad1)" \
+    stroke="#F2F2F2"/>
 </g>
 
 
 <g id="frame">
-    <rect y="0" fill="url(#framegrad2)" width="202" height="120"/> 
+    <rect y="0" fill="url(#framegrad2)" width="202" height="120" /> 
 </g>
 
 <g id="bar">
-	<rect x="0" y="0" width="202" height="50" fill="Maroon" />
+	<rect x="0" y="0" width="202" height="50" fill="Black" />
 	<rect x="-1" y="10" fill="AntiqueWhite" width="202" height="30"/>
 </g>
 
 <g id="bardot">
     <use href="#bar"/>
-	<circle cx="100" cy="25" r="12" stroke="black" stroke-width="3" fill="green" />
+	<circle cx="100" cy="25" r="12" stroke="black" \
+    stroke-width="3" fill="green" />
+</g>
+<g id="barc">
+	<rect x="0" y="0" width="202" height="50" fill="url(#framegrad2)" />
+</g>
+
+<g id="barcdot">
+    <use href="#barc"/>
+	<circle cx="100" cy="25" r="12" stroke="black"     stroke-width="3" fill="green" />
 </g>
 
 </defs>''')
@@ -264,11 +281,18 @@ def prtframe(rodn):
 def prtbar(rodn, dot=False):
     """Draws the central bar portion for each abacus column"""
     x = 200*rodn + 200
-    if dot :
-        linea = f'<use href="#bardot" x="{x}" y="{bary}"/>'
+    if not args.lacquered:
+        if dot :
+            linea = f'<use href="#barcdot" x="{x}" y="{bary}"/>'
+        else:
+            linea = f'<use href="#barc" x="{x}" y="{bary}"/>'
+        print(linea)
     else:
-        linea = f'<use href="#bar" x="{x}" y="{bary}"/>'
-    print(linea)
+        if dot :
+            linea = f'<use href="#bardot" x="{x}" y="{bary}"/>'
+        else:
+            linea = f'<use href="#bar" x="{x}" y="{bary}"/>'
+        print(linea)
 
 def prtsides(nrods):
     """Draws the left and right frame bars"""
@@ -350,7 +374,8 @@ def prtabacus():
                 x = 200*i + 180
             else:
                 x = 200*i + 200
-            linea = f'<text x="{x+75}" y="{vBoxy - 35}" class="names">{datos[i]}</text>'
+            linea = f'<text x="{x+75}" y="{vBoxy - 35}" \
+            class="names">{datos[i]}</text>'
             print(linea)
     print('</svg>')
 
@@ -378,7 +403,8 @@ if __name__ == '__main__':
         help='Nominal rod width in pixels',
         default=100)
     parser.add_argument('-v', '--values',
-        help='String of column values separated by spaces. If not used, data is read from stdin',
+        help='String of column values separated by spaces. If not used, data \
+        is read from stdin',
         default='')
     parser.add_argument('-b', '--background',
         help='Non-transparent background',

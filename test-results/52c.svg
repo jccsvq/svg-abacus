@@ -36,27 +36,35 @@ fill: Gold;
 </linearGradient>
 
 <g id="bead">
-	<polygon fill="url(#jap1)" stroke="#F2F2F2" points="80,0 5,60 195,60 119,0"/>
-	<polygon fill="url(#jap2)" stroke="#F2F2F2" points="119,120 195,60 5,60 80,120"/>
+	<polygon fill="url(#jap1)" stroke="#F2F2F2"     points="80,0 5,60 195,60 119,0"/>
+	<polygon fill="url(#jap2)" stroke="#F2F2F2"     points="119,120 195,60 5,60 80,120"/>
 </g>
 
 <g id="bead2">
-	<ellipse cx="100" cy="60" rx="90" ry="59.5" fill="url(#grad1)" stroke="#F2F2F2"/>
+	<ellipse cx="100" cy="60" rx="90" ry="59.5" fill="url(#grad1)"     stroke="#F2F2F2"/>
 </g>
 
 
 <g id="frame">
-    <rect y="0" fill="url(#framegrad2)" width="202" height="120"/> 
+    <rect y="0" fill="url(#framegrad2)" width="202" height="120" /> 
 </g>
 
 <g id="bar">
-	<rect x="0" y="0" width="202" height="50" fill="Maroon" />
+	<rect x="0" y="0" width="202" height="50" fill="Black" />
 	<rect x="-1" y="10" fill="AntiqueWhite" width="202" height="30"/>
 </g>
 
 <g id="bardot">
     <use href="#bar"/>
-	<circle cx="100" cy="25" r="12" stroke="black" stroke-width="3" fill="green" />
+	<circle cx="100" cy="25" r="12" stroke="black"     stroke-width="3" fill="green" />
+</g>
+<g id="barc">
+	<rect x="0" y="0" width="202" height="50" fill="url(#framegrad2)" />
+</g>
+
+<g id="barcdot">
+    <use href="#barc"/>
+	<circle cx="100" cy="25" r="12" stroke="black"     stroke-width="3" fill="green" />
 </g>
 
 </defs>
@@ -65,7 +73,7 @@ fill: Gold;
     stroke="#F2F2F2" width="32" height="1370"/>
 <use href="#frame" x="200" y="0"/>
 <use href="#frame" x="200" y="1250"/>
-<use href="#bar" x="200" y="480"/>
+<use href="#barc" x="200" y="480"/>
 <use href="#bead2" x="200" y="120"/>
 <use href="#bead2" x="200" y="360"/>
 <use href="#bead2" x="200" y="530"/>
@@ -78,7 +86,7 @@ fill: Gold;
     stroke="#F2F2F2" width="32" height="1370"/>
 <use href="#frame" x="400" y="0"/>
 <use href="#frame" x="400" y="1250"/>
-<use href="#bar" x="400" y="480"/>
+<use href="#barc" x="400" y="480"/>
 <use href="#bead2" x="400" y="120"/>
 <use href="#bead2" x="400" y="240"/>
 <use href="#bead2" x="400" y="530"/>
@@ -91,7 +99,7 @@ fill: Gold;
     stroke="#F2F2F2" width="32" height="1370"/>
 <use href="#frame" x="600" y="0"/>
 <use href="#frame" x="600" y="1250"/>
-<use href="#bar" x="600" y="480"/>
+<use href="#barc" x="600" y="480"/>
 <use href="#bead2" x="600" y="120"/>
 <use href="#bead2" x="600" y="240"/>
 <use href="#bead2" x="600" y="530"/>
@@ -104,7 +112,7 @@ fill: Gold;
     stroke="#F2F2F2" width="32" height="1370"/>
 <use href="#frame" x="800" y="0"/>
 <use href="#frame" x="800" y="1250"/>
-<use href="#bar" x="800" y="480"/>
+<use href="#barc" x="800" y="480"/>
 <use href="#bead2" x="800" y="240"/>
 <use href="#bead2" x="800" y="360"/>
 <use href="#bead2" x="800" y="530"/>
@@ -117,7 +125,7 @@ fill: Gold;
     stroke="#F2F2F2" width="32" height="1370"/>
 <use href="#frame" x="1000" y="0"/>
 <use href="#frame" x="1000" y="1250"/>
-<use href="#bar" x="1000" y="480"/>
+<use href="#barc" x="1000" y="480"/>
 <use href="#bead2" x="1000" y="120"/>
 <use href="#bead2" x="1000" y="240"/>
 <use href="#bead2" x="1000" y="530"/>
@@ -130,7 +138,7 @@ fill: Gold;
     stroke="#F2F2F2" width="32" height="1370"/>
 <use href="#frame" x="1200" y="0"/>
 <use href="#frame" x="1200" y="1250"/>
-<use href="#bar" x="1200" y="480"/>
+<use href="#barc" x="1200" y="480"/>
 <use href="#bead2" x="1200" y="120"/>
 <use href="#bead2" x="1200" y="360"/>
 <use href="#bead2" x="1200" y="530"/>
@@ -143,7 +151,7 @@ fill: Gold;
     stroke="#F2F2F2" width="32" height="1370"/>
 <use href="#frame" x="1400" y="0"/>
 <use href="#frame" x="1400" y="1250"/>
-<use href="#bar" x="1400" y="480"/>
+<use href="#barc" x="1400" y="480"/>
 <use href="#bead2" x="1400" y="180"/>
 <use href="#bead2" x="1400" y="360"/>
 <use href="#bead2" x="1400" y="530"/>
@@ -156,7 +164,7 @@ fill: Gold;
     stroke="#F2F2F2" width="32" height="1370"/>
 <use href="#frame" x="1600" y="0"/>
 <use href="#frame" x="1600" y="1250"/>
-<use href="#bar" x="1600" y="480"/>
+<use href="#barc" x="1600" y="480"/>
 <use href="#bead2" x="1600" y="120"/>
 <use href="#bead2" x="1600" y="360"/>
 <use href="#bead2" x="1600" y="530"/>
@@ -169,7 +177,7 @@ fill: Gold;
     stroke="#F2F2F2" width="32" height="1370"/>
 <use href="#frame" x="1800" y="0"/>
 <use href="#frame" x="1800" y="1250"/>
-<use href="#bar" x="1800" y="480"/>
+<use href="#barc" x="1800" y="480"/>
 <use href="#bead2" x="1800" y="120"/>
 <use href="#bead2" x="1800" y="360"/>
 <use href="#bead2" x="1800" y="530"/>
@@ -182,7 +190,7 @@ fill: Gold;
     stroke="#F2F2F2" width="32" height="1370"/>
 <use href="#frame" x="2000" y="0"/>
 <use href="#frame" x="2000" y="1250"/>
-<use href="#bar" x="2000" y="480"/>
+<use href="#barc" x="2000" y="480"/>
 <use href="#bead2" x="2000" y="120"/>
 <use href="#bead2" x="2000" y="240"/>
 <use href="#bead2" x="2000" y="530"/>
@@ -195,7 +203,7 @@ fill: Gold;
     stroke="#F2F2F2" width="32" height="1370"/>
 <use href="#frame" x="2200" y="0"/>
 <use href="#frame" x="2200" y="1250"/>
-<use href="#bar" x="2200" y="480"/>
+<use href="#barc" x="2200" y="480"/>
 <use href="#bead2" x="2200" y="240"/>
 <use href="#bead2" x="2200" y="360"/>
 <use href="#bead2" x="2200" y="530"/>
@@ -208,7 +216,7 @@ fill: Gold;
     stroke="#F2F2F2" width="32" height="1370"/>
 <use href="#frame" x="2400" y="0"/>
 <use href="#frame" x="2400" y="1250"/>
-<use href="#bar" x="2400" y="480"/>
+<use href="#barc" x="2400" y="480"/>
 <use href="#bead2" x="2400" y="180"/>
 <use href="#bead2" x="2400" y="360"/>
 <use href="#bead2" x="2400" y="530"/>
