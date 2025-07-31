@@ -1,10 +1,10 @@
 # Intro:
 
-This package contains three `Python` 3 scripts for drawing diagrams or illustrations of various types of abacuses in `SVG` (Scalable Vector Graphics).
+This package contains three `Python3` scripts for drawing diagrams or illustrations of various types of abacuses in `SVG` (Scalable Vector Graphics).
 
 * `svg-abacus`: Abacuses of the soroban and swanpan family.
-* `svg-schoty`: Russian (schoty) and school or Danish abacuses.
-* `svg-sangi`: Japanese-style calculating rods (sangi) and a medieval European calculation table.
+* `svg-schoty`: Russian (schoty), school or Danish and Mesopotamian (sexagesimal) abacuses.
+* `svg-sangi`: Japanese-style counting rods (sangi) and a medieval European counting table.
 
 These are command-line utilities. Tested with `Python 3.11.2` under Debian GNU/Linux 12 (bookworm).
 
@@ -26,19 +26,24 @@ Simple `python3` script to draw SVG diagrams or illustrations of several (orient
 * 5+1, Traditional soroban (option: `-51`, support suspended lower beads)
 * 5+2, Traditional swanpan and soroban (option: `-52`)
 * 5+3, Rare traditional swanpan (option: `-53`), the "complete abacus"
+
 ## Bead types:
 * Japanese style (default)
 * Chinese style (option: `-c`)
+
 ## Unit rod marks (dots):
 * Every 3 rods from center (option: `-d 3`)
 * Every 4 rods from center (Pre-WWII soroban option: `-d 4`))
 * No marks (default or option: `-d 0`)
+
 ## Support for suspended beads:
 * The 5+2 abacus uses the suspended top bead to represent numbers up to 20 in a column. This is required for some traditional techniques such as Kijoho division.
 * Suspended lower beads can be used for the same purpose on the 4+1 and 5+1 abacuses (see [The Eastern Abacus](https://jccsvq.github.io/libro-abaco/index-tea.html#XIV%3A%20Second%20way%3A%20Suspended%20lower%20beads)).
+
 ## Labels:
 * Columns can be labeled with capital letters from A to Z (option `-n`).
 * Columns can be labeled with the values/codes used to create them (option `-k`). These annotations are grouped at the end of the SVG file to allow for easy manipulation/editing (e.g., remove the "`0`" label for unused columns).
+
 ## Codes:
 
 |Abacus|Codes|
@@ -110,9 +115,10 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 ## Supported abacus types: 
 
 * Russian schoty (Счёты) and Iranian  chortkeh (چرتکه)
-*  Danish or school  abacus
+* Danish or school  abacus
+* Mesopotamian (sexagesimal), imagined as a variation of the Russian abacus
 
-## Examples
+## Examples:
 
 * Russian
 * ![output](test-results/ruso.svg)
@@ -120,14 +126,17 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 * Danish
 * ![output](test-results/school.svg)
 
-## Codes
+* Mesopotamian (sexagesimal), using codes `m0, m1, ... m6`. For instance, number 00:34:52 (decimal 2092) coded as `0 0 m3 4 m5 2`:
+* ![output](test-results/meso.svg)
+
+## Codes:
 
 |Abacus|Codes|
 |------|-----|
-|Russian|0 1 2 3 4 5 6 7 8 9 10<br>q0 q1 q2 q3 q4|
+|Russian|0 1 2 3 4 5 6 7 8 9 10<br>q0 q1 q2 q3 q4<br>m0 m1 m2 m3 m4 m5 m6|
 |Danish|0 1 2 3 4 5 6 7 8 9 10|
 
-## Options
+## Options:
 
     usage: svg-schoty [-h] [-d] [-s SCALE] [-v VALUES] [-b] [--bgcolor BGCOLOR]
                   [-n] [-k]
@@ -145,6 +154,10 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
                         used, data is read from stdin (default: )
       -b, --background      Non-transparent background (default: False)
       --bgcolor BGCOLOR     Non-transparent background color (default: Ivory)
+      --b1color B1COLOR     Bead 1 color (default: DarkGreen)
+      --b2color B2COLOR     Bead 2 color (default: DarkRed)
+      --b3color B3COLOR     Bead 3 color (default: DarkBlue)
+      --b4color B4COLOR     Bead 4 color (default: Black)
       -n, --names           Add column names/labels A, B, C, ... (default: False)
       -k, --keys            Labels columns with codes (default: False)
 
@@ -152,14 +165,20 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 
  Simple `python3` script to draw SVG diagrams or illustrations of Japanese style counting rods (sangi 算木) and medieval European counting boards
 
-> Note:
-> At the moment, this script requires a data file to be piped; example:<br>
-> `$ cat datos.txt |./svg-sangi -s 66 --ncolor black > test-results/sangi.svg`<br>
-> with `datos.txt` containing:
+This script requires a data file that be piped; example:
+
+
+`$ cat datos.txt |./svg-sangi -s 66 --ncolor black > test-results/sangi.svg`
+
+ with `datos.txt` containing:
 
     0 9 3 7
     0 0 -7 -F
     1 0 7 6
+
+Or you can give the file name on the command line (option [-f | --file])
+
+`$ ./svg-sangi -s 66 --ncolor black -f datos.txt > test-results/sangi.svg`
 
 ## Supported abacus types: 
 
@@ -167,10 +186,10 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 * Medieval European counting boards
 
 ## Examples:
-* Sangi
+* Sangi counting rods
 * ![output](test-results/sangi.svg)
 * ![output](test-results/sangi2.svg)
-*  European
+*  Medieval European counting board
 * ![output](test-results/euro.svg)
 * ![output](test-results/euro2.svg)
 
@@ -179,8 +198,8 @@ Use the same codes as with the oriental abacus type 5+2 or 5+3.
 
 ## Options:
 
-    usage: svg-sangi [-h] [-E] [-s SCALE] [--pcolor PCOLOR] [--ncolor NCOLOR]
-                 [--bgcolor BGCOLOR] [--lcolor LCOLOR]
+    usage: svg-sangi [-h] [-E] [-f FILE] [-s SCALE] [--pcolor PCOLOR]
+                 [--ncolor NCOLOR] [--bgcolor BGCOLOR] [--lcolor LCOLOR]
 
     Draws Japanese style counting rods (sangi) and medieval European counting
     boards diagrams by reading from stdin.
@@ -188,6 +207,7 @@ Use the same codes as with the oriental abacus type 5+2 or 5+3.
     options:
       -h, --help            show this help message and exit
       -E, --european        Use medieval counting board (default: False)
+      -f FILE, --file FILE  Data filename to read (default: )
       -s SCALE, --scale SCALE
                         Nominal cell height in pixels (default: 100)
       --pcolor PCOLOR       Color for positive rods/jetons (default: Red)

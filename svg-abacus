@@ -255,7 +255,7 @@ fill: Gold;
 
 <g id="barcdot">
     <use href="#barc"/>
-	<circle cx="100" cy="25" r="12" stroke="black"     stroke-width="3" fill="green" />
+	<circle cx="100" cy="25" r="12" stroke="black" stroke-width="3" fill="green" />
 </g>
 
 </defs>''')

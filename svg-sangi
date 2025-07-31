@@ -2,8 +2,8 @@
 
 import argparse, sys
 
-DESC = '''Draws Japanese style counting rods (sangi) and medieval European counting boards diagrams 
-by reading from stdin.'''
+DESC = '''Draws Japanese style counting rods (sangi) and medieval European 
+counting boards diagrams by reading from stdin or file.'''
 EPIL = "jccsvq fecit, 2025. Public domain."
 
 hy = [0, -10, -20]
@@ -170,6 +170,7 @@ fill: Gold;
 </defs>''')
 
 def prtsangi():
+    '''Manages the drawing of the counting rod diagram'''
     # SVG Header
     prtsangiheader(0, 0, width, height, vBoxx,vBoxy)
     
@@ -210,6 +211,8 @@ def prtsangi():
     print('</svg>')
 
 def prteuropean():
+    '''Manages the drawing of the European counting board diagram'''
+    # SVG Header
     prteuroheader(0, 0, width, height, vBoxx,vBoxy)
     # Frame
     linea = f'''<rect width="{vBoxx}" height="{vBoxy}" 
@@ -255,6 +258,9 @@ if __name__ == '__main__':
         help='Use medieval counting board',
         action='store_true',
         default=False)
+    parser.add_argument('-f', '--file',
+        help='Data filename to read',
+        default='')
     parser.add_argument('-s', '--scale',
         help='Nominal cell height in pixels',
         default=100)
@@ -272,10 +278,12 @@ if __name__ == '__main__':
         default='Navy')
 
     args = parser.parse_args()
-#    print(args)
 
-
-    datos = sys.stdin.readlines()
+    if args.file :
+        with open(args.file, encoding="utf-8") as f:
+            datos = f.readlines()
+    else:
+        datos = sys.stdin.readlines()
     
     if not args.european :
         nr = len(datos)

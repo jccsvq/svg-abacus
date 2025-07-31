@@ -2,7 +2,7 @@
 
 import argparse
 
-DESC = '''Draws diagrams for Russian and Danish abacuses by reading row values \
+DESC = '''Draws diagrams for Russian and Danish abacuses by reading row values 
 from stdin.'''
 EPIL = "jccsvq fecit, 2025. Public domain."
 
@@ -22,7 +22,14 @@ beadictr = {
     "q1": "10000000000221",
     "q2": "12000000000021",
     "q3": "12200000000001",
-    "q4": "12210000000000"}
+    "q4": "12210000000000",
+    "m0": "00000000334433",
+    "m1": "30000000034433",
+    "m2": "33000000004433",
+    "m3": "33400000000433",
+    "m4": "33440000000033",
+    "m5": "33443000000003",
+    "m6": "33443300000000"}
 
 beadictd = {
     "0": "11111222220000",
@@ -55,11 +62,19 @@ fill: Gold;
 <defs>
 <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="30%" fy="40%">
     <stop offset="0%" stop-color="antiquewhite" />
-    <stop offset="50%" stop-color="DarkGreen" />
+    <stop offset="50%" stop-color="{args.b1color}" />
 </radialGradient>
 <radialGradient id="grad2" cx="50%" cy="50%" r="50%" fx="30%" fy="40%">
     <stop offset="0%" stop-color="antiquewhite" />
-    <stop offset="50%" stop-color="DarkRed" />
+    <stop offset="50%" stop-color="{args.b2color}" />
+</radialGradient>
+<radialGradient id="grad3" cx="50%" cy="50%" r="50%" fx="30%" fy="40%">
+    <stop offset="0%" stop-color="antiquewhite" />
+    <stop offset="50%" stop-color="{args.b3color}" />
+</radialGradient>
+<radialGradient id="grad4" cx="50%" cy="50%" r="50%" fx="30%" fy="40%">
+    <stop offset="0%" stop-color="antiquewhite" />
+    <stop offset="50%" stop-color="{args.b4color}" />
 </radialGradient>
 <linearGradient id="rod" gradientTransform="rotate(90)">
     <stop offset="5%" stop-color="LightGrey" />
@@ -79,6 +94,12 @@ fill: Gold;
 <g id="bead2">
 	<ellipse cy="100" cx="50" ry="90" rx="50" fill="url(#grad2)" stroke="#F2F2F2"/>
 </g>
+<g id="bead3">
+	<ellipse cy="100" cx="50" ry="90" rx="50" fill="url(#grad3)" stroke="#F2F2F2"/>
+</g>
+<g id="bead4">
+	<ellipse cy="100" cx="50" ry="90" rx="50" fill="url(#grad4)" stroke="#F2F2F2"/>
+</g>
 <g id="frame">
     <rect y="0" fill="url(#framegrad)" width="100" height="200"/> 
 </g>
@@ -91,7 +112,7 @@ if __name__ == '__main__':
         epilog=EPIL,
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('-d', '--danish',
-        help='Use Danish abacus',
+        help='Use Danish/school abacus',
         action='store_true',
         default=False)
     parser.add_argument('-s', '--scale',
@@ -108,6 +129,18 @@ if __name__ == '__main__':
     parser.add_argument('--bgcolor',
         help='Non-transparent background color',
         default='Ivory')
+    parser.add_argument('--b1color',
+        help='Bead 1 color',
+        default='DarkGreen')
+    parser.add_argument('--b2color',
+        help='Bead 2 color',
+        default='DarkRed')
+    parser.add_argument('--b3color',
+        help='Bead 3 color',
+        default='DarkBlue')
+    parser.add_argument('--b4color',
+        help='Bead 4 color',
+        default='Black')
     parser.add_argument('-n', '--names',
         help='Add column names/labels A, B, C, ...',
         action='store_true',
@@ -118,7 +151,6 @@ if __name__ == '__main__':
         default=False)
 
     args = parser.parse_args()
-#    print(args)
 
     if args.danish :
         beadict = beadictd
@@ -139,7 +171,6 @@ if __name__ == '__main__':
     width = scale*vBoxx/2
     height = scale*vBoxy/2
 
-#    print(scale, width, height)
     prtsvgheader(0,0, width, height, vBoxx, vBoxy)
 
     if args.background :
@@ -147,28 +178,36 @@ if __name__ == '__main__':
         x="0" y="0" fill="{args.bgcolor}"/>'''
         print(linea)
 
-    # Marco
+    # Frame
     print(f'<rect y="0" x="0" fill="url(#framegrad2)" \
     width="1600" height="100"/>')
     linea = f'<polygon fill="url(#framegrad)" points="0,0 0,100 100,100"/>'
     print(linea)
-    linea = f'<polygon fill="url(#framegrad)" points="{vBoxx-100},100 {vBoxx},0 {vBoxx},100"/>'
+    linea = f'<polygon fill="url(#framegrad)" points="{vBoxx-100},100 {vBoxx},0\
+     {vBoxx},100"/>'
     print(linea)
-    print('<line x1="0" y1="0" x2="100" y2="100" stroke="black" stroke-width="4"/>')
-    print('<line x1="1600" y1="0" x2="1500" y2="100" stroke="black" stroke-width="4"/>')
+    print('<line x1="0" y1="0" x2="100" y2="100" stroke="black" \
+    stroke-width="4"/>')
+    print('<line x1="1600" y1="0" x2="1500" y2="100" stroke="black" \
+    stroke-width="4"/>')
 
     print(f'<rect y="{vBoxy-100}" x="0" fill="url(#framegrad2)" \
     width="1600" height="100"/>')
-    linea = f'<polygon fill="url(#framegrad)" points="0,{vBoxy} 100,{vBoxy-100} 0,{vBoxy-100}"/>'
+    linea = f'<polygon fill="url(#framegrad)" points="0,{vBoxy} \
+    100,{vBoxy-100} 0,{vBoxy-100}"/>'
     print(linea)
-    linea = f'<polygon fill="url(#framegrad)" points="{vBoxx-100},{vBoxy-100} {vBoxx},{vBoxy-100} {vBoxx},{vBoxy}"/>'
+    linea = f'<polygon fill="url(#framegrad)" points="{vBoxx-100},{vBoxy-100} \
+    {vBoxx},{vBoxy-100} {vBoxx},{vBoxy}"/>'
     print(linea)
-    print(f'<line x1="0" y1="{vBoxy}" x2="100" y2="{vBoxy-100}" stroke="black" stroke-width="4"/>')
-    print(f'<line x1="{vBoxx}" y1="{vBoxy}" x2="{vBoxx-100}" y2="{vBoxy-100}" stroke="black" stroke-width="4"/>')  
+    print(f'<line x1="0" y1="{vBoxy}" x2="100" y2="{vBoxy-100}" stroke="black" \
+    stroke-width="4"/>')
+    print(f'<line x1="{vBoxx}" y1="{vBoxy}" x2="{vBoxx-100}" y2="{vBoxy-100}" \
+    stroke="black" stroke-width="4"/>')  
 
     # Rods
     for i in range(nrods) :
-        print(f'<rect y="{200*i+188}" x="0" fill="url(#rod)" width="1500" height="24"/>')
+        print(f'<rect y="{200*i+188}" x="0" fill="url(#rod)" width="1500" \
+        height="24"/>')
         print(f'<use href="#frame" x="0" y="{200*i+100}"/>')
         print(f'<use href="#frame" x="1500" y="{200*i+100}"/>')
         cosa = beadict[datos[i]]
@@ -177,9 +216,14 @@ if __name__ == '__main__':
                 print(f'<use href="#bead" x="{100*(j+1)}" y="{200*i+100}"/>')
             if cosa[j] == "2":
                 print(f'<use href="#bead2" x="{100*(j+1)}" y="{200*i+100}"/>')
+            if cosa[j] == "3":
+                print(f'<use href="#bead3" x="{100*(j+1)}" y="{200*i+100}"/>')
+            if cosa[j] == "4":
+                print(f'<use href="#bead4" x="{100*(j+1)}" y="{200*i+100}"/>')
         # Labels
         if args.names :
-            linea = f'<text x="20" y="{230+200*i}" class="names">{labels[i]}</text>'
+            linea = f'<text x="20" y="{230+200*i}" \
+            class="names">{labels[i]}</text>'
             print(linea)
     if args.keys :
         print('<!-- Column values -->')

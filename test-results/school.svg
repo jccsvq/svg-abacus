@@ -17,6 +17,14 @@ fill: Gold;
     <stop offset="0%" stop-color="antiquewhite" />
     <stop offset="50%" stop-color="DarkRed" />
 </radialGradient>
+<radialGradient id="grad3" cx="50%" cy="50%" r="50%" fx="30%" fy="40%">
+    <stop offset="0%" stop-color="antiquewhite" />
+    <stop offset="50%" stop-color="DarkBlue" />
+</radialGradient>
+<radialGradient id="grad4" cx="50%" cy="50%" r="50%" fx="30%" fy="40%">
+    <stop offset="0%" stop-color="antiquewhite" />
+    <stop offset="50%" stop-color="Black" />
+</radialGradient>
 <linearGradient id="rod" gradientTransform="rotate(90)">
     <stop offset="5%" stop-color="LightGrey" />
     <stop offset="65%" stop-color="Black" />
@@ -34,6 +42,12 @@ fill: Gold;
 </g>
 <g id="bead2">
 	<ellipse cy="100" cx="50" ry="90" rx="50" fill="url(#grad2)" stroke="#F2F2F2"/>
+</g>
+<g id="bead3">
+	<ellipse cy="100" cx="50" ry="90" rx="50" fill="url(#grad3)" stroke="#F2F2F2"/>
+</g>
+<g id="bead4">
+	<ellipse cy="100" cx="50" ry="90" rx="50" fill="url(#grad4)" stroke="#F2F2F2"/>
 </g>
 <g id="frame">
     <rect y="0" fill="url(#framegrad)" width="100" height="200"/> 
