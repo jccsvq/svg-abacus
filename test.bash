@@ -26,10 +26,10 @@ echo T 1 2 13 4 9 16 8 9 F Q 20|./svg-abacus -t 53 -s 50  -d 0 -c -b -l --bgcolo
 echo T 1 2 13 4 9 16 8 9 F Q 20|./svg-abacus -t 53 -s 50  -d 0 -c -b -f > test-results/53cbf.svg
 
 echo 1 2 3 4 5 6 q0 0 0 q0 | ./svg-schoty -s 33 -b  > test-results/ruso.svg
-echo 0 0 0 2 7 3 |./svg-schoty -db -s 33 > test-results/school.svg
-echo m0 0 m3 4 m5 2|./svg-schoty -b -s 33  > test-results/meso.svg
+echo 0 0 0 2 7 3 |./svg-schoty -dbnk -s 33 > test-results/school.svg
+echo m0 0 m3 4 m5 2|./svg-schoty -bk -s 33  > test-results/meso.svg
 
-cat datos.txt |./svg-sangi -s 66 --ncolor black > test-results/sangi.svg
+cat datos.txt |./svg-sangi -s 66 --nrcolor black > test-results/sangi.svg
 cat datos2.txt|./svg-sangi -s 33 > test-results/sangi2.svg
 cat datos.txt|./svg-sangi  -E -s 50 > test-results/euro.svg
 cat datos2.txt|./svg-sangi  -E -s 25 > test-results/euro2.svg

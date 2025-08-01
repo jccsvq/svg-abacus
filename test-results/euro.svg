@@ -25,20 +25,26 @@ fill: Gold;
 </g>
 
 <g id="jetonp">
-    <circle cx="25" cy="75" r="18" fill="Red" stroke="Black" />
+    <circle cx="25" cy="75" r="18" fill="#ffbf00" stroke="Black" />
+    <circle cx="25" cy="75" r="15" fill="none" stroke="Black" />
+    <circle cx="25" cy="75" r="6" fill="none" stroke="Black" />
+    <circle cx="25" cy="75" r="4" fill="#ffe2c4" stroke="Black" />
 </g>
 <g id="jetonp5">
-    <circle cx="25" cy="25" r="18" fill="Red" stroke="Black" />
+    <use href="#jetonp" y="-50"/>
 </g>
 <g id="jetonn">
-    <circle cx="25" cy="75" r="18" fill="Black" stroke="Black" />
+    <circle cx="25" cy="75" r="18" fill="#ce8946" stroke="Black" />
+    <circle cx="25" cy="75" r="15" fill="none" stroke="Black" />
+    <circle cx="25" cy="75" r="6" fill="none" stroke="Black" />
+    <circle cx="25" cy="75" r="4" fill="#ffe2c4" stroke="Black" />
 </g>
 <g id="jetonn5">
-    <circle cx="25" cy="25" r="18" fill="Black" stroke="Black" />
+    <use href="#jetonn" y="-50"/>
 </g>
 </defs>
 <rect width="750" height="400" 
-    x="0" y="0" fill="LightGrey"/>
+    x="0" y="0" fill="#ffe2c4"/>
 <use href="#frame" x="0" y="0" />
 <use href="#frame" x="0" y="100" />
 <use href="#frame" x="0" y="200" />

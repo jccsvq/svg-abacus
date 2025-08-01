@@ -50,22 +50,22 @@ fill: Gold;
 	<ellipse cy="100" cx="50" ry="90" rx="50" fill="url(#grad4)" stroke="#F2F2F2"/>
 </g>
 <g id="frame">
-    <rect y="0" fill="url(#framegrad)" width="100" height="200"/> 
+    <rect y="0" fill="url(#framegrad)" width="100" height="200" stroke="url(#framegrad)"/> 
 </g>
 </defs>
 <rect width="1600" height="2200" 
         x="0" y="0" fill="Ivory"/>
 <rect y="0" x="0" fill="url(#framegrad2)"     width="1600" height="100"/>
 <polygon fill="url(#framegrad)" points="0,0 0,100 100,100"/>
-<polygon fill="url(#framegrad)" points="1500,100 1600,0 1600,100"/>
-<line x1="0" y1="0" x2="100" y2="100" stroke="black" stroke-width="4"/>
-<line x1="1600" y1="0" x2="1500" y2="100" stroke="black" stroke-width="4"/>
+<polygon fill="url(#framegrad)" points="1500,100 1600,0     1600,100"/>
+<line x1="0" y1="0" x2="100" y2="100" stroke="black"     stroke-width="4"/>
+<line x1="1600" y1="0" x2="1500" y2="100" stroke="black"     stroke-width="4"/>
 <rect y="2100" x="0" fill="url(#framegrad2)"     width="1600" height="100"/>
-<polygon fill="url(#framegrad)" points="0,2200 100,2100 0,2100"/>
-<polygon fill="url(#framegrad)" points="1500,2100 1600,2100 1600,2200"/>
-<line x1="0" y1="2200" x2="100" y2="2100" stroke="black" stroke-width="4"/>
-<line x1="1600" y1="2200" x2="1500" y2="2100" stroke="black" stroke-width="4"/>
-<rect y="188" x="0" fill="url(#rod)" width="1500" height="24"/>
+<polygon fill="url(#framegrad)" points="0,2200     100,2100 0,2100"/>
+<polygon fill="url(#framegrad)" points="1500,2100     1600,2100 1600,2200"/>
+<line x1="0" y1="2200" x2="100" y2="2100" stroke="black"     stroke-width="4"/>
+<line x1="1600" y1="2200" x2="1500" y2="2100"     stroke="black" stroke-width="4"/>
+<rect y="188" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="100"/>
 <use href="#frame" x="1500" y="100"/>
 <use href="#bead" x="100" y="100"/>
@@ -78,7 +78,7 @@ fill: Gold;
 <use href="#bead" x="1200" y="100"/>
 <use href="#bead" x="1300" y="100"/>
 <use href="#bead" x="1400" y="100"/>
-<rect y="388" x="0" fill="url(#rod)" width="1500" height="24"/>
+<rect y="388" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="300"/>
 <use href="#frame" x="1500" y="300"/>
 <use href="#bead" x="100" y="300"/>
@@ -91,7 +91,7 @@ fill: Gold;
 <use href="#bead" x="1200" y="300"/>
 <use href="#bead" x="1300" y="300"/>
 <use href="#bead" x="1400" y="300"/>
-<rect y="588" x="0" fill="url(#rod)" width="1500" height="24"/>
+<rect y="588" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="500"/>
 <use href="#frame" x="1500" y="500"/>
 <use href="#bead" x="100" y="500"/>
@@ -104,7 +104,7 @@ fill: Gold;
 <use href="#bead" x="1200" y="500"/>
 <use href="#bead" x="1300" y="500"/>
 <use href="#bead" x="1400" y="500"/>
-<rect y="788" x="0" fill="url(#rod)" width="1500" height="24"/>
+<rect y="788" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="700"/>
 <use href="#frame" x="1500" y="700"/>
 <use href="#bead" x="100" y="700"/>
@@ -117,7 +117,7 @@ fill: Gold;
 <use href="#bead" x="1200" y="700"/>
 <use href="#bead" x="1300" y="700"/>
 <use href="#bead" x="1400" y="700"/>
-<rect y="988" x="0" fill="url(#rod)" width="1500" height="24"/>
+<rect y="988" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="900"/>
 <use href="#frame" x="1500" y="900"/>
 <use href="#bead" x="100" y="900"/>
@@ -130,7 +130,7 @@ fill: Gold;
 <use href="#bead" x="1200" y="900"/>
 <use href="#bead" x="1300" y="900"/>
 <use href="#bead" x="1400" y="900"/>
-<rect y="1188" x="0" fill="url(#rod)" width="1500" height="24"/>
+<rect y="1188" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="1100"/>
 <use href="#frame" x="1500" y="1100"/>
 <use href="#bead" x="100" y="1100"/>
@@ -143,14 +143,14 @@ fill: Gold;
 <use href="#bead" x="1200" y="1100"/>
 <use href="#bead" x="1300" y="1100"/>
 <use href="#bead" x="1400" y="1100"/>
-<rect y="1388" x="0" fill="url(#rod)" width="1500" height="24"/>
+<rect y="1388" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="1300"/>
 <use href="#frame" x="1500" y="1300"/>
 <use href="#bead" x="1100" y="1300"/>
 <use href="#bead2" x="1200" y="1300"/>
 <use href="#bead2" x="1300" y="1300"/>
 <use href="#bead" x="1400" y="1300"/>
-<rect y="1588" x="0" fill="url(#rod)" width="1500" height="24"/>
+<rect y="1588" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="1500"/>
 <use href="#frame" x="1500" y="1500"/>
 <use href="#bead" x="500" y="1500"/>
@@ -163,7 +163,7 @@ fill: Gold;
 <use href="#bead" x="1200" y="1500"/>
 <use href="#bead" x="1300" y="1500"/>
 <use href="#bead" x="1400" y="1500"/>
-<rect y="1788" x="0" fill="url(#rod)" width="1500" height="24"/>
+<rect y="1788" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="1700"/>
 <use href="#frame" x="1500" y="1700"/>
 <use href="#bead" x="500" y="1700"/>
@@ -176,7 +176,7 @@ fill: Gold;
 <use href="#bead" x="1200" y="1700"/>
 <use href="#bead" x="1300" y="1700"/>
 <use href="#bead" x="1400" y="1700"/>
-<rect y="1988" x="0" fill="url(#rod)" width="1500" height="24"/>
+<rect y="1988" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="1900"/>
 <use href="#frame" x="1500" y="1900"/>
 <use href="#bead" x="1100" y="1900"/>

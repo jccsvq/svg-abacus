@@ -210,8 +210,11 @@ Use the same codes as with the oriental abacus type 5+2 or 5+3.
       -f FILE, --file FILE  Data filename to read (default: )
       -s SCALE, --scale SCALE
                         Nominal cell height in pixels (default: 100)
-      --pcolor PCOLOR       Color for positive rods/jetons (default: Red)
-      --ncolor NCOLOR       Color for negative rods/jetons (default: Black)
+      --prcolor PRCOLOR     Color for positive rods (default: Red)
+      --nrcolor NRCOLOR     Color for negative rods (default: Black)
+      --pjcolor PJCOLOR     Color for positive jetons (default: #ffbf00)
+      --njcolor NJCOLOR     Color for negative jetons (default: #ce8946)
+
       --bgcolor BGCOLOR     Background color (default: LightGrey)
       --lcolor LCOLOR       Color for separation lines (default: Navy)
 

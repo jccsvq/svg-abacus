@@ -103,16 +103,16 @@ fill: Gold;
 </style>
 <defs>
 <g id="hr">
-    <line x1="28" y1="35" x2="72" y2="35" stroke="{args.pcolor}" stroke-width="5" />
+    <line x1="28" y1="35" x2="72" y2="35" stroke="{args.prcolor}" stroke-width="5" />
 </g>
 <g id="vr">
-    <line x1="50" y1="40" x2="50" y2="84" stroke="{args.pcolor}" stroke-width="5" />
+    <line x1="50" y1="40" x2="50" y2="84" stroke="{args.prcolor}" stroke-width="5" />
 </g>
 <g id="hn">
-    <line x1="28" y1="35" x2="72" y2="35" stroke="{args.ncolor}" stroke-width="5" />
+    <line x1="28" y1="35" x2="72" y2="35" stroke="{args.nrcolor}" stroke-width="5" />
 </g>
 <g id="vn">
-    <line x1="50" y1="40" x2="50" y2="84" stroke="{args.ncolor}" stroke-width="5" />
+    <line x1="50" y1="40" x2="50" y2="84" stroke="{args.nrcolor}" stroke-width="5" />
 </g>
 
 <g id="cross">
@@ -147,8 +147,8 @@ fill: Gold;
     <line x1="50" y1="40" x2="50" y2="84" stroke="Darkblue" stroke-width="5" />
 </g>
 <g id="cross">
-    <line x1="-300" y1="0" x2="300" y2="0" stroke="Navy" />
-    <line x1="0" y1="-300" x2="0" y2="300" stroke="Navy" />
+    <line x1="-300" y1="0" x2="300" y2="0" stroke="{args.lcolor}" />
+    <line x1="0" y1="-300" x2="0" y2="300" stroke="{args.lcolor}" />
 </g>
 <g id="frame">
 <use href="#cross" x="3" y="3"/>
@@ -156,16 +156,22 @@ fill: Gold;
 </g>
 
 <g id="jetonp">
-    <circle cx="25" cy="75" r="18" fill="{args.pcolor}" stroke="Black" />
+    <circle cx="25" cy="75" r="18" fill="{args.pjcolor}" stroke="Black" />
+    <circle cx="25" cy="75" r="15" fill="none" stroke="Black" />
+    <circle cx="25" cy="75" r="6" fill="none" stroke="Black" />
+    <circle cx="25" cy="75" r="4" fill="{args.bgcolor}" stroke="Black" />
 </g>
 <g id="jetonp5">
-    <circle cx="25" cy="25" r="18" fill="{args.pcolor}" stroke="Black" />
+    <use href="#jetonp" y="-50"/>
 </g>
 <g id="jetonn">
-    <circle cx="25" cy="75" r="18" fill="{args.ncolor}" stroke="Black" />
+    <circle cx="25" cy="75" r="18" fill="{args.njcolor}" stroke="Black" />
+    <circle cx="25" cy="75" r="15" fill="none" stroke="Black" />
+    <circle cx="25" cy="75" r="6" fill="none" stroke="Black" />
+    <circle cx="25" cy="75" r="4" fill="{args.bgcolor}" stroke="Black" />
 </g>
 <g id="jetonn5">
-    <circle cx="25" cy="25" r="18" fill="{args.ncolor}" stroke="Black" />
+    <use href="#jetonn" y="-50"/>
 </g>
 </defs>''')
 
@@ -264,15 +270,21 @@ if __name__ == '__main__':
     parser.add_argument('-s', '--scale',
         help='Nominal cell height in pixels',
         default=100)
-    parser.add_argument('--pcolor',
-        help='Color for positive rods/jetons',
+    parser.add_argument('--prcolor',
+        help='Color for positive rods',
         default='Red')
-    parser.add_argument('--ncolor',
-        help='Color for negative rods/jetons',
+    parser.add_argument('--nrcolor',
+        help='Color for negative rods',
         default='Black')
+    parser.add_argument('--pjcolor',
+        help='Color for positive jetons',
+        default='#ffbf00')
+    parser.add_argument('--njcolor',
+        help='Color for negative jetons',
+        default='#ce8946')
     parser.add_argument('--bgcolor',
         help='Background color',
-        default='LightGrey')
+        default='#ffe2c4')
     parser.add_argument('--lcolor',
         help='Color for separation lines',
         default='Navy')

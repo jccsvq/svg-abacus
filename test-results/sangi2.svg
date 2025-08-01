@@ -32,7 +32,7 @@ fill: Gold;
 </g>
 </defs>
 <rect width="900" height="700" 
-        x="0" y="0" fill="LightGrey"/>
+        x="0" y="0" fill="#ffe2c4"/>
 <use href="#frame" x="0" y="0" />
 <use href="#frame" x="0" y="100" />
 <use href="#frame" x="0" y="200" />
