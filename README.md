@@ -21,11 +21,11 @@ No special installation is required since only the standard `argparse` and `sys`
 Simple `python3` script to draw SVG diagrams or illustrations of several (oriental) abacus types. 
 
 ## Supported abacus types: 
-* 4+1, Modern soroban/swanpan (option: `-41`, support suspended lower beads)
+* 4+1, Modern soroban/suanpan (そろばん/算盤, 算盘) (option: `-41`, support suspended lower beads)
 * 4+3, Nepohualtzintzin and Inupiaq abacuses (option: `-43`)
 * 5+1, Traditional soroban (option: `-51`, support suspended lower beads)
-* 5+2, Traditional swanpan and soroban (option: `-52`)
-* 5+3, Rare traditional swanpan (option: `-53`), the "complete abacus"
+* 5+2, Traditional suanpan and soroban (option: `-52`)
+* 5+3, Rare traditional suanpan (option: `-53`), the "complete abacus"
 
 ## Bead types:
 * Japanese style (default)
@@ -81,8 +81,8 @@ Folder `test-results` contains many other examples created by the `bash` script 
 Use:    `$ svgabacus [-h | --help]` for options.
 
     usage: svg-abacus [-h] [-t {41,43,51,52,53}] [-c] [--ccolor CCOLOR]
-                  [-d {0,3,4}] [-s SCALE] [-v VALUES] [-b] [--bgcolor BGCOLOR]
-                  [-f] [-l] [-n] 
+                      [-d {0,3,4}] [-s SCALE] [-v VALUES] [-b] [--bgcolor BGCOLOR]
+                      [-f] [-l] [-n] [-k] [-o OUTPUT]
 
     Draws diagrams for several abacus types by reading column values from stdin.
 
@@ -107,6 +107,8 @@ Use:    `$ svgabacus [-h | --help]` for options.
       -l, --lacquered       Use lacquered frame (default: False)
       -n, --names           Add column names/labels A, B, C, ... (default: False)
       -k, --keys            Labels columns with codes (default: False)
+      -o OUTPUT, --output OUTPUT
+                            Output filename (default: )
 
 
 # svg-schoty
@@ -116,7 +118,7 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 
 * Russian schoty (Счёты) and Iranian  chortkeh (چرتکه)
 * Danish or school  abacus
-* Mesopotamian (sexagesimal), imagined as a variation of the Russian abacus
+* Mesopotamian (sexagesimal), imagined here as a variant of the Russian abacus
 
 ## Examples:
 
@@ -139,7 +141,8 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 ## Options:
 
     usage: svg-schoty [-h] [-d] [-s SCALE] [-v VALUES] [-b] [--bgcolor BGCOLOR]
-                  [-n] [-k]
+                      [--b1color B1COLOR] [--b2color B2COLOR] [--b3color B3COLOR]
+                      [--b4color B4COLOR] [-n] [-k] [-o OUTPUT]
 
     Draws diagrams for Russian and Danish abacuses by reading row values from
     stdin.
@@ -160,6 +163,8 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
       --b4color B4COLOR     Bead 4 color (default: Black)
       -n, --names           Add column names/labels A, B, C, ... (default: False)
       -k, --keys            Labels columns with codes (default: False)
+      -o OUTPUT, --output OUTPUT
+                            Output filename (default: )
 
 # svg-sangi
 
@@ -198,8 +203,9 @@ Use the same codes as with the oriental abacus type 5+2 or 5+3.
 
 ## Options:
 
-    usage: svg-sangi [-h] [-E] [-f FILE] [-s SCALE] [--pcolor PCOLOR]
-                 [--ncolor NCOLOR] [--bgcolor BGCOLOR] [--lcolor LCOLOR]
+    usage: svg-sangi [-h] [-E] [-i INPUT] [-s SCALE] [--prcolor PRCOLOR]
+                     [--nrcolor NRCOLOR] [--pjcolor PJCOLOR] [--njcolor NJCOLOR]
+                     [--bgcolor BGCOLOR] [--lcolor LCOLOR] [-o OUTPUT]
 
     Draws Japanese style counting rods (sangi) and medieval European counting
     boards diagrams by reading from stdin.
@@ -207,9 +213,10 @@ Use the same codes as with the oriental abacus type 5+2 or 5+3.
     options:
       -h, --help            show this help message and exit
       -E, --european        Use medieval counting board (default: False)
-      -f FILE, --file FILE  Data filename to read (default: )
+      -i INPUT, --input INPUT
+                            Data filename to read (default: )
       -s SCALE, --scale SCALE
-                        Nominal cell height in pixels (default: 100)
+                            Nominal cell height in pixels (default: 100)
       --prcolor PRCOLOR     Color for positive rods (default: Red)
       --nrcolor NRCOLOR     Color for negative rods (default: Black)
       --pjcolor PJCOLOR     Color for positive jetons (default: #ffbf00)
@@ -217,4 +224,6 @@ Use the same codes as with the oriental abacus type 5+2 or 5+3.
 
       --bgcolor BGCOLOR     Background color (default: LightGrey)
       --lcolor LCOLOR       Color for separation lines (default: Navy)
+      -o OUTPUT, --output OUTPUT
+                            Output filename (default: )
 

@@ -88,13 +88,13 @@ exdict = {
 
 def prtsangiheader(x, y, width, height, vBoxx,vBoxy):
     """Creates the SVG header, viewport, viewbox and <defs>"""
-    print('<svg  xmlns="http://www.w3.org/2000/svg"')
+    print('<svg  xmlns="http://www.w3.org/2000/svg"', file=ff)
     line = f'x="{x}px" y="{y}px"'
-    print(line)
+    print(line, file=ff)
     line = f'width="{width}px" height="{height}px"'
-    print(line)   
+    print(line, file=ff)   
     line = f'viewBox="0 0 {vBoxx} {vBoxy}">'
-    print(line)
+    print(line, file=ff)
     print(f'''<style>
 .names {{;
 font: bold 80px mono;
@@ -123,16 +123,16 @@ fill: Gold;
 <use href="#cross" x="2" y="2"/>
 <use href="#cross" x="98" y="98"/>
 </g>
-</defs>''')
+</defs>''', file=ff)
 def prteuroheader(x, y, width, height, vBoxx,vBoxy):
     """Creates the SVG header, viewport, viewbox and <defs>"""
-    print('<svg  xmlns="http://www.w3.org/2000/svg"')
+    print('<svg  xmlns="http://www.w3.org/2000/svg"', file=ff)
     line = f'x="{x}px" y="{y}px"'
-    print(line)
+    print(line, file=ff)
     line = f'width="{width}px" height="{height}px"'
-    print(line)   
+    print(line, file=ff)   
     line = f'viewBox="0 0 {vBoxx} {vBoxy}">'
-    print(line)
+    print(line, file=ff)
     print(f'''<style>
 .names {{;
 font: bold 80px mono;
@@ -173,7 +173,7 @@ fill: Gold;
 <g id="jetonn5">
     <use href="#jetonn" y="-50"/>
 </g>
-</defs>''')
+</defs>''', file=ff)
 
 def prtsangi():
     '''Manages the drawing of the counting rod diagram'''
@@ -181,13 +181,13 @@ def prtsangi():
     prtsangiheader(0, 0, width, height, vBoxx,vBoxy)
     
     # Frame
-    linea = f'''<rect width="{vBoxx}" height="{vBoxy}" 
+    line = f'''<rect width="{vBoxx}" height="{vBoxy}" 
         x="0" y="0" fill="{args.bgcolor}"/>'''
-    print(linea)
+    print(line, file=ff)
     for i in range(nc):
         for j in range(nr):
-            linea = f'<use href="#frame" x="{100*i}" y="{100*j}" />'
-            print(linea)
+            line = f'<use href="#frame" x="{100*i}" y="{100*j}" />'
+            print(line, file=ff)
 
     # Cell content
     for i in range(nc):
@@ -197,37 +197,37 @@ def prtsangi():
                 value=value[1:]
                 for k in range(3):
                     if hydict[value][k] == '1':
-                        linea = f'<use href="#hn" x="{100*i}" y="{100*j+hy[int(k)]}"/>'
-                        print(linea)
+                        line = f'<use href="#hn" x="{100*i}" y="{100*j+hy[int(k)]}"/>'
+                        print(line, file=ff)
                 for k in range(9):
                     if vxdict[value][k] == '1':
-                        linea = f'<use href="#vn" x="{100*i+vx[int(k)]}" y="{100*j}"/>'
-                        print(linea)
+                        line = f'<use href="#vn" x="{100*i+vx[int(k)]}" y="{100*j}"/>'
+                        print(line, file=ff)
             else:
                 for k in range(3):
                     if hydict[value][k] == '1':
-                        linea = f'<use href="#hr" x="{100*i}" y="{100*j+hy[int(k)]}"/>'
-                        print(linea)
+                        line = f'<use href="#hr" x="{100*i}" y="{100*j+hy[int(k)]}"/>'
+                        print(line, file=ff)
                 for k in range(9):
                     if vxdict[value][k] == '1':
-                        linea = f'<use href="#vr" x="{100*i+vx[int(k)]}" y="{100*j}"/>'
-                        print(linea)
+                        line = f'<use href="#vr" x="{100*i+vx[int(k)]}" y="{100*j}"/>'
+                        print(line, file=ff)
     
     # Closing SVG
-    print('</svg>')
+    print('</svg>', file=ff)
 
 def prteuropean():
     '''Manages the drawing of the European counting board diagram'''
     # SVG Header
     prteuroheader(0, 0, width, height, vBoxx,vBoxy)
     # Frame
-    linea = f'''<rect width="{vBoxx}" height="{vBoxy}" 
+    line = f'''<rect width="{vBoxx}" height="{vBoxy}" 
     x="0" y="0" fill="{args.bgcolor}"/>'''
-    print(linea)
+    print(line, file=ff)
     for j in range(nc):
         for i in range(nr):
-            linea = f'<use href="#frame" x="{250*j}" y="{100*i}" />'
-            print(linea)
+            line = f'<use href="#frame" x="{250*j}" y="{100*i}" />'
+            print(line, file=ff)
     # Cell content
     for i in range(nc):
         for j in range(nr):
@@ -236,23 +236,23 @@ def prteuropean():
                 value=value[1:]
                 for k in range(3):
                     if hydict[value][k] == '1':
-                        linea = f'<use href="#jetonn5" x="{250*i+50*k}" y="{100*j}"/>'
-                        print(linea)
+                        line = f'<use href="#jetonn5" x="{250*i+50*k}" y="{100*j}"/>'
+                        print(line, file=ff)
                 for k in range(5):
                     if exdict[value][k] == '1':
-                        linea = f'<use href="#jetonn" x="{250*i+50*k}" y="{100*j}"/>'
-                        print(linea)
+                        line = f'<use href="#jetonn" x="{250*i+50*k}" y="{100*j}"/>'
+                        print(line, file=ff)
             else:
                 for k in range(3):
                     if hydict[value][k] == '1':
-                        linea = f'<use href="#jetonp5" x="{250*i+50*k}" y="{100*j}"/>'
-                        print(linea)
+                        line = f'<use href="#jetonp5" x="{250*i+50*k}" y="{100*j}"/>'
+                        print(line, file=ff)
                 for k in range(5):
                     if exdict[value][k] == '1':
-                        linea = f'<use href="#jetonp" x="{250*i+50*k}" y="{100*j}"/>'
-                        print(linea)
+                        line = f'<use href="#jetonp" x="{250*i+50*k}" y="{100*j}"/>'
+                        print(line, file=ff)
     # Closing SVG
-    print('</svg>')
+    print('</svg>', file=ff)
 
 
 if __name__ == '__main__':
@@ -264,7 +264,7 @@ if __name__ == '__main__':
         help='Use medieval counting board',
         action='store_true',
         default=False)
-    parser.add_argument('-f', '--file',
+    parser.add_argument('-i', '--input',
         help='Data filename to read',
         default='')
     parser.add_argument('-s', '--scale',
@@ -288,11 +288,20 @@ if __name__ == '__main__':
     parser.add_argument('--lcolor',
         help='Color for separation lines',
         default='Navy')
+    parser.add_argument('-o', '--output',
+        help='Output filename',
+        default='')
+
 
     args = parser.parse_args()
 
-    if args.file :
-        with open(args.file, encoding="utf-8") as f:
+    if args.output :
+        ff = open(args.output, 'w')
+    else:
+        ff = sys.stdout
+
+    if args.input :
+        with open(args.input, encoding="utf-8") as f:
             datos = f.readlines()
     else:
         datos = sys.stdin.readlines()

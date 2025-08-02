@@ -46,13 +46,13 @@ beadictd = {
 
 def prtsvgheader(x, y, width, height, vBoxx,vBoxy):
     """Creates the SVG header, viewport, viewbox and <defs>"""
-    print('<svg  xmlns="http://www.w3.org/2000/svg"')
+    print('<svg  xmlns="http://www.w3.org/2000/svg"', file=ff)
     line = f'x="{x}px" y="{y}px"'
-    print(line)
+    print(line, file=ff)
     line = f'width="{width}px" height="{height}px"'
-    print(line)   
+    print(line, file=ff)   
     line = f'viewBox="0 0 {vBoxx} {vBoxy}">'
-    print(line)
+    print(line, file=ff)
     print(f'''<style>
 .names {{;
 font: bold 80px mono;
@@ -103,7 +103,7 @@ fill: Gold;
 <g id="frame">
     <rect y="0" fill="url(#framegrad)" width="100" height="200" stroke="url(#framegrad)"/> 
 </g>
-</defs>''')
+</defs>''', file=ff)
 
 
 if __name__ == '__main__':
@@ -149,8 +149,16 @@ if __name__ == '__main__':
         help='Labels columns with codes',
         action='store_true',
         default=False)
+    parser.add_argument('-o', '--output',
+        help='Output filename',
+        default='')
 
     args = parser.parse_args()
+
+    if args.output :
+        ff = open(args.output, 'w')
+    else:
+        ff = sys.stdout
 
     if args.danish :
         beadict = beadictd
@@ -174,67 +182,67 @@ if __name__ == '__main__':
     prtsvgheader(0,0, width, height, vBoxx, vBoxy)
 
     if args.background :
-        linea = f'''<rect width="{vBoxx}" height="{vBoxy}" 
+        line = f'''<rect width="{vBoxx}" height="{vBoxy}" 
         x="0" y="0" fill="{args.bgcolor}"/>'''
-        print(linea)
+        print(line, file=ff)
 
     # Frame
     print(f'<rect y="0" x="0" fill="url(#framegrad2)" \
-    width="1600" height="100"/>')
-    linea = f'<polygon fill="url(#framegrad)" points="0,0 0,100 100,100"/>'
-    print(linea)
-    linea = f'<polygon fill="url(#framegrad)" points="{vBoxx-100},100 {vBoxx},0\
+    width="1600" height="100"/>', file=ff)
+    line = f'<polygon fill="url(#framegrad)" points="0,0 0,100 100,100"/>'
+    print(line, file=ff)
+    line = f'<polygon fill="url(#framegrad)" points="{vBoxx-100},100 {vBoxx},0\
      {vBoxx},100"/>'
-    print(linea)
+    print(line, file=ff)
     print('<line x1="0" y1="0" x2="100" y2="100" stroke="black" \
-    stroke-width="4"/>')
+    stroke-width="4"/>', file=ff)
     print('<line x1="1600" y1="0" x2="1500" y2="100" stroke="black" \
-    stroke-width="4"/>')
+    stroke-width="4"/>', file=ff)
 
     print(f'<rect y="{vBoxy-100}" x="0" fill="url(#framegrad2)" \
-    width="1600" height="100"/>')
-    linea = f'<polygon fill="url(#framegrad)" points="0,{vBoxy} \
+    width="1600" height="100"/>', file=ff)
+    line = f'<polygon fill="url(#framegrad)" points="0,{vBoxy} \
     100,{vBoxy-100} 0,{vBoxy-100}"/>'
-    print(linea)
-    linea = f'<polygon fill="url(#framegrad)" points="{vBoxx-100},{vBoxy-100} \
+    print(line, file=ff)
+    line = f'<polygon fill="url(#framegrad)" points="{vBoxx-100},{vBoxy-100} \
     {vBoxx},{vBoxy-100} {vBoxx},{vBoxy}"/>'
-    print(linea)
+    print(line, file=ff)
     print(f'<line x1="0" y1="{vBoxy}" x2="100" y2="{vBoxy-100}" stroke="black" \
-    stroke-width="4"/>')
+    stroke-width="4"/>', file=ff)
     print(f'<line x1="{vBoxx}" y1="{vBoxy}" x2="{vBoxx-100}" y2="{vBoxy-100}" \
-    stroke="black" stroke-width="4"/>')  
+    stroke="black" stroke-width="4"/>', file=ff)  
 
     # Rods
     for i in range(nrods) :
         print(f'<rect y="{200*i+188}" x="0" fill="url(#rod)" width="1500" \
-        height="24"/>')
-        print(f'<use href="#frame" x="0" y="{200*i+100}"/>')
-        print(f'<use href="#frame" x="1500" y="{200*i+100}"/>')
+        height="24"/>', file=ff)
+        print(f'<use href="#frame" x="0" y="{200*i+100}"/>', file=ff)
+        print(f'<use href="#frame" x="1500" y="{200*i+100}"/>', file=ff)
         cosa = beadict[datos[i]]
         for j in range(len(cosa)):
             if cosa[j] == "1":
-                print(f'<use href="#bead" x="{100*(j+1)}" y="{200*i+100}"/>')
+                print(f'<use href="#bead" x="{100*(j+1)}" y="{200*i+100}"/>', file=ff)
             if cosa[j] == "2":
-                print(f'<use href="#bead2" x="{100*(j+1)}" y="{200*i+100}"/>')
+                print(f'<use href="#bead2" x="{100*(j+1)}" y="{200*i+100}"/>', file=ff)
             if cosa[j] == "3":
-                print(f'<use href="#bead3" x="{100*(j+1)}" y="{200*i+100}"/>')
+                print(f'<use href="#bead3" x="{100*(j+1)}" y="{200*i+100}"/>', file=ff)
             if cosa[j] == "4":
-                print(f'<use href="#bead4" x="{100*(j+1)}" y="{200*i+100}"/>')
+                print(f'<use href="#bead4" x="{100*(j+1)}" y="{200*i+100}"/>', file=ff)
         # Labels
         if args.names :
-            linea = f'<text x="20" y="{230+200*i}" \
+            line = f'<text x="20" y="{230+200*i}" \
             class="names">{labels[i]}</text>'
-            print(linea)
+            print(line, file=ff)
     if args.keys :
-        print('<!-- Column values -->')
+        print('<!-- Column values -->', file=ff)
         for i in range(nrods) :
             if len(datos[i]) == 2 :
                 x = vBoxx - 96
             else:
                 x = vBoxx - 73
-            linea = f'<text x="{x}" y="{200*i+220}" \
+            line = f'<text x="{x}" y="{200*i+220}" \
             class="names">{datos[i]}</text>'
-            print(linea)
+            print(line, file=ff)
 
-    print('</svg>')
+    print('</svg>', file=ff)
 

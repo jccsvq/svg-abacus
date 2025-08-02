@@ -36,7 +36,7 @@ $ svgabacus [-h | --help]
 
 for options
 """
-import argparse
+import argparse, sys
 
 DESC = '''Draws diagrams for several abacus types by reading column values \
 from stdin.'''
@@ -176,19 +176,19 @@ beadicts = [beadict41, beadict43, beadict51, beadict52, beadict53]
 
 def prtsvgheader(x, y, width, height, vBoxx,vBoxy):
     """Creates the SVG header, viewport, viewbox and <defs>"""
-    print('<svg  xmlns="http://www.w3.org/2000/svg"')
+    print('<svg  xmlns="http://www.w3.org/2000/svg"', file=ff)
     line = f'x="{x}px" y="{y}px"'
-    print(line)
+    print(line, file=ff)
     if args.frame :
         line = f'width="{width-80*scale}px" height="{height}px"'
     else:
         line = f'width="{width}px" height="{height}px"'
-    print(line)   
+    print(line, file=ff)   
     if args.frame :
         line = f'viewBox="80 0 {vBoxx-160} {vBoxy}">'
     else:
         line = f'viewBox="0 0 {vBoxx} {vBoxy}">'
-    print(line)
+    print(line, file=ff)
     print(f'''<style>
 .names {{;
 font: bold 80px mono;
@@ -258,99 +258,99 @@ fill: Gold;
 	<circle cx="100" cy="25" r="12" stroke="black" stroke-width="3" fill="green" />
 </g>
 
-</defs>''')
+</defs>''', file=ff)
 
 def prtrod(rodn):
     """Draws the rod for each abacus column"""
     x = 200*rodn+283
-    linea = f'''<rect x="{x}" y="0.5" fill="url(#rodgrad)" 
+    line = f'''<rect x="{x}" y="0.5" fill="url(#rodgrad)" 
     stroke="#F2F2F2" width="32" height="{vBoxy}"/>'''
-    print(linea)
+    print(line, file=ff)
 
 def prtframe(rodn):
     """Draws the frame portion for each abacus column"""
     x = 200*rodn + 200
-    linea = f'<use href="#frame" x="{x}" y="0"/>'
-    print(linea)
+    line = f'<use href="#frame" x="{x}" y="0"/>'
+    print(line, file=ff)
     if args.names :
-        linea = f'<text x="{x+75}" y="90" class="names">{labels[rodn]}</text>'
-        print(linea)
-    linea = f'<use href="#frame" x="{x}" y="{vBoxy - 120}"/>'
-    print(linea)
+        line = f'<text x="{x+75}" y="90" class="names">{labels[rodn]}</text>'
+        print(line, file=ff)
+    line = f'<use href="#frame" x="{x}" y="{vBoxy - 120}"/>'
+    print(line, file=ff)
     
 def prtbar(rodn, dot=False):
     """Draws the central bar portion for each abacus column"""
     x = 200*rodn + 200
     if not args.lacquered:
         if dot :
-            linea = f'<use href="#barcdot" x="{x}" y="{bary}"/>'
+            line = f'<use href="#barcdot" x="{x}" y="{bary}"/>'
         else:
-            linea = f'<use href="#barc" x="{x}" y="{bary}"/>'
-        print(linea)
+            line = f'<use href="#barc" x="{x}" y="{bary}"/>'
+        print(line, file=ff)
     else:
         if dot :
-            linea = f'<use href="#bardot" x="{x}" y="{bary}"/>'
+            line = f'<use href="#bardot" x="{x}" y="{bary}"/>'
         else:
-            linea = f'<use href="#bar" x="{x}" y="{bary}"/>'
-        print(linea)
+            line = f'<use href="#bar" x="{x}" y="{bary}"/>'
+        print(line, file=ff)
 
 def prtsides(nrods):
     """Draws the left and right frame bars"""
-    linea = f'''<rect x="80" y="0" fill="url(#framegrad)" 
+    line = f'''<rect x="80" y="0" fill="url(#framegrad)" 
     width="120" height="{vBoxy}"/>'''
-    print(linea)
-    linea = f'<polygon fill="url(#framegrad2)" points="80,0 200,120 200,0"/>'
-    print(linea)
-    linea = f'''<line x1="80" y1="0" x2="200" y2="120" 
+    print(line, file=ff)
+    line = f'<polygon fill="url(#framegrad2)" points="80,0 200,120 200,0"/>'
+    print(line, file=ff)
+    line = f'''<line x1="80" y1="0" x2="200" y2="120" 
     stroke="black" stroke-width="4"/>'''
-    print(linea)
-    linea = f'''<polygon fill="url(#framegrad2)" points="80,{vBoxy} 
+    print(line, file=ff)
+    line = f'''<polygon fill="url(#framegrad2)" points="80,{vBoxy} 
     200,{vBoxy-120} 200,{vBoxy}"/>'''
-    print(linea)
-    linea = f'''<line x1="80" y1="{vBoxy}" x2="200" y2="{vBoxy-120}" 
+    print(line, file=ff)
+    line = f'''<line x1="80" y1="{vBoxy}" x2="200" y2="{vBoxy-120}" 
     stroke="black" stroke-width="4"/>'''
-    print(linea)
+    print(line, file=ff)
     x = vBoxx - 200
-    linea = f'''<rect x="{x}" y="0" fill="url(#framegrad)" 
+    line = f'''<rect x="{x}" y="0" fill="url(#framegrad)" 
     width="120" height="{vBoxy}"/>'''
-    print(linea)
-    linea = f'''<polygon fill="url(#framegrad2)" points="{vBoxx-200},120 
+    print(line, file=ff)
+    line = f'''<polygon fill="url(#framegrad2)" points="{vBoxx-200},120 
     {vBoxx-80},0 {vBoxx-200},0"/>'''
-    print(linea)
-    linea = f'''<line x1="{vBoxx-200}" y1="120" x2="{vBoxx-80}" y2="0" 
+    print(line, file=ff)
+    line = f'''<line x1="{vBoxx-200}" y1="120" x2="{vBoxx-80}" y2="0" 
     stroke="black" stroke-width="4"/>'''
-    print(linea)
-    linea = f'''<polygon fill="url(#framegrad2)" points="{vBoxx-200},
+    print(line, file=ff)
+    line = f'''<polygon fill="url(#framegrad2)" points="{vBoxx-200},
     {vBoxy-120} {vBoxx-80},{vBoxy} {vBoxx-200},{vBoxy}"/>'''
-    print(linea)
-    linea = f'''<line x1="{vBoxx-200}" y1="{vBoxy-120}" 
+    print(line, file=ff)
+    line = f'''<line x1="{vBoxx-200}" y1="{vBoxy-120}" 
     x2="{vBoxx-80}" y2="{vBoxy}" stroke="black" stroke-width="4"/>'''
-    print(linea)
+    print(line, file=ff)
 
 def prtbead(rodn, pos, chinese=False):
     """Draws the beads"""
     x = 200*rodn + 200
     y = beady[abacus][pos]
     if chinese:
-        linea = f'<use href="#bead2" x="{x}" y="{y}"/>'    
+        line = f'<use href="#bead2" x="{x}" y="{y}"/>'    
     else:
-         linea = f'<use href="#bead" x="{x}" y="{y}"/>'
-    print(linea)
+         line = f'<use href="#bead" x="{x}" y="{y}"/>'
+    print(line, file=ff)
 
 def prtabacus():
     """Manages the drawing of the different elements of the abacus diagram"""
     prtsvgheader(0,0, widtht*scale, height*scale, vBoxx, vBoxy)
 
     if args.background :
-        linea = f'''<rect width="{vBoxx-240}" height="{vBoxy}" 
+        line = f'''<rect width="{vBoxx-240}" height="{vBoxy}" 
         x="80" y="0" fill="{args.bgcolor}"/>'''
-        print(linea)
+        print(line, file=ff)
 
 
     cbar = nrods//2 
     dotf = int(args.dots)
     for i in range(nrods):
-        print(f'<!-- Rod #{i+1} -->')
+        print(f'<!-- Rod #{i+1} -->', file=ff)
         prtrod(i)
         prtframe(i)
         if dotf == 0:
@@ -368,16 +368,16 @@ def prtabacus():
     prtsides(nrods)
 
     if args.keys :
-        print('<!-- Column values -->')
+        print('<!-- Column values -->', file=ff)
         for i in range(nrods) :
             if len(datos[i]) == 2 :
                 x = 200*i + 180
             else:
                 x = 200*i + 200
-            linea = f'<text x="{x+75}" y="{vBoxy - 35}" \
+            line = f'<text x="{x+75}" y="{vBoxy - 35}" \
             class="names">{datos[i]}</text>'
-            print(linea)
-    print('</svg>')
+            print(line, file=ff)
+    print('</svg>', file=ff)
 
 if __name__ == '__main__':
 
@@ -429,9 +429,16 @@ if __name__ == '__main__':
         help='Labels columns with codes',
         action='store_true',
         default=False)
+    parser.add_argument('-o', '--output',
+        help='Output filename',
+        default='')
 
     args = parser.parse_args()
-#    print(args)
+
+    if args.output :
+        ff = open(args.output, 'w')
+    else:
+        ff = sys.stdout
 
     if args.type == '41':
         abacus = 0
