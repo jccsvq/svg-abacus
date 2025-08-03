@@ -67,12 +67,16 @@ Simple `python3` script to draw SVG diagrams or illustrations of several (orient
 
 ## Example:
 
-    $ echo 0 0 0 0 0 0 5 1 2 3 4 9 1|./svg-abacus -t 53 -s 25 -c  -d 0  -d 3 -b  > example.svg
+    $ echo 0 0 0 0 0 0 5 1 2 3 4 9 1|./svg-abacus -t 53 -s 25 -c -d 3 -b  > example.svg
 
 Creates a diagram in `example.svg` for a 13 rods 5+3 abacus at a scale of 25 pixels/rod,
 with chinese style beads, no unit rod marks and non-transparent background. Rod values are read from stdin.
 
 ![output](example.svg)
+
+    $ echo 0 0 0 0 0 F 5 1 2 3 4 9 1 0 0 0 0|./svg-abacus -t 51 -s 25 -d 4 -bl  > example2.svg
+
+![output](example2.svg)
 
 Folder `test-results` contains many other examples created by the `bash` script `test.bash`.
 
