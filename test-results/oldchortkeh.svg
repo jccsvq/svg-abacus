@@ -1,7 +1,7 @@
 <svg  xmlns="http://www.w3.org/2000/svg"
 x="0px" y="0px"
-width="264.0px" height="396.0px"
-viewBox="0 0 1600 2400">
+width="247.5px" height="396.0px"
+viewBox="0 0 1500 2400">
 <style>
 .names {;
 font: bold 80px mono;
@@ -53,147 +53,171 @@ fill: Gold;
     <rect y="0" fill="url(#framegrad)" width="100" height="200" stroke="url(#framegrad)"/> 
 </g>
 </defs>
-<rect width="1600" height="2400" 
+<rect width="1500" height="2400" 
         x="0" y="0" fill="Ivory"/>
 <rect y="0" x="0" fill="url(#framegrad2)"     width="1600" height="100"/>
 <polygon fill="url(#framegrad)" points="0,0 0,100 100,100"/>
-<polygon fill="url(#framegrad)" points="1500,100 1600,0     1600,100"/>
+<polygon fill="url(#framegrad)" points="1400,100 1500,0     1500,100"/>
 <line x1="0" y1="0" x2="100" y2="100" stroke="black"     stroke-width="4"/>
 <line x1="1600" y1="0" x2="1500" y2="100" stroke="black"     stroke-width="4"/>
 <rect y="2300" x="0" fill="url(#framegrad2)"     width="1600" height="100"/>
 <polygon fill="url(#framegrad)" points="0,2400     100,2300 0,2300"/>
-<polygon fill="url(#framegrad)" points="1500,2300     1600,2300 1600,2400"/>
+<polygon fill="url(#framegrad)" points="1400,2300     1500,2300 1500,2400"/>
 <line x1="0" y1="2400" x2="100" y2="2300" stroke="black"     stroke-width="4"/>
-<line x1="1600" y1="2400" x2="1500" y2="2300"     stroke="black" stroke-width="4"/>
+<line x1="1500" y1="2400" x2="1400" y2="2300"     stroke="black" stroke-width="4"/>
 <rect y="188" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="100"/>
-<use href="#frame" x="1500" y="100"/>
+<use href="#frame" x="1400" y="100"/>
 <use href="#bead4" x="500" y="100"/>
 <use href="#bead" x="600" y="100"/>
 <use href="#bead" x="700" y="100"/>
 <use href="#bead" x="800" y="100"/>
 <use href="#bead2" x="900" y="100"/>
-<use href="#bead2" x="1000" y="100"/>
+<use href="#bead" x="1000" y="100"/>
 <use href="#bead" x="1100" y="100"/>
 <use href="#bead" x="1200" y="100"/>
 <use href="#bead" x="1300" y="100"/>
-<use href="#bead" x="1400" y="100"/>
+<text x="20" y="230"             class="names">A</text>
 <rect y="388" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="300"/>
-<use href="#frame" x="1500" y="300"/>
+<use href="#frame" x="1400" y="300"/>
 <use href="#bead" x="100" y="300"/>
 <use href="#bead" x="600" y="300"/>
 <use href="#bead" x="700" y="300"/>
 <use href="#bead" x="800" y="300"/>
 <use href="#bead2" x="900" y="300"/>
-<use href="#bead2" x="1000" y="300"/>
+<use href="#bead" x="1000" y="300"/>
 <use href="#bead" x="1100" y="300"/>
 <use href="#bead" x="1200" y="300"/>
 <use href="#bead" x="1300" y="300"/>
-<use href="#bead" x="1400" y="300"/>
+<text x="20" y="430"             class="names">B</text>
 <rect y="588" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="500"/>
-<use href="#frame" x="1500" y="500"/>
+<use href="#frame" x="1400" y="500"/>
 <use href="#bead" x="100" y="500"/>
 <use href="#bead" x="200" y="500"/>
 <use href="#bead" x="700" y="500"/>
 <use href="#bead" x="800" y="500"/>
 <use href="#bead2" x="900" y="500"/>
-<use href="#bead2" x="1000" y="500"/>
+<use href="#bead" x="1000" y="500"/>
 <use href="#bead" x="1100" y="500"/>
 <use href="#bead" x="1200" y="500"/>
 <use href="#bead" x="1300" y="500"/>
-<use href="#bead" x="1400" y="500"/>
+<text x="20" y="630"             class="names">C</text>
 <rect y="788" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="700"/>
-<use href="#frame" x="1500" y="700"/>
+<use href="#frame" x="1400" y="700"/>
 <use href="#bead4" x="100" y="700"/>
 <use href="#bead" x="200" y="700"/>
 <use href="#bead" x="300" y="700"/>
 <use href="#bead" x="800" y="700"/>
 <use href="#bead2" x="900" y="700"/>
-<use href="#bead2" x="1000" y="700"/>
+<use href="#bead" x="1000" y="700"/>
 <use href="#bead" x="1100" y="700"/>
 <use href="#bead" x="1200" y="700"/>
 <use href="#bead" x="1300" y="700"/>
-<use href="#bead" x="1400" y="700"/>
+<text x="20" y="830"             class="names">D</text>
 <rect y="988" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="900"/>
-<use href="#frame" x="1500" y="900"/>
+<use href="#frame" x="1400" y="900"/>
 <use href="#bead" x="100" y="900"/>
 <use href="#bead" x="200" y="900"/>
 <use href="#bead" x="300" y="900"/>
 <use href="#bead" x="400" y="900"/>
 <use href="#bead2" x="900" y="900"/>
-<use href="#bead2" x="1000" y="900"/>
+<use href="#bead" x="1000" y="900"/>
 <use href="#bead" x="1100" y="900"/>
 <use href="#bead" x="1200" y="900"/>
 <use href="#bead" x="1300" y="900"/>
-<use href="#bead" x="1400" y="900"/>
+<text x="20" y="1030"             class="names">E</text>
 <rect y="1188" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="1100"/>
-<use href="#frame" x="1500" y="1100"/>
+<use href="#frame" x="1400" y="1100"/>
 <use href="#bead" x="100" y="1100"/>
 <use href="#bead" x="200" y="1100"/>
 <use href="#bead" x="300" y="1100"/>
 <use href="#bead" x="400" y="1100"/>
 <use href="#bead2" x="500" y="1100"/>
-<use href="#bead2" x="1000" y="1100"/>
+<use href="#bead" x="1000" y="1100"/>
 <use href="#bead" x="1100" y="1100"/>
 <use href="#bead" x="1200" y="1100"/>
 <use href="#bead" x="1300" y="1100"/>
-<use href="#bead" x="1400" y="1100"/>
+<text x="20" y="1230"             class="names">F</text>
 <rect y="1388" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="1300"/>
-<use href="#frame" x="1500" y="1300"/>
-<use href="#bead" x="100" y="1300"/>
+<use href="#frame" x="1400" y="1300"/>
+<use href="#bead4" x="100" y="1300"/>
 <use href="#bead" x="200" y="1300"/>
 <use href="#bead" x="300" y="1300"/>
 <use href="#bead" x="400" y="1300"/>
 <use href="#bead2" x="500" y="1300"/>
-<use href="#bead2" x="600" y="1300"/>
+<use href="#bead" x="600" y="1300"/>
 <use href="#bead" x="1100" y="1300"/>
 <use href="#bead" x="1200" y="1300"/>
 <use href="#bead" x="1300" y="1300"/>
-<use href="#bead" x="1400" y="1300"/>
+<text x="20" y="1430"             class="names">G</text>
 <rect y="1588" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="1500"/>
-<use href="#frame" x="1500" y="1500"/>
-<use href="#bead" x="1100" y="1500"/>
-<use href="#bead2" x="1200" y="1500"/>
-<use href="#bead2" x="1300" y="1500"/>
-<use href="#bead" x="1400" y="1500"/>
+<use href="#frame" x="1400" y="1500"/>
+<use href="#bead" x="100" y="1500"/>
+<use href="#bead" x="200" y="1500"/>
+<use href="#bead" x="300" y="1500"/>
+<use href="#bead" x="400" y="1500"/>
+<use href="#bead2" x="500" y="1500"/>
+<use href="#bead" x="600" y="1500"/>
+<use href="#bead" x="700" y="1500"/>
+<use href="#bead" x="1200" y="1500"/>
+<use href="#bead" x="1300" y="1500"/>
+<text x="20" y="1630"             class="names">H</text>
 <rect y="1788" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="1700"/>
-<use href="#frame" x="1500" y="1700"/>
-<use href="#bead" x="500" y="1700"/>
+<use href="#frame" x="1400" y="1700"/>
+<use href="#bead" x="100" y="1700"/>
+<use href="#bead" x="200" y="1700"/>
+<use href="#bead" x="300" y="1700"/>
+<use href="#bead" x="400" y="1700"/>
+<use href="#bead2" x="500" y="1700"/>
 <use href="#bead" x="600" y="1700"/>
 <use href="#bead" x="700" y="1700"/>
 <use href="#bead" x="800" y="1700"/>
-<use href="#bead2" x="900" y="1700"/>
-<use href="#bead2" x="1000" y="1700"/>
-<use href="#bead" x="1100" y="1700"/>
-<use href="#bead" x="1200" y="1700"/>
 <use href="#bead" x="1300" y="1700"/>
-<use href="#bead" x="1400" y="1700"/>
+<text x="20" y="1830"             class="names">I</text>
 <rect y="1988" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="1900"/>
-<use href="#frame" x="1500" y="1900"/>
-<use href="#bead" x="500" y="1900"/>
+<use href="#frame" x="1400" y="1900"/>
+<use href="#bead4" x="100" y="1900"/>
+<use href="#bead" x="200" y="1900"/>
+<use href="#bead" x="300" y="1900"/>
+<use href="#bead" x="400" y="1900"/>
+<use href="#bead2" x="500" y="1900"/>
 <use href="#bead" x="600" y="1900"/>
 <use href="#bead" x="700" y="1900"/>
 <use href="#bead" x="800" y="1900"/>
-<use href="#bead2" x="900" y="1900"/>
-<use href="#bead2" x="1000" y="1900"/>
-<use href="#bead" x="1100" y="1900"/>
-<use href="#bead" x="1200" y="1900"/>
-<use href="#bead" x="1300" y="1900"/>
-<use href="#bead" x="1400" y="1900"/>
+<use href="#bead" x="900" y="1900"/>
+<text x="20" y="2030"             class="names">J</text>
 <rect y="2188" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="2100"/>
-<use href="#frame" x="1500" y="2100"/>
+<use href="#frame" x="1400" y="2100"/>
+<use href="#bead" x="500" y="2100"/>
+<use href="#bead" x="600" y="2100"/>
+<use href="#bead" x="700" y="2100"/>
+<use href="#bead" x="800" y="2100"/>
+<use href="#bead2" x="900" y="2100"/>
+<use href="#bead" x="1000" y="2100"/>
 <use href="#bead" x="1100" y="2100"/>
-<use href="#bead2" x="1200" y="2100"/>
-<use href="#bead2" x="1300" y="2100"/>
-<use href="#bead" x="1400" y="2100"/>
+<use href="#bead" x="1200" y="2100"/>
+<use href="#bead" x="1300" y="2100"/>
+<text x="20" y="2230"             class="names">K</text>
+<!-- Column values -->
+<text x="1404" y="220"             class="names">0k</text>
+<text x="1427" y="420"             class="names">1</text>
+<text x="1427" y="620"             class="names">2</text>
+<text x="1404" y="820"             class="names">3k</text>
+<text x="1427" y="1020"             class="names">4</text>
+<text x="1427" y="1220"             class="names">5</text>
+<text x="1404" y="1420"             class="names">6k</text>
+<text x="1427" y="1620"             class="names">7</text>
+<text x="1427" y="1820"             class="names">8</text>
+<text x="1404" y="2020"             class="names">9k</text>
+<text x="1427" y="2220"             class="names">0</text>
 </svg>

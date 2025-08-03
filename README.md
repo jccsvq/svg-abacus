@@ -128,6 +128,9 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 * Danish
 * ![output](test-results/school.svg)
 
+* Old chotkeh (9 beads)
+* ![output](test-results/oldchortkeh.svg)
+
 * Mesopotamian (sexagesimal), using codes `m0, m1, ... m6`. For instance, number 00:34:52 (decimal 2092) coded as `0 0 m3 4 m5 2`:
 * ![output](test-results/meso.svg)
 
@@ -135,7 +138,7 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 
 |Abacus|Codes|
 |------|-----|
-|Russian|0 1 2 3 4 5 6 7 8 9 10<br>q0 q1 q2 q3 q4<br>m0 m1 m2 m3 m4 m5 m6|
+|Russian|0 1 2 3 4 5 6 7 8 9 10<br>0k 1k 2k 3k 4k 5k 6k 7k 8k 9k 10k<br>q0 q1 q2 q3 q4<br>m0 m1 m2 m3 m4 m5 m6|
 |Danish|0 1 2 3 4 5 6 7 8 9 10|
 
 ## Options:
@@ -149,7 +152,8 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 
     options:
       -h, --help            show this help message and exit
-      -d, --danish          Use Danish abacus (default: False)
+      -d, --danish          Use Danish/school abacus (default: False)
+      -9, --nine            Use nine beads (some old chortkeh) (default: False)
       -s SCALE, --scale SCALE
                         Nominal rod width in pixels (default: 100)
       -v VALUES, --values VALUES

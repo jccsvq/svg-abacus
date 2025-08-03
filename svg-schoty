@@ -18,6 +18,17 @@ beadictr = {
     "8": "11112211000011",
     "9": "11112211100001",
     "10": "11112211110000",
+    "0k": "00004111221111",
+    "1k": "40000111221111",
+    "2k": "41000011221111",
+    "3k": "41100001221111",
+    "4k": "41110000221111",
+    "5k": "41112000021111",
+    "6k": "41112200001111",
+    "7k": "41112210000111",
+    "8k": "41112211000011",
+    "9k": "41112211100001",
+    "10k": "41112211110000",
     "q0": "00000000001221",
     "q1": "10000000000221",
     "q2": "12000000000021",
@@ -30,6 +41,28 @@ beadictr = {
     "m4": "33440000000033",
     "m5": "33443000000003",
     "m6": "33443300000000"}
+
+beadictr9 = {
+    "0": "0000111121111",
+    "1": "1000011121111",
+    "2": "1100001121111",
+    "3": "1110000121111",
+    "4": "1111000021111",
+    "5": "1111200001111",
+    "6": "1111210001111",
+    "7": "1111211000011",
+    "8": "1111211100001",
+    "9": "1111211110000",
+    "0k": "0000411121111",
+    "1k": "4000011121111",
+    "2k": "4100001121111",
+    "3k": "4110000121111",
+    "4k": "4111000021111",
+    "5k": "4111200001111",
+    "6k": "4111210000111",
+    "7k": "4111211000011",
+    "8k": "4111211100001",
+    "9k": "4111211110000"}
 
 beadictd = {
     "0": "11111222220000",
@@ -115,6 +148,10 @@ if __name__ == '__main__':
         help='Use Danish/school abacus',
         action='store_true',
         default=False)
+    parser.add_argument('-9', '--nine',
+        help='Use nine beads (some old chortkeh)',
+        action='store_true',
+        default=False)
     parser.add_argument('-s', '--scale',
         help='Nominal rod width in pixels',
         default=100)
@@ -155,6 +192,9 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+    if args.danish and args.nine:
+        sys.exit("Danish/School abacus always have 10 beads! Exiting.")
+
     if args.output is None:
         ff = sys.stdout
     else:
@@ -163,7 +203,10 @@ if __name__ == '__main__':
     if args.danish :
         beadict = beadictd
     else:
-        beadict = beadictr
+        if args.nine :
+            beadict = beadictr9
+        else:
+            beadict = beadictr
 
     if args.values is None:
         datos = input().split()
@@ -174,7 +217,10 @@ if __name__ == '__main__':
 
     nrods = len(datos)
     scale = int(args.scale)/100
-    vBoxx = 1600
+    if args.nine:
+        vBoxx = 1500
+    else:
+        vBoxx = 1600
     vBoxy = (nrods+1)*200
     width = scale*vBoxx/2
     height = scale*vBoxy/2
@@ -217,7 +263,7 @@ if __name__ == '__main__':
         print(f'<rect y="{200*i+188}" x="0" fill="url(#rod)" width="1500" \
         height="24"/>', file=ff)
         print(f'<use href="#frame" x="0" y="{200*i+100}"/>', file=ff)
-        print(f'<use href="#frame" x="1500" y="{200*i+100}"/>', file=ff)
+        print(f'<use href="#frame" x="{vBoxx-100}" y="{200*i+100}"/>', file=ff)
         cosa = beadict[datos[i]]
         for j in range(len(cosa)):
             if cosa[j] == "1":
