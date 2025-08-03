@@ -99,7 +99,7 @@ Use:    `$ svgabacus [-h | --help]` for options.
                             Nominal rod width in pixels (default: 100)
       -v VALUES, --values VALUES
                             String of column values separated by spaces. If not
-                            used, data is read from stdin (default: )
+                            used, data is read from stdin (default: None)
       -b, --background      Non-transparent background (default: False)
       --bgcolor BGCOLOR     Non-transparent background color (default: Ivory)
       -f, --frame           Adjust to abacus frame (cut transparent borders)
@@ -108,7 +108,7 @@ Use:    `$ svgabacus [-h | --help]` for options.
       -n, --names           Add column names/labels A, B, C, ... (default: False)
       -k, --keys            Labels columns with codes (default: False)
       -o OUTPUT, --output OUTPUT
-                            Output filename (default: )
+                            Output filename (default: None)
 
 
 # svg-schoty
@@ -154,7 +154,7 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
                         Nominal rod width in pixels (default: 100)
       -v VALUES, --values VALUES
                         String of column values separated by spaces. If not
-                        used, data is read from stdin (default: )
+                        used, data is read from stdin (default: None)
       -b, --background      Non-transparent background (default: False)
       --bgcolor BGCOLOR     Non-transparent background color (default: Ivory)
       --b1color B1COLOR     Bead 1 color (default: DarkGreen)
@@ -164,26 +164,26 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
       -n, --names           Add column names/labels A, B, C, ... (default: False)
       -k, --keys            Labels columns with codes (default: False)
       -o OUTPUT, --output OUTPUT
-                            Output filename (default: )
+                            Output filename (default: None)
 
 # svg-sangi
 
  Simple `python3` script to draw SVG diagrams or illustrations of Japanese style counting rods (sangi 算木) and medieval European counting boards
 
-This script requires a data file that be piped; example:
+This script requires a data file to be piped; example:
 
 
 `$ cat datos.txt |./svg-sangi -s 66 --ncolor black > test-results/sangi.svg`
 
- with `datos.txt` containing:
+ with `datos.txt` containing, for instance:
 
     0 9 3 7
     0 0 -7 -F
     1 0 7 6
 
-Or you can give the file name on the command line (option [-f | --file])
+Or you can give the file name on the command line (option [-i | --input])
 
-`$ ./svg-sangi -s 66 --ncolor black -f datos.txt > test-results/sangi.svg`
+`$ ./svg-sangi -s 66 --ncolor black -i datos.txt > test-results/sangi.svg`
 
 ## Supported abacus types: 
 
@@ -214,7 +214,7 @@ Use the same codes as with the oriental abacus type 5+2 or 5+3.
       -h, --help            show this help message and exit
       -E, --european        Use medieval counting board (default: False)
       -i INPUT, --input INPUT
-                            Data filename to read (default: )
+                            Data filename to read (default: None)
       -s SCALE, --scale SCALE
                             Nominal cell height in pixels (default: 100)
       --prcolor PRCOLOR     Color for positive rods (default: Red)
@@ -225,5 +225,5 @@ Use the same codes as with the oriental abacus type 5+2 or 5+3.
       --bgcolor BGCOLOR     Background color (default: LightGrey)
       --lcolor LCOLOR       Color for separation lines (default: Navy)
       -o OUTPUT, --output OUTPUT
-                            Output filename (default: )
+                            Output filename (default: None)
 

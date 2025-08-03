@@ -266,7 +266,7 @@ if __name__ == '__main__':
         default=False)
     parser.add_argument('-i', '--input',
         help='Data filename to read',
-        default='')
+        default=None)
     parser.add_argument('-s', '--scale',
         help='Nominal cell height in pixels',
         default=100)
@@ -290,21 +290,21 @@ if __name__ == '__main__':
         default='Navy')
     parser.add_argument('-o', '--output',
         help='Output filename',
-        default='')
+        default=None)
 
 
     args = parser.parse_args()
 
-    if args.output :
-        ff = open(args.output, 'w')
-    else:
+    if args.output is None :
         ff = sys.stdout
+    else:
+        ff = open(args.output, 'w')
 
-    if args.input :
+    if args.input is None:
+        datos = sys.stdin.readlines()
+    else:
         with open(args.input, encoding="utf-8") as f:
             datos = f.readlines()
-    else:
-        datos = sys.stdin.readlines()
     
     if not args.european :
         nr = len(datos)
@@ -323,6 +323,8 @@ if __name__ == '__main__':
         vBoxy = 100 * nr
         prteuropean()
 
+    if args.output is not None :
+        ff.close()
         
     
     

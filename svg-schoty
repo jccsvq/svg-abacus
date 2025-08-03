@@ -1,6 +1,6 @@
 #!/usr/bin/env -S python3 
 
-import argparse
+import argparse, sys
 
 DESC = '''Draws diagrams for Russian and Danish abacuses by reading row values 
 from stdin.'''
@@ -121,7 +121,7 @@ if __name__ == '__main__':
     parser.add_argument('-v', '--values',
         help='String of column values separated by spaces. If not used, data \
         is read from stdin',
-        default='')
+        default=None)
     parser.add_argument('-b', '--background',
         help='Non-transparent background',
         action='store_true',
@@ -151,21 +151,21 @@ if __name__ == '__main__':
         default=False)
     parser.add_argument('-o', '--output',
         help='Output filename',
-        default='')
+        default=None)
 
     args = parser.parse_args()
 
-    if args.output :
-        ff = open(args.output, 'w')
-    else:
+    if args.output is None:
         ff = sys.stdout
+    else:
+        ff = open(args.output, 'w')
 
     if args.danish :
         beadict = beadictd
     else:
         beadict = beadictr
 
-    if len(args.values) == 0:
+    if args.values is None:
         datos = input().split()
     else:
         datos = args.values.split()
@@ -246,3 +246,5 @@ if __name__ == '__main__':
 
     print('</svg>', file=ff)
 
+    if args.output is not None :
+        ff.close()
