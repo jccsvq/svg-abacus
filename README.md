@@ -143,6 +143,7 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 |Abacus|Codes|
 |------|-----|
 |Russian|0 1 2 3 4 5 6 7 8 9 10<br>0k 1k 2k 3k 4k 5k 6k 7k 8k 9k 10k<br>q0 q1 q2 q3 q4<br>m0 m1 m2 m3 m4 m5 m6|
+|9 beads|0 1 2 3 4 5 6 7 8 9<br>0k 1k 2k 3k 4k 5k 6k 7k 8k 9k|
 |Danish|0 1 2 3 4 5 6 7 8 9 10|
 
 ## Options:
@@ -176,7 +177,7 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 
 # svg-sangi
 
- Simple `python3` script to draw SVG diagrams or illustrations of Japanese style counting rods (sangi 算木) and medieval European counting boards
+ Simple `python3` script to draw SVG diagrams or illustrations of Japanese style counting rods (sangi 算木), medieval European counting boards and an imaginary  mayan free counters abacus.
 
 This script requires a data file to be piped; example:
 
@@ -197,6 +198,7 @@ Or you can give the file name on the command line (option [-i | --input])
 
 * Japanese style counting rods (sangi 算木)
 * Medieval European counting boards
+* Mayan abacus
 
 ## Examples:
 * Sangi counting rods
@@ -205,22 +207,26 @@ Or you can give the file name on the command line (option [-i | --input])
 *  Medieval European counting board
 * ![output](test-results/euro.svg)
 * ![output](test-results/euro2.svg)
-
+*  Mayan
+* ![output](test-results/maya.svg)
+*
 ## Codes:
-Use the same codes as with the oriental abacus type 5+2 or 5+3.
+Use the same codes as with the oriental abacus type 5+2 or 5+3. For the Mayan zero, use `z` or `-z`.
 
 ## Options:
 
-    usage: svg-sangi [-h] [-E] [-i INPUT] [-s SCALE] [--prcolor PRCOLOR]
+    usage: svg-sangi [-h] [-t {s,e,m}] [-i INPUT] [-s SCALE] [--prcolor PRCOLOR]
                      [--nrcolor NRCOLOR] [--pjcolor PJCOLOR] [--njcolor NJCOLOR]
                      [--bgcolor BGCOLOR] [--lcolor LCOLOR] [-o OUTPUT]
-
-    Draws Japanese style counting rods (sangi) and medieval European counting
-    boards diagrams by reading from stdin.
-
+    
+    Draws diagrams of Japanese style counting rods (sangi), medieval European
+    counting boards and an imaginary Mayan abacus by reading from stdin or file.
+    
     options:
       -h, --help            show this help message and exit
-      -E, --european        Use medieval counting board (default: False)
+      -t {s,e,m}, --type {s,e,m}
+                            Abacus type: s (sangi), e (european), m (mayan)
+                            (default: s)
       -i INPUT, --input INPUT
                             Data filename to read (default: None)
       -s SCALE, --scale SCALE
@@ -229,9 +235,9 @@ Use the same codes as with the oriental abacus type 5+2 or 5+3.
       --nrcolor NRCOLOR     Color for negative rods (default: Black)
       --pjcolor PJCOLOR     Color for positive jetons (default: #ffbf00)
       --njcolor NJCOLOR     Color for negative jetons (default: #ce8946)
-
-      --bgcolor BGCOLOR     Background color (default: LightGrey)
+      --bgcolor BGCOLOR     Background color (default: #ffe2c4)
       --lcolor LCOLOR       Color for separation lines (default: Navy)
       -o OUTPUT, --output OUTPUT
                             Output filename (default: None)
+
 

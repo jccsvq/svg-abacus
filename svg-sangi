@@ -2,8 +2,8 @@
 
 import argparse, sys
 
-DESC = '''Draws Japanese style counting rods (sangi) and medieval European 
-counting boards diagrams by reading from stdin or file.'''
+DESC = '''Draws diagrams of Japanese style counting rods (sangi), medieval European 
+counting boards and an imaginary Mayan abacus by reading from stdin or file.'''
 EPIL = "jccsvq fecit, 2025. Public domain."
 
 hy = [0, -10, -20]
@@ -124,6 +124,47 @@ fill: Gold;
 <use href="#cross" x="98" y="98"/>
 </g>
 </defs>''', file=ff)
+
+def prtmayaheader(x, y, width, height, vBoxx,vBoxy):
+    """Creates the SVG header, viewport, viewbox and <defs>"""
+    print('<svg  xmlns="http://www.w3.org/2000/svg"', file=ff)
+    line = f'x="{x}px" y="{y}px"'
+    print(line, file=ff)
+    line = f'width="{width}px" height="{height}px"'
+    print(line, file=ff)   
+    line = f'viewBox="0 0 {vBoxx} {vBoxy}">'
+    print(line, file=ff)
+    print(f'''<defs>
+<g id="cross">
+    <line x1="-100" y1="0" x2="100" y2="0" stroke="{args.lcolor}" />
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="{args.lcolor}" />
+</g>
+<g id="frame">
+<use href="#cross" x="2" y="2"/>
+<use href="#cross" x="98" y="98"/>
+</g>
+<g id="mlhp">
+    <line x1="15" y1="80" x2="85" y2="80" stroke="{args.prcolor}"     stroke-width="9" stroke-linecap="round"/>
+</g>
+<g id="mdotp">
+    <circle cx="50" cy="80" r="6" fill="{args.prcolor}"/>
+</g>
+<g id="mlhn">
+    <line x1="15" y1="80" x2="85" y2="80" stroke="{args.nrcolor}"     stroke-width="9" stroke-linecap="round"/>
+</g>
+<g id="mdotn">
+    <circle cx="50" cy="80" r="6" fill="{args.nrcolor}"/>
+</g>
+<g id="zerop">
+    <ellipse cx="50" cy="73" rx="40" ry="18" stroke="{args.prcolor}" fill="none" stroke-width="5"/>
+    <ellipse cx="50" cy="70" rx="30" ry="12" stroke="{args.prcolor}" fill="{args.prcolor}" stroke-width="5"/>
+</g>
+<g id="zeron">
+    <ellipse cx="50" cy="73" rx="40" ry="18" stroke="{args.nrcolor}" fill="none" stroke-width="5"/>
+    <ellipse cx="50" cy="70" rx="30" ry="12" stroke="{args.nrcolor}" fill="{args.nrcolor}" stroke-width="5"/>
+</g>
+</defs>''', file=ff)
+
 def prteuroheader(x, y, width, height, vBoxx,vBoxy):
     """Creates the SVG header, viewport, viewbox and <defs>"""
     print('<svg  xmlns="http://www.w3.org/2000/svg"', file=ff)
@@ -212,6 +253,7 @@ def prtsangi():
                     if vxdict[value][k] == '1':
                         line = f'<use href="#vr" x="{100*i+vx[int(k)]}" y="{100*j}"/>'
                         print(line, file=ff)
+
     
     # Closing SVG
     print('</svg>', file=ff)
@@ -254,16 +296,62 @@ def prteuropean():
     # Closing SVG
     print('</svg>', file=ff)
 
+def prtmayan() :
+    # SVG Header
+    prtmayaheader(0, 0, width, height, vBoxx,vBoxy)
+    # Frame
+    line = f'''<rect width="{vBoxx}" height="{vBoxy}" 
+        x="0" y="0" fill="{args.bgcolor}"/>'''
+    print(line, file=ff)
+    for i in range(nc):
+        for j in range(nr):
+            line = f'<use href="#frame" x="{100*i}" y="{100*j}" />'
+            print(line, file=ff)
+    # Cell content
+    for i in range(nc):
+        for j in range(nr):
+            value = datos[i].split()[j]
+            if value == 'z' :
+                line = f'<use href="#zerop" x="{100*i}" y="{100*j}"/>'
+                print(line, file=ff)
+            elif value == '-z' :
+                line = f'<use href="#zeron" x="{100*i}" y="{100*j}"/>'
+                print(line, file=ff)
+            else:
+                count=0
+                if value[0] == '-':
+                    value=value[1:]
+                    for k in range(3):
+                        if hydict[value][k] == '1':
+                            line = f'<use href="#mlhn" x="{100*i}" y="{100*j-15*count}"/>'
+                            print(line, file=ff)
+                            count += 1
+                    for k in range(9):
+                        if vxdict[value][k] == '1':
+                            line = f'<use href="#mdotn" x="{100*i+7.5*(k-4)}" y="{100*j-15*count}"/>'
+                            print(line, file=ff)
+                else:
+                    for k in range(3):
+                        if hydict[value][k] == '1':
+                            line = f'<use href="#mlhp" x="{100*i}" y="{100*j-15*count}"/>'
+                            print(line, file=ff)
+                            count += 1
+                    for k in range(9):
+                        if vxdict[value][k] == '1':
+                            line = f'<use href="#mdotp" x="{100*i+7.5*(k-4)}" y="{100*j-15*count}"/>'
+                            print(line, file=ff)
+    print('</svg>', file=ff)
+
 
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description=DESC,
         epilog=EPIL,
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('-E', '--european',
-        help='Use medieval counting board',
-        action='store_true',
-        default=False)
+    parser.add_argument('-t', '--type',
+        help='Abacus type: s (sangi), e (european), m (mayan)',
+        choices=['s','e','m'],
+        default='s')
     parser.add_argument('-i', '--input',
         help='Data filename to read',
         default=None)
@@ -294,7 +382,7 @@ if __name__ == '__main__':
 
 
     args = parser.parse_args()
-
+    
     if args.output is None :
         ff = sys.stdout
     else:
@@ -306,7 +394,7 @@ if __name__ == '__main__':
         with open(args.input, encoding="utf-8") as f:
             datos = f.readlines()
     
-    if not args.european :
+    if  args.type == 's' :
         nr = len(datos)
         nc = len(datos[0].split())
         width = int(args.scale) * nc
@@ -314,7 +402,7 @@ if __name__ == '__main__':
         vBoxx = 100 * nc
         vBoxy = 100 * nr
         prtsangi()
-    else:
+    elif args.type =='e':
         nc = len(datos)
         nr = len(datos[0].split())
         width = 2.5 * int(args.scale) * nc
@@ -322,6 +410,14 @@ if __name__ == '__main__':
         vBoxx = 250 * nc
         vBoxy = 100 * nr
         prteuropean()
+    elif args.type =='m':
+        nc = len(datos)
+        nr = len(datos[0].split())
+        width = int(args.scale) * nc
+        height = int(args.scale) * nr
+        vBoxx = 100 * nc
+        vBoxy = 100 * nr
+        prtmayan()
 
     if args.output is not None :
         ff.close()

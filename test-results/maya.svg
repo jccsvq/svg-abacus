@@ -1,0 +1,83 @@
+<svg  xmlns="http://www.w3.org/2000/svg"
+x="0px" y="0px"
+width="198px" height="264px"
+viewBox="0 0 300 400">
+<defs>
+<g id="cross">
+    <line x1="-100" y1="0" x2="100" y2="0" stroke="green" />
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="green" />
+</g>
+<g id="frame">
+<use href="#cross" x="2" y="2"/>
+<use href="#cross" x="98" y="98"/>
+</g>
+<g id="mlhp">
+    <line x1="15" y1="80" x2="85" y2="80" stroke="darkred"     stroke-width="9" stroke-linecap="round"/>
+</g>
+<g id="mdotp">
+    <circle cx="50" cy="80" r="6" fill="darkred"/>
+</g>
+<g id="mlhn">
+    <line x1="15" y1="80" x2="85" y2="80" stroke="navy"     stroke-width="9" stroke-linecap="round"/>
+</g>
+<g id="mdotn">
+    <circle cx="50" cy="80" r="6" fill="navy"/>
+</g>
+<g id="zerop">
+    <ellipse cx="50" cy="73" rx="40" ry="18" stroke="darkred" fill="none" stroke-width="5"/>
+    <ellipse cx="50" cy="70" rx="30" ry="12" stroke="darkred" fill="darkred" stroke-width="5"/>
+</g>
+<g id="zeron">
+    <ellipse cx="50" cy="73" rx="40" ry="18" stroke="navy" fill="none" stroke-width="5"/>
+    <ellipse cx="50" cy="70" rx="30" ry="12" stroke="navy" fill="navy" stroke-width="5"/>
+</g>
+</defs>
+<rect width="300" height="400" 
+        x="0" y="0" fill="beige"/>
+<use href="#frame" x="0" y="0" />
+<use href="#frame" x="0" y="100" />
+<use href="#frame" x="0" y="200" />
+<use href="#frame" x="0" y="300" />
+<use href="#frame" x="100" y="0" />
+<use href="#frame" x="100" y="100" />
+<use href="#frame" x="100" y="200" />
+<use href="#frame" x="100" y="300" />
+<use href="#frame" x="200" y="0" />
+<use href="#frame" x="200" y="100" />
+<use href="#frame" x="200" y="200" />
+<use href="#frame" x="200" y="300" />
+<use href="#zerop" x="0" y="0"/>
+<use href="#mlhp" x="0" y="100"/>
+<use href="#mlhp" x="0" y="85"/>
+<use href="#mlhp" x="0" y="70"/>
+<use href="#mdotp" x="-22.5" y="55"/>
+<use href="#mdotp" x="-7.5" y="55"/>
+<use href="#mdotp" x="7.5" y="55"/>
+<use href="#mdotp" x="22.5" y="55"/>
+<use href="#mdotp" x="-15.0" y="200"/>
+<use href="#mdotp" x="0.0" y="200"/>
+<use href="#mdotp" x="15.0" y="200"/>
+<use href="#mlhp" x="0" y="300"/>
+<use href="#mdotp" x="-7.5" y="285"/>
+<use href="#mdotp" x="7.5" y="285"/>
+<use href="#mlhn" x="100" y="100"/>
+<use href="#mdotn" x="92.5" y="85"/>
+<use href="#mdotn" x="107.5" y="85"/>
+<use href="#zeron" x="100" y="200"/>
+<use href="#mdotn" x="70.0" y="300"/>
+<use href="#mdotn" x="85.0" y="300"/>
+<use href="#mdotn" x="100.0" y="300"/>
+<use href="#mdotn" x="115.0" y="300"/>
+<use href="#mdotn" x="130.0" y="300"/>
+<use href="#mlhp" x="200" y="0"/>
+<use href="#mlhp" x="200" y="-15"/>
+<use href="#mlhp" x="200" y="-30"/>
+<use href="#mdotp" x="200.0" y="-45"/>
+<use href="#zerop" x="200" y="100"/>
+<use href="#mlhp" x="200" y="200"/>
+<use href="#mdotp" x="185.0" y="185"/>
+<use href="#mdotp" x="200.0" y="185"/>
+<use href="#mdotp" x="215.0" y="185"/>
+<use href="#mlhp" x="200" y="300"/>
+<use href="#mdotp" x="200.0" y="285"/>
+</svg>

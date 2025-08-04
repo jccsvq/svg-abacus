@@ -32,5 +32,6 @@ echo m0 0 m3 4 m5 2|./svg-schoty -bk -s 33  > test-results/meso.svg
 
 cat datos.txt |./svg-sangi -s 66 --nrcolor black > test-results/sangi.svg
 cat datos2.txt|./svg-sangi -s 33 > test-results/sangi2.svg
-cat datos.txt|./svg-sangi  -E -s 50 > test-results/euro.svg
-cat datos2.txt|./svg-sangi  -E -s 25 > test-results/euro2.svg
+cat datos.txt|./svg-sangi  -t e -s 50 > test-results/euro.svg
+cat datos2.txt|./svg-sangi  -t e -s 25 > test-results/euro2.svg
+cat datos3.txt |./svg-sangi -t m --lcolor green --bgcolor beige --nrcolor navy --prcolor darkred -s 66 > test-results/maya.svg
