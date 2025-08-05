@@ -4,19 +4,18 @@ This package contains three `Python3` scripts for drawing diagrams or illustrati
 
 * `svg-abacus`: Abacuses of the soroban and swanpan family.
 * `svg-schoty`: Russian (schoty), school or Danish and Mesopotamian (sexagesimal) abacuses.
-* `svg-sangi`: Japanese-style counting rods (sangi) and a medieval European counting table.
+* `svg-sangi`: Japanese-style counting rods (sangi), medieval European counting table and an imaginary  Mayan (vigesimal) free counter abacus.
 
 These are command-line utilities. Tested with `Python 3.11.2` under Debian GNU/Linux 12 (bookworm).
 
 ## Installation:
 No special installation is required since only the standard `argparse` and `sys` modules are used.
 
-* On Unix-like systems, make sure to make the files executable and move them anywhere in the `PATH`.
+* On Unix-like systems, make sure to make the files executable and move them anywhere in your `PATH`.
 * Alternatively, rename the files to contain the `.py` extension and invoke them from your Python interpreter:
 
-
     `$ python3 svg-abacus.py ...`
-    
+
 # svg-abacus
 Simple `python3` script to draw SVG diagrams or illustrations of several (oriental) abacus types. 
 
@@ -138,12 +137,15 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 * Mesopotamian (sexagesimal), using codes `m0, m1, ... m6`. For instance, number 00:34:52 (decimal 2092) coded as `0 0 m3 4 m5 2`:
 * ![output](test-results/meso.svg)
 
+* Mesopotamian on 9 bead abacus:
+* ![output](test-results/meso9.svg)
+
 ## Codes:
 
 |Abacus|Codes|
 |------|-----|
 |Russian|0 1 2 3 4 5 6 7 8 9 10<br>0k 1k 2k 3k 4k 5k 6k 7k 8k 9k 10k<br>q0 q1 q2 q3 q4<br>m0 m1 m2 m3 m4 m5 m6|
-|9 beads|0 1 2 3 4 5 6 7 8 9<br>0k 1k 2k 3k 4k 5k 6k 7k 8k 9k|
+|9 beads|0 1 2 3 4 5 6 7 8 9<br>0k 1k 2k 3k 4k 5k 6k 7k 8k 9k<br>m0 m1 m2 m3 m4 m5|
 |Danish|0 1 2 3 4 5 6 7 8 9 10|
 
 ## Options:
@@ -177,7 +179,7 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
 
 # svg-sangi
 
- Simple `python3` script to draw SVG diagrams or illustrations of Japanese style counting rods (sangi 算木), medieval European counting boards and an imaginary  mayan free counters abacus.
+ Simple `python3` script to draw SVG diagrams or illustrations of Japanese style counting rods (sangi 算木), medieval European counting boards and an imaginary  mayan (vigesimal) free counter abacus.
 
 This script requires a data file to be piped; example:
 
@@ -220,7 +222,7 @@ Use the same codes as with the oriental abacus type 5+2 or 5+3. For the Mayan ze
                      [--bgcolor BGCOLOR] [--lcolor LCOLOR] [-o OUTPUT]
     
     Draws diagrams of Japanese style counting rods (sangi), medieval European
-    counting boards and an imaginary Mayan abacus by reading from stdin or file.
+    counting boards and an imaginary Mayan (vigesimal) abacus by reading from stdin or file.
     
     options:
       -h, --help            show this help message and exit

@@ -2,8 +2,9 @@
 
 import argparse, sys
 
-DESC = '''Draws diagrams of Japanese style counting rods (sangi), medieval European 
-counting boards and an imaginary Mayan abacus by reading from stdin or file.'''
+DESC = '''Draws diagrams of Japanese style counting rods (sangi), medieval 
+European counting boards and an imaginary Mayan (vigesimal) abacus by reading 
+from stdin or file.'''
 EPIL = "jccsvq fecit, 2025. Public domain."
 
 hy = [0, -10, -20]
