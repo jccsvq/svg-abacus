@@ -25,6 +25,7 @@ Simple `python3` script to draw SVG diagrams or illustrations of several (orient
 * 5+1, Traditional soroban (option: `-51`, support suspended lower beads)
 * 5+2, Traditional suanpan and soroban (option: `-52`)
 * 5+3, Rare traditional suanpan (option: `-53`), the "complete abacus"
+* 9+3, Sexagesimal or Mesopotamian abacus organized as an  oriental abacus (option: -95)
 
 ## Bead types:
 * Japanese style (default)
@@ -77,24 +78,30 @@ with chinese style beads, no unit rod marks and non-transparent background. Rod 
 
 ![output](example2.svg)
 
+    echo 00 53 59 49 12 | ./svg-abacus -cft 95  -bkn -s 25 --tcolor orange > test-results/95cfbkn.svg
+
+![output](test-results/95cfbkn.svg)
+
 Folder `test-results` contains many other examples created by the `bash` script `test.bash`.
 
 ## Options:
 
 Use:    `$ svgabacus [-h | --help]` for options.
 
-    usage: svg-abacus [-h] [-t {41,43,51,52,53}] [-c] [--ccolor CCOLOR]
-                      [-d {0,3,4}] [-s SCALE] [-v VALUES] [-b] [--bgcolor BGCOLOR]
-                      [-f] [-l] [-n] [-k] [-o OUTPUT]
-
+    usage: svg-abacus [-h] [-t {41,43,51,52,53,95}] [-c] [--ccolor CCOLOR]
+                      [--ccolor2 CCOLOR2] [-d {0,3,4}] [-s SCALE] [-v VALUES] [-b]
+                      [--bgcolor BGCOLOR] [-f] [-l] [-n] [-k] [--tcolor TCOLOR]
+                      [-o OUTPUT]
+    
     Draws diagrams for several abacus types by reading column values from stdin.
-
+    
     options:
       -h, --help            show this help message and exit
-      -t {41,43,51,52,53}, --type {41,43,51,52,53}
+      -t {41,43,51,52,53,95}, --type {41,43,51,52,53,95}
                             Abacus type (default: 53)
       -c, --chinese         Use Chinese style beads (default: False)
       --ccolor CCOLOR       Chinese style beads color (default: Darkgreen)
+      --ccolor2 CCOLOR2     Chinese style bead 2 color (default: Darkred)
       -d {0,3,4}, --dots {0,3,4}
                             Unit rod dots every 3 or 4 rods (0 to no dots at all)
                             (default: 0)
@@ -110,8 +117,10 @@ Use:    `$ svgabacus [-h | --help]` for options.
       -l, --lacquered       Use lacquered frame (default: False)
       -n, --names           Add column names/labels A, B, C, ... (default: False)
       -k, --keys            Labels columns with codes (default: False)
+      --tcolor TCOLOR       Text color (default: Gold)
       -o OUTPUT, --output OUTPUT
                             Output filename (default: None)
+
 
 
 # svg-schoty
@@ -174,6 +183,7 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
       --b4color B4COLOR     Bead 4 color (default: Black)
       -n, --names           Add column names/labels A, B, C, ... (default: False)
       -k, --keys            Labels columns with codes (default: False)
+      --tcolor TCOLOR       Text color (default: Gold)
       -o OUTPUT, --output OUTPUT
                             Output filename (default: None)
 

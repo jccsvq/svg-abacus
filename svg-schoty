@@ -95,7 +95,7 @@ def prtsvgheader(x, y, width, height, vBoxx,vBoxy):
     print(f'''<style>
 .names {{;
 font: bold 80px mono;
-fill: Gold;
+fill: {args.tcolor};
 }}
 </style>
 <defs>
@@ -192,6 +192,9 @@ if __name__ == '__main__':
         help='Labels columns with codes',
         action='store_true',
         default=False)
+    parser.add_argument('--tcolor',
+        help='Text color',
+        default='Gold')
     parser.add_argument('-o', '--output',
         help='Output filename',
         default=None)

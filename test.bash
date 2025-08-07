@@ -24,6 +24,8 @@ echo T 1 2 13 4 9 16 8 9 F Q 20|./svg-abacus -t 53 -s 50  -d 3 -c > test-results
 echo T 1 2 13 4 9 16 8 9 F Q 20|./svg-abacus -t 53 -s 50  -d 0 -c -l > test-results/53c.svg
 echo T 1 2 13 4 9 16 8 9 F Q 20|./svg-abacus -t 53 -s 50  -d 0 -c -b -l --bgcolor Cyan > test-results/53cb.svg
 echo T 1 2 13 4 9 16 8 9 F Q 20|./svg-abacus -t 53 -s 50  -d 0 -c -b -f > test-results/53cbf.svg
+echo 00 53 59 49 12 | ./svg-abacus -cft 95  -bkn -s 25 --tcolor orange > test-results/95cfbkn.svg
+
 
 echo 0k 1 2 3k 4 5 6 q0 0 0 q0 | ./svg-schoty -s 33 -b  > test-results/ruso.svg
 echo 0k 1 2 3k 4 5 6k 7 8 9k 0 | ./svg-schoty -s 33 -b9 -nk > test-results/oldchortkeh.svg
