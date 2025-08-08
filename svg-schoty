@@ -188,6 +188,10 @@ if __name__ == '__main__':
         help='Add column names/labels A, B, C, ...',
         action='store_true',
         default=False)
+    parser.add_argument('--mnames',
+        help='Add alternate column names/labels A, a, B, b, ...',
+        action='store_true',
+        default=False)
     parser.add_argument('-k', '--keys',
         help='Labels columns with codes',
         action='store_true',
@@ -222,7 +226,10 @@ if __name__ == '__main__':
     else:
         datos = args.values.split()
     if args.names :
-        labels = "A B C D E F G H I J K L M N O P Q R S T U V X Y Z".split()
+        if args.mnames :
+            labels = "A a B b C c D d E e F e G g H h I i J j".split()
+        else:
+            labels = "A B C D E F G H I J K L M N O P Q R S T U V X Y Z".split()
 
     nrods = len(datos)
     scale = int(args.scale)/100

@@ -173,19 +173,7 @@ beadict52 = {
     "19": "0101111101",
     "20": "0101111110"}
 
-decen = ["112110", "112101", "112011", "110211", "101211", "011211"]
-units = ["0111121111", "1011121111", "1101121111", "1110121111", "1111021111", 
-        "1111201111", "1111210111", "1111211011", "1111211101", "1111211110"]
-list1 =["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-list10 = list1[:6]
-
 beadict95 = {}
-
-for i in range(len(list10)) :
-    for j in range(len(list1)) :
-        key = list10[i] + list1[j]
-        value = decen[i] + units[j]
-        beadict95[key] = value
 
 beadicts = [beadict41, beadict43, beadict51, beadict52, beadict53, beadict95]
 
@@ -204,35 +192,39 @@ def prtsvgheader(x, y, width, height, vBoxx,vBoxy):
     else:
         line = f'viewBox="0 0 {vBoxx} {vBoxy}">'
     print(line, file=ff)
-    print(f'''<style>
+    if args.names or args.keys :
+        print(f'''<style>
 .names {{;
 font: bold 80px mono;
 fill: {args.tcolor};
 }}
-</style>
-<defs>
-<radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="30%" fy="40%">
-    <stop offset="0%" stop-color="antiquewhite" />
-    <stop offset="80%" stop-color="{args.ccolor}" />
-</radialGradient>
-<radialGradient id="grad2" cx="50%" cy="50%" r="50%" fx="30%" fy="40%">
-    <stop offset="0%" stop-color="antiquewhite" />
-    <stop offset="80%" stop-color="{args.ccolor2}" />
-</radialGradient>
+</style>''', file=ff)
+    print('''<defs>
 <linearGradient id="rodgrad" >
     <stop offset="5%" stop-color="BurlyWood" />
     <stop offset="95%" stop-color="#3f1010" />
 </linearGradient>    
-<linearGradient id="framegrad" >
-    <stop offset="5%" stop-color="{fcolor1}" />
-    <stop offset="{ffrac2}%" stop-color="{fcolor2}" />
-</linearGradient>
-<linearGradient id="framegrad2" gradientTransform="rotate(90)">
-    <stop offset="5%" stop-color="{fcolor1}" />
-    <stop offset="{ffrac2}%" stop-color="{fcolor2}" />
-</linearGradient>
-
-<linearGradient id="jap1" >
+''', file=ff)
+    if args.chinese :
+        print(f'''<radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="30%" fy="40%">
+    <stop offset="0%" stop-color="antiquewhite" />
+    <stop offset="80%" stop-color="{args.ccolor}" />
+</radialGradient>
+<g id="bead2">
+	<ellipse cx="100" cy="60" rx="90" ry="59.5" fill="url(#grad1)" \
+    stroke="#F2F2F2"/>
+</g>''', file=ff)
+        if args.type == '95' :
+            print(f'''<radialGradient id="grad2" cx="50%" cy="50%" r="50%" fx="30%" fy="40%">
+    <stop offset="0%" stop-color="antiquewhite" />
+    <stop offset="80%" stop-color="{args.ccolor2}" />
+</radialGradient>
+<g id="bead4">
+	<ellipse cx="100" cy="60" rx="90" ry="59.5" fill="url(#grad2)" \
+    stroke="#F2F2F2"/>
+</g>''', file=ff)
+    else:
+        print(f'''<linearGradient id="jap1" >
     <stop offset="5%" stop-color="BurlyWood" />
     <stop offset="95%" stop-color="#3f0010" />
 </linearGradient>
@@ -240,7 +232,14 @@ fill: {args.tcolor};
     <stop offset="5%" stop-color="#250000" />
     <stop offset="95%" stop-color="Peru" />
 </linearGradient>
-<linearGradient id="jap3" >
+<g id="bead">
+	<polygon fill="url(#jap1)" stroke="#F2F2F2" \
+    points="80,0 5,60 195,60 119,0"/>
+	<polygon fill="url(#jap2)" stroke="#F2F2F2" \
+    points="119,120 195,60 5,60 80,120"/>
+</g>''', file=ff)
+        if args.type == '95' :
+            print(f'''<linearGradient id="jap3" >
     <stop offset="5%" stop-color="White" />
     <stop offset="95%" stop-color="Black" />
 </linearGradient>
@@ -248,53 +247,41 @@ fill: {args.tcolor};
     <stop offset="25%" stop-color="#000" />
     <stop offset="95%" stop-color="#aaa" />
 </linearGradient>
-
-<g id="bead">
-	<polygon fill="url(#jap1)" stroke="#F2F2F2" \
-    points="80,0 5,60 195,60 119,0"/>
-	<polygon fill="url(#jap2)" stroke="#F2F2F2" \
-    points="119,120 195,60 5,60 80,120"/>
-</g>
 <g id="bead3">
 	<polygon fill="url(#jap3)" stroke="#F2F2F2" \
     points="80,0 5,60 195,60 119,0"/>
 	<polygon fill="url(#jap4)" stroke="#F2F2F2" \
     points="119,120 195,60 5,60 80,120"/>
-</g>
-
-<g id="bead2">
-	<ellipse cx="100" cy="60" rx="90" ry="59.5" fill="url(#grad1)" \
-    stroke="#F2F2F2"/>
-</g>
-<g id="bead4">
-	<ellipse cx="100" cy="60" rx="90" ry="59.5" fill="url(#grad2)" \
-    stroke="#F2F2F2"/>
-</g>
-
-
-<g id="frame">
-    <rect y="0" fill="url(#framegrad2)" width="202" height="120" /> 
-</g>
-
-<g id="bar">
+</g>''', file=ff)
+    if args.lacquered :
+        print(f'''<g id="bar">
 	<rect x="0" y="0" width="202" height="50" fill="Black" />
 	<rect x="-1" y="10" fill="AntiqueWhite" width="202" height="30"/>
 </g>
-
 <g id="bardot">
     <use href="#bar"/>
 	<circle cx="100" cy="25" r="12" stroke="black" \
     stroke-width="3" fill="green" />
-</g>
-<g id="barc">
+</g>''', file=ff)
+    else:
+        print(f'''<g id="barc">
 	<rect x="0" y="0" width="202" height="50" fill="url(#framegrad2)" />
 </g>
-
 <g id="barcdot">
     <use href="#barc"/>
 	<circle cx="100" cy="25" r="12" stroke="black" stroke-width="3" fill="green" />
+</g>''', file=ff)
+    print(f'''<linearGradient id="framegrad" >
+    <stop offset="5%" stop-color="{fcolor1}" />
+    <stop offset="{ffrac2}%" stop-color="{fcolor2}" />
+</linearGradient>
+<linearGradient id="framegrad2" gradientTransform="rotate(90)">
+    <stop offset="5%" stop-color="{fcolor1}" />
+    <stop offset="{ffrac2}%" stop-color="{fcolor2}" />
+</linearGradient>
+<g id="frame">
+    <rect y="0" fill="url(#framegrad2)" width="202" height="120" /> 
 </g>
-
 </defs>''', file=ff)
 
 def prtrod(rodn):
@@ -503,6 +490,17 @@ if __name__ == '__main__':
         abacus = 4
     if args.type == '95':
         abacus = 5
+        decen = ["112110", "112101", "112011", "110211", "101211", "011211"]
+        units = ["0111121111", "1011121111", "1101121111", "1110121111", "1111021111", 
+        "1111201111", "1111210111", "1111211011", "1111211101", "1111211110"]
+        list1 =["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        list10 = list1[:6]
+        beadict95 = {}
+        for i in range(len(list10)) :
+            for j in range(len(list1)) :
+                key = list10[i] + list1[j]
+                value = decen[i] + units[j]
+                beadicts[5][key] = value
 
     if args.lacquered :
         fcolor1 = 'AntiqueWhite'

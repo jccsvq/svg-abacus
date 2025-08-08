@@ -76,7 +76,9 @@ with chinese style beads, no unit rod marks and non-transparent background. Rod 
 
     $ echo 0 0 0 0 0 F 5 1 2 3 4 9 1 0 0 0 0|./svg-abacus -t 51 -s 25 -d 4 -bl  > example2.svg
 
-![output](example2.svg)
+![output](example2.svg) 
+
+Number: 53:59:49:12 (decimal: 11 663 352)
 
     echo 00 53 59 49 12 | ./svg-abacus -cft 95  -bkn -s 25 --tcolor orange > test-results/95cfbkn.svg
 
@@ -182,6 +184,8 @@ Simple `python3` script to draw SVG diagrams or illustrations of the Russian aba
       --b3color B3COLOR     Bead 3 color (default: DarkBlue)
       --b4color B4COLOR     Bead 4 color (default: Black)
       -n, --names           Add column names/labels A, B, C, ... (default: False)
+      --mnames              Add alternate column names/labels A, a, B, b, ...
+                            (default: False)
       -k, --keys            Labels columns with codes (default: False)
       --tcolor TCOLOR       Text color (default: Gold)
       -o OUTPUT, --output OUTPUT

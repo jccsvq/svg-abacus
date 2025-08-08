@@ -74,6 +74,7 @@ fill: Gold;
 <use href="#bead4" x="1200" y="100"/>
 <use href="#bead3" x="1300" y="100"/>
 <use href="#bead3" x="1400" y="100"/>
+<text x="20" y="230"             class="names">A</text>
 <rect y="388" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="300"/>
 <use href="#frame" x="1500" y="300"/>
@@ -87,6 +88,7 @@ fill: Gold;
 <use href="#bead" x="1200" y="300"/>
 <use href="#bead" x="1300" y="300"/>
 <use href="#bead" x="1400" y="300"/>
+<text x="20" y="430"             class="names">a</text>
 <rect y="588" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="500"/>
 <use href="#frame" x="1500" y="500"/>
@@ -96,6 +98,7 @@ fill: Gold;
 <use href="#bead4" x="1200" y="500"/>
 <use href="#bead3" x="1300" y="500"/>
 <use href="#bead3" x="1400" y="500"/>
+<text x="20" y="630"             class="names">B</text>
 <rect y="788" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="700"/>
 <use href="#frame" x="1500" y="700"/>
@@ -109,6 +112,7 @@ fill: Gold;
 <use href="#bead" x="1200" y="700"/>
 <use href="#bead" x="1300" y="700"/>
 <use href="#bead" x="1400" y="700"/>
+<text x="20" y="830"             class="names">b</text>
 <rect y="988" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="900"/>
 <use href="#frame" x="1500" y="900"/>
@@ -118,6 +122,7 @@ fill: Gold;
 <use href="#bead4" x="400" y="900"/>
 <use href="#bead3" x="500" y="900"/>
 <use href="#bead3" x="1400" y="900"/>
+<text x="20" y="1030"             class="names">C</text>
 <rect y="1188" x="0" fill="url(#rod)" width="1500"         height="24"/>
 <use href="#frame" x="0" y="1100"/>
 <use href="#frame" x="1500" y="1100"/>
@@ -131,6 +136,7 @@ fill: Gold;
 <use href="#bead" x="1200" y="1100"/>
 <use href="#bead" x="1300" y="1100"/>
 <use href="#bead" x="1400" y="1100"/>
+<text x="20" y="1230"             class="names">c</text>
 <!-- Column values -->
 <text x="1504" y="220"             class="names">m0</text>
 <text x="1527" y="420"             class="names">0</text>

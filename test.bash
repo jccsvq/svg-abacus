@@ -30,7 +30,7 @@ echo 00 53 59 49 12 | ./svg-abacus -cft 95  -bkn -s 25 --tcolor orange > test-re
 echo 0k 1 2 3k 4 5 6 q0 0 0 q0 | ./svg-schoty -s 33 -b  > test-results/ruso.svg
 echo 0k 1 2 3k 4 5 6k 7 8 9k 0 | ./svg-schoty -s 33 -b9 -nk > test-results/oldchortkeh.svg
 echo 0 0 0 2 7 3 |./svg-schoty -dbnk -s 33 > test-results/school.svg
-echo m0 0 m3 4 m5 2|./svg-schoty -bk -s 33  > test-results/meso.svg
+echo m0 0 m3 4 m5 2|./svg-schoty -bkn --mnames -s 33  > test-results/meso.svg
 echo m0 0 m3 4 m5 2|./svg-schoty -bk9 -s 33  > test-results/meso9.svg
 
 cat datos.txt |./svg-sangi -s 66 --nrcolor black > test-results/sangi.svg
